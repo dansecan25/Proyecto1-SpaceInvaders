@@ -39,6 +39,7 @@ public class Main extends Application {
         b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+
                 System.out.println("Hola mundo");
             }
         });
