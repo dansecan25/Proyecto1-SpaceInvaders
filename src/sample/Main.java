@@ -33,7 +33,10 @@ import java.io.FileInputStream;
 public class Main extends Application {
     @Override
     public void start(Stage Lobby) throws Exception{
+        Lobby.setTitle( "Space Invaders" );
         Group root = new Group(); //se crea la ventana
+        Scene scene = new Scene( root,800,750 ); //se liga scene al root
+        Lobby.setScene( scene ); //se le da al metodo el scene
         //Se crea una imagen(Start) asi-------------------------------------------------------------------------
         FileInputStream input = new FileInputStream("Imagenes/START.png");
         Image imagen=new Image(input);
@@ -43,16 +46,21 @@ public class Main extends Application {
         Image uf = new Image(inputs);
         ImageInput ufig = new ImageInput();
         //----------------------------------------------------------------------------------------
-
-        Button b1=new Button();
-        Lobby.setTitle( "Space Invaders" );
-
         ufig.setSource(uf);
         ufig.setX(200);
         ufig.setY(200);
-
         Rectangle rect = new Rectangle();
+        rect.setEffect(ufig);
+        root.getChildren().add(rect);
+        rect.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+                System.out.println(event);
+            }
+        });
 
+
+        Button b1=new Button();
         b1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -67,24 +75,9 @@ public class Main extends Application {
         });
         b1.setLayoutX(270);
         b1.setLayoutY(450);
-
-
-        rect.setEffect(ufig);
-        root.getChildren().add(rect);
         b1.setGraphic(img); //Se le da al boton la imagen
         b1.setWrapText(true); //La verdad no se
-
         root.getChildren().add(b1); //crea el boton el canvas
-        Scene scene = new Scene( root,800,750 ); //se liga scene al root
-        Lobby.setScene( scene ); //se le da al metodo el scene
-
-        rect.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-                System.out.println(event);
-            }
-        });
-
 
         Lobby.show();
     }
