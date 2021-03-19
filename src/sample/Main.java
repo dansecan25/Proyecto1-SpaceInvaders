@@ -62,7 +62,6 @@ public class Main extends Application {
         tit.setY(200);
         mark2.setEffect(tit);
         root.getChildren().add(mark2);
-
         //Imagen de la nave animada
         Image nave = new Image(new FileInputStream("Imagenes/navecita.png"));
         ImageInput nav = new ImageInput();
@@ -72,10 +71,6 @@ public class Main extends Application {
         nav.setY(550);
         rect.setEffect(nav);
         root.getChildren().add(rect);
-
-
-
-
         //----------------------------------------------------------------------------------------
 /*
         root.getChildren().add(recta);
