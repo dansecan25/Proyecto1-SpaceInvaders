@@ -5,12 +5,15 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
+import java.io.FileNotFoundException;
+
 public class GameWind {
-    public static void juego(Stage mainStage){
+    public static void juego(Stage mainStage) throws FileNotFoundException {
         Group juego= new Group();
-        Scene game = new Scene(juego, 800, 750);
+        Scene game = new Scene(juego, 800, 750, Color.valueOf("#262934"));
         Stage yano = new Stage();
         yano.setScene(game);
         // Boton para destruir ventana secundaria
@@ -25,6 +28,7 @@ public class GameWind {
         b2.setLayoutX(50);
         b2.setLayoutY(50);
         juego.getChildren().add(b2);
+        ClaseC.IniciarClase(juego);
         yano.show();
     }
 }
