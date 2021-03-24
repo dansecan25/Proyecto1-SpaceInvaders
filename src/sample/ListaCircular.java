@@ -90,9 +90,7 @@ public class ListaCircular {
                 i += 1;
             }
         }
-        System.out.println(res);
         return res;
-
     }
     public void eraseFirst(){
         if(this.first == null){
@@ -162,7 +160,5 @@ public class ListaCircular {
                 i+=1;
             }
         }
-
-
     }
 }
