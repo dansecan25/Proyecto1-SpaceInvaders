@@ -20,6 +20,7 @@ public class ListaCircular {
         this.first=null;
         this.last=null;
     }
+    //E: un valor entero
     public void addFirst(int valor){
         if (this.first==null){
             this.first = new Nodo(valor);
@@ -38,6 +39,7 @@ public class ListaCircular {
             largo+=1;
         }
     }
+    //E: un valor entero
     public void addLast(int dato) {
         if (this.first == null) {
             this.first = new Nodo(dato);
@@ -57,6 +59,7 @@ public class ListaCircular {
             tmp.prev=ant;
             this.last=tmp;
             this.last.next=this.first;
+            largo+=1;
         }
     }
     public void leer(){
@@ -92,12 +95,74 @@ public class ListaCircular {
 
     }
     public void eraseFirst(){
+        if(this.first == null){
+        }else{
+            Nodo temp = this.first;
+            this.first=temp.next;
+            this.first.prev=this.last;
+            temp.next = null;
+            temp.prev=null;
+            this.last.next=this.first;
+            largo-=1;
+        }
 
     }
     public void eraseLast(){
-
+        if(this.first==null){
+            return;
+        }else{
+            Nodo temp=this.last;
+            this.last=temp.prev;
+            this.last.next=this.first;
+            temp.next=null;
+            temp.prev=null;
+            this.first.prev=this.last;
+            largo-=1;
+        }
     }
     public void erasePos(int posicion){
+        int i =0;
+        Nodo actual = this.first;
+        if(posicion>=0) {
+            if (posicion < largo) {
+                while (i < largo) {
+                    if (posicion == i) {
+                        Nodo siguiente = actual.next;
+                        Nodo anterior = actual.prev;
+                        siguiente.prev = anterior;
+                        anterior.next = siguiente;
+                        actual.prev = null;
+                        actual.next = null;
+                        largo -= 1;
+                        break;
+                    } else {
+                        actual = actual.next;
+                        i+=1;
+                    }
+                }
+            }
+        }
+    }
+    public void replacePos(int posicion, int nuevoValor){
+        Nodo current=this.first;
+        int i= 0;
+        while(i<largo){
+            if (i==posicion){
+                Nodo sig= current.next;
+                Nodo ant = current.prev;
+                ant.next=new Nodo(nuevoValor);
+                Nodo nuevo=ant.next;
+                nuevo.prev=ant;
+                nuevo.next=sig;
+                current.next=null;
+                current.prev=null;
+                break;
+            }else{
+                current=current.next;
+                i+=1;
+            }
+        }
+
 
     }
 }

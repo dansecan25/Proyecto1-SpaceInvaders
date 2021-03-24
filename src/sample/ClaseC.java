@@ -20,12 +20,13 @@ public class ClaseC {
         nave2.setX(500);
         nave2.setY(100);
         juego.getChildren().add(nave1);
-        l.addFirst(25);
-        l.addFirst(36);
-        l.addFirst(66);
-        //l.addLast(95);
+        l.addLast(36);
+        l.addLast(55);
+        l.addLast(45);
+        l.addLast(48);
         l.leer();
-        l.obtenerDato(2);
+        l.replacePos(2,234);
+        l.leer();
 
 
 
