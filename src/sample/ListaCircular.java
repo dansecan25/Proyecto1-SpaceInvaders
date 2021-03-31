@@ -1,4 +1,10 @@
 package sample;
+
+import javafx.concurrent.Service;
+import javafx.concurrent.Task;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
+
 class Nodo{
     int dato;
     Nodo next;
@@ -12,8 +18,11 @@ class Nodo{
         return this.dato;
     }
 }
+
 public class ListaCircular {
-    int largo=0;
+    private static boolean Fin = false;
+    private static int largo=0;
+
     private Nodo first;
     private Nodo last;
     public ListaCircular(){
@@ -141,24 +150,95 @@ public class ListaCircular {
             }
         }
     }
-    public void replacePos(int posicion, int nuevoValor){
-        Nodo current=this.first;
-        int i= 0;
-        while(i<largo){
-            if (i==posicion){
-                Nodo sig= current.next;
+    public void replacePos(int posicion, int nuevoValor) {
+        Nodo current = this.first;
+        int i = 0;
+        while (i < largo) {
+            if (i == posicion) {
+                Nodo sig = current.next;
                 Nodo ant = current.prev;
-                ant.next=new Nodo(nuevoValor);
-                Nodo nuevo=ant.next;
-                nuevo.prev=ant;
-                nuevo.next=sig;
-                current.next=null;
-                current.prev=null;
+                ant.next = new Nodo(nuevoValor);
+                Nodo nuevo = ant.next;
+                nuevo.prev = ant;
+                nuevo.next = sig;
+                current.next = null;
+                current.prev = null;
                 break;
-            }else{
-                current=current.next;
-                i+=1;
+            } else {
+                current = current.next;
+                i += 1;
             }
+        }
+    }
+    public static void set_pos(float x){
+        int len= largo;
+        if (x>largo){
+            float res;
+            res = x/largo;
+
+        }
+    }
+    public void setFin(boolean x){
+        Fin=x;
+    }
+    public static boolean set_recurr() {
+        return Fin;
+    }
+    public void inicio(){
+        new ListaCircular.animar(0).start();
+    }
+
+    private static class animar extends Service<String> {
+        private static final int SLEEP_TIME = 2000;
+        private animar(int pos){
+            setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+                @Override
+                public void handle(WorkerStateEvent event) {
+                    int res=pos+1;
+                    if (!set_recurr()) {
+
+                        new ListaCircular.animar2(res).start();
+                    }else{
+                        set_pos(res);
+                    }
+                }
+            });
+        }
+        @Override
+        protected Task<String> createTask(){
+            return new Task<String>() {
+                @Override
+                protected String call() throws Exception {
+                    Thread.sleep(SLEEP_TIME);
+                    return null;
+                }
+            };
+        }
+    }
+    private static class animar2 extends Service<String> {
+        private static final int SLEEP_TIME = 2000;
+        private animar2(int pos){
+            setOnSucceeded(new EventHandler<WorkerStateEvent>() {
+                @Override
+                public void handle(WorkerStateEvent event) {
+                    int res=pos+1;
+                    if (!set_recurr()) {
+                        new ListaCircular.animar(res).start();
+                    }else{
+                        set_pos(res);
+                    }
+                }
+            });
+        }
+        @Override
+        protected Task<String> createTask(){
+            return new Task<String>() {
+                @Override
+                protected String call() throws Exception {
+                    Thread.sleep(SLEEP_TIME);
+                    return null;
+                }
+            };
         }
     }
 }
