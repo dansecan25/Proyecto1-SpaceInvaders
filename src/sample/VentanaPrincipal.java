@@ -40,12 +40,6 @@ public class VentanaPrincipal {
         new VentanaPrincipal.crearProd(root, Lobby).start();
 
         Lobby.show();
-
-
-
-
-
-
     }
     // nadie me toque esto!!!!!!!!----------------------------------------------------------------------------------------------------
     private static class SleepServ extends Service<String> {
@@ -90,8 +84,8 @@ public class VentanaPrincipal {
                     nav.setY(550);
                     rect.setEffect(nav);
                     TranslateTransition translate = new TranslateTransition();
-                    translate.setByX(100);
-                    translate.setDuration(Duration.millis(500));
+                    translate.setByX(650);
+                    translate.setDuration(Duration.millis(1200));
                     translate.setCycleCount(500);
                     translate.setAutoReverse(true);
                     translate.setNode(rect);
@@ -166,6 +160,7 @@ public class VentanaPrincipal {
             };
         }
     }
+    //creacion inical del titulo
     private static class crearProd extends Service<String> {
         private static final int SLEEP_TIME = 1000;
         private crearProd(Group t, Stage Lobby){
@@ -189,7 +184,7 @@ public class VentanaPrincipal {
                     fade.setDuration(Duration.millis(5000));
                     fade.setFromValue(-10);
                     fade.setToValue(10);
-                    fade.setCycleCount(4000);
+                    fade.setCycleCount(800);
                     fade.setAutoReverse(true);
                     fade.setNode(mark3);
                     fade.play();

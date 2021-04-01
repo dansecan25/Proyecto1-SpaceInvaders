@@ -28,7 +28,12 @@ public class GameWind {
         b2.setLayoutX(50);
         b2.setLayoutY(50);
         juego.getChildren().add(b2);
-        ClaseC.IniciarClase(juego);
+        new NaveEnemiga(110,100, juego);
+        new NaveEnemiga(220,100, juego );
+        new NaveEnemiga(330,100, juego);
+        new NaveEnemiga(440,100, juego);
+        new NaveEnemiga(550,100, juego);
+//        ClaseC.IniciarClase(juego);
         yano.show();
     }
 }
