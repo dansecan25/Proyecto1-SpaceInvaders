@@ -1,5 +1,4 @@
 package sample;
-
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
@@ -170,13 +169,21 @@ public class ListaCircular {
             }
         }
     }
-    public static void set_pos(float x){
-        int len= largo;
+    public static int set_pos(float x){
         if (x>largo){
+
             float res;
             res = x/largo;
+            float old = res;
+            int nuevo = (int) res;
+            float resu = res-nuevo;
+            System.out.println("Resultado= "+resu);
+            float end = largo*resu;
+            int position = (int) end;
+            //return obtenerDato(position);
 
         }
+        return 0;
     }
     public void setFin(boolean x){
         Fin=x;
