@@ -41,7 +41,7 @@ public class VentanaPrincipal {
         Lobby.show();
     }
     // nadie me toque esto!!!!!!!!----------------------------------------------------------------------------------------------------
-    private static class SleepServ extends Service<String> {
+    private static class MostrarVentanaPrincipal extends Service<String> {
         private static final int SLEEP_TIME = 10000;
         private MostrarVentanaPrincipal(Group root, Stage Lobby){
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
@@ -163,7 +163,7 @@ public class VentanaPrincipal {
                     t.getChildren().add(mark3);
 
                     new Destro(t,mark3).start(); //hilo que elimina un nodo
-                    new SleepServ(t, Lobby).start(); //hilo que le dará comienzo a la pantalla principal
+                    new MostrarVentanaPrincipal(t, Lobby).start(); //hilo que le dará comienzo a la pantalla principal
 
                 }
             });
