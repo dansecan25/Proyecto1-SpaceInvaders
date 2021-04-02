@@ -1,13 +1,8 @@
-package sample;
+package proyecto1;
 
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 
 public class ClaseC {

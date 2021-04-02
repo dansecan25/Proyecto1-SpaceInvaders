@@ -1,4 +1,4 @@
-package sample;
+package proyecto1;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;

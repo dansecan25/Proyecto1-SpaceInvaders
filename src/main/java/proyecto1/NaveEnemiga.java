@@ -1,10 +1,8 @@
-package sample;
+package proyecto1;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class NaveEnemiga{

@@ -1,4 +1,4 @@
-package sample;
+package proyecto1;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

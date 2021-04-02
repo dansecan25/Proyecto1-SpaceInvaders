@@ -1,4 +1,4 @@
-package sample;
+package proyecto1;
 import javafx.animation.FadeTransition;
 import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
@@ -28,16 +28,15 @@ public class VentanaPrincipal {
         Lobby.setScene( scene ); //se le da al metodo el scene
 
         //Imagen de fondo
-        Image BG = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/fondo.png"));
-        ImageInput fondo = new ImageInput();
+        ImageInput fondo = new ImageInput(Imagenes.getInstancia().getFondo());
         Rectangle mark1=new Rectangle();
-        fondo.setSource(BG);
         fondo.setX(0);
         fondo.setY(-5);
         mark1.setEffect(fondo);
         mark1.setId("move");
         root.getChildren().add(mark1);
         scene.lookup("move");
+
         //Imagen titulo
         new VentanaPrincipal.crearProd(root, Lobby).start();
 
@@ -50,41 +49,25 @@ public class VentanaPrincipal {
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                 @Override
                 public void handle(WorkerStateEvent event) {
-                    //Se crea una imagen(Start) asi-------------------------------------------------------------------------
-                    InputStream input = null;
-                    try {
-                        input = ClassLoader.class.getResourceAsStream("/Imagenes/START.png");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Image imagen=new Image(input);
-                    ImageView img = new ImageView(imagen);
-                    InputStream TIT = null;
-                    try {
-                        TIT = ClassLoader.class.getResourceAsStream("/Imagenes/titulo.png");
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    Image titulo = new Image();
-                    Rectangle mark2=new Rectangle();
-                    titulo.setSource(titulo);
+                    //Se crea imagen Start
+                    ImageView img = new ImageView(Imagenes.getInstancia().getBotonStart());
+
+                    //Se crea imagen Titulo
+                    ImageInput titulo = new ImageInput(Imagenes.getInstancia().getTitulo());
                     titulo.setX(190);
                     titulo.setY(200);
+
+                    Rectangle mark2= new Rectangle();
                     mark2.setEffect(titulo);
                     root.getChildren().add(mark2);
+
                     //Imagen de la nave animada--------------------------------------------------------------------------------------------------------
-                    Image nave = null;
-                    try {
-                        nave = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/navecita.png"));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    ImageInput nav = new ImageInput();
+                    ImageInput naveUsuario = new ImageInput(Imagenes.getInstancia().getNaveUsuario());
                     Rectangle rect = new Rectangle();
-                    nav.setSource(nave);
-                    nav.setX(20);
-                    nav.setY(550);
-                    rect.setEffect(nav);
+                    naveUsuario.setX(20);
+                    naveUsuario.setY(550);
+                    rect.setEffect(naveUsuario);
+
                     TranslateTransition translate = new TranslateTransition();
                     translate.setByX(650);
                     translate.setDuration(Duration.millis(1200));
@@ -93,6 +76,7 @@ public class VentanaPrincipal {
                     translate.setNode(rect);
                     translate.play();
                     root.getChildren().add(rect);
+
                     //Game window button------------------------------------------------------------------------------------------------------
                     Button b1=new Button();
                     b1.setOnAction(e -> {
@@ -108,15 +92,10 @@ public class VentanaPrincipal {
                     b1.setGraphic(img); //Se le da al boton la imagen
                     b1.setWrapText(true); //La verdad no se
                     root.getChildren().add(b1); //crea el boton el canvas
-                    //Sound Button-------------------------------------------------------------------------------------------------------------
-                    FileInputStream musicl = null;
-                    try {
-                        musicl = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/sonidoON.png"));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    Image imo=new Image(musicl);
-                    ImageView imu = new ImageView(imo);
+
+                    // crear boton sonido
+
+                    ImageView imu = new ImageView(Imagenes.getInstancia().getBotonMusicaON());
                     Button music = new Button();
                     music.setOnAction(e->{
                         //Musica.play();
@@ -169,15 +148,8 @@ public class VentanaPrincipal {
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                 @Override
                 public void handle(WorkerStateEvent event) {
-                    Image produ = null;
-                    try {
-                        produ = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/titulo.png"));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    ImageInput produc = new ImageInput();
+                    ImageInput produc = new ImageInput(Imagenes.getInstancia().getTitulo());
                     Rectangle mark3 = new Rectangle();
-                    produc.setSource(produ);
                     produc.setX(190);
                     produc.setY(200);
                     mark3.setEffect(produc);
