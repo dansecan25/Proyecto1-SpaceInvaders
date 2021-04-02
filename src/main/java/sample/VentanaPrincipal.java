@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 import javafx.concurrent.Service;
 import javafx.util.Duration;
 
@@ -26,7 +28,7 @@ public class VentanaPrincipal {
         Lobby.setScene( scene ); //se le da al metodo el scene
 
         //Imagen de fondo
-        Image BG = new Image(new FileInputStream("Imagenes/fondo.png"));
+        Image BG = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/fondo.png"));
         ImageInput fondo = new ImageInput();
         Rectangle mark1=new Rectangle();
         fondo.setSource(BG);
@@ -49,31 +51,31 @@ public class VentanaPrincipal {
                 @Override
                 public void handle(WorkerStateEvent event) {
                     //Se crea una imagen(Start) asi-------------------------------------------------------------------------
-                    FileInputStream input = null;
+                    InputStream input = null;
                     try {
-                        input = new FileInputStream("Imagenes/START.png");
-                    } catch (FileNotFoundException e) {
+                        input = ClassLoader.class.getResourceAsStream("/Imagenes/START.png");
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     Image imagen=new Image(input);
                     ImageView img = new ImageView(imagen);
-                    Image TIT = null;
+                    InputStream TIT = null;
                     try {
-                        TIT = new Image(new FileInputStream("Imagenes/titulo.png"));
-                    } catch (FileNotFoundException e) {
+                        TIT = ClassLoader.class.getResourceAsStream("/Imagenes/titulo.png");
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    ImageInput tit = new ImageInput();
+                    Image titulo = new Image();
                     Rectangle mark2=new Rectangle();
-                    tit.setSource(TIT);
-                    tit.setX(190);
-                    tit.setY(200);
-                    mark2.setEffect(tit);
+                    titulo.setSource(titulo);
+                    titulo.setX(190);
+                    titulo.setY(200);
+                    mark2.setEffect(titulo);
                     root.getChildren().add(mark2);
                     //Imagen de la nave animada--------------------------------------------------------------------------------------------------------
                     Image nave = null;
                     try {
-                        nave = new Image(new FileInputStream("Imagenes/navecita.png"));
+                        nave = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/navecita.png"));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -109,7 +111,7 @@ public class VentanaPrincipal {
                     //Sound Button-------------------------------------------------------------------------------------------------------------
                     FileInputStream musicl = null;
                     try {
-                        musicl = new FileInputStream("Imagenes/sonidoON.png");
+                        musicl = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/sonidoON.png"));
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -169,8 +171,8 @@ public class VentanaPrincipal {
                 public void handle(WorkerStateEvent event) {
                     Image produ = null;
                     try {
-                        produ = new Image(new FileInputStream("Imagenes/titulo.png"));
-                    } catch (FileNotFoundException e) {
+                        produ = new Image(ClassLoader.class.getResourceAsStream("/Imagenes/titulo.png"));
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     ImageInput produc = new ImageInput();
