@@ -13,27 +13,22 @@ import java.io.FileNotFoundException;
 public class GameWind {
     public static void juego(Stage mainStage) throws FileNotFoundException {
         Group juego= new Group();
-        Scene game = new Scene(juego, 800, 750, Color.valueOf("#262934"));
-        Stage yano = new Stage();
-        yano.setScene(game);
+        Scene gameScene = new Scene(juego, 800, 750, Color.valueOf("#262934"));
+        Stage GameStage = new Stage();
+        GameStage.setScene(gameScene);
         // Boton para destruir ventana secundaria
         Button b2=new Button("Exit");
         b2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                yano.close();
+                GameStage.close();
                 mainStage.show();
             }
         });
-        b2.setLayoutX(50);
-        b2.setLayoutY(50);
+        b2.setLayoutX(50); //define la posicion en x del boton
+        b2.setLayoutY(50); //posicion y
         juego.getChildren().add(b2);
-        new NaveEnemiga(110,100, juego);
-        new NaveEnemiga(220,100, juego );
-        new NaveEnemiga(330,100, juego);
-        new NaveEnemiga(440,100, juego);
-        new NaveEnemiga(550,100, juego);
-//        ClaseC.IniciarClase(juego);
-        yano.show();
+        ClaseC.IniciarClase(juego); //inicia la clase C, luego se cambiara en un loop aleatorio, esto es solo para probarlo
+        GameStage.show(); //requerido para mostrar el stage
     }
 }

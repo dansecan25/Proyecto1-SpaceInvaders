@@ -33,7 +33,7 @@ public class VentanaPrincipal {
         fondo.setX(0);
         fondo.setY(-5);
         mark1.setEffect(fondo);
-        mark1.setId("move");
+        mark1.setId("move"); //id del fondo, por el momento es solo para probar los ids, se eliminará luego
         root.getChildren().add(mark1);
         scene.lookup("move");
 
@@ -63,35 +63,35 @@ public class VentanaPrincipal {
 
                     //Imagen de la nave animada--------------------------------------------------------------------------------------------------------
                     ImageInput naveUsuario = new ImageInput(Imagenes.getInstancia().getNaveUsuario());
-                    Rectangle rect = new Rectangle();
-                    naveUsuario.setX(20);
-                    naveUsuario.setY(550);
-                    rect.setEffect(naveUsuario);
+                    Rectangle rect = new Rectangle(); //crea un rectangulo, nodo donde se insertará la imagen
+                    naveUsuario.setX(20); //posicione en x
+                    naveUsuario.setY(550); //posicion en y
+                    rect.setEffect(naveUsuario); //se le da al rectangulo la imagen
 
-                    TranslateTransition translate = new TranslateTransition();
-                    translate.setByX(650);
-                    translate.setDuration(Duration.millis(1200));
-                    translate.setCycleCount(500);
-                    translate.setAutoReverse(true);
-                    translate.setNode(rect);
-                    translate.play();
+                    TranslateTransition translate = new TranslateTransition(); //se inicia a crear la animacion
+                    translate.setByX(650); //destino final de la nave al moverse
+                    translate.setDuration(Duration.millis(1200)); //tiempo que dura trasladandose
+                    translate.setCycleCount(500); //cantitad de veces que se repite el traslado
+                    translate.setAutoReverse(true); //se regresa a la posicion original
+                    translate.setNode(rect); //se le asigna al rectangulo el efecto de animacion translate
+                    translate.play(); //se le da inicio a la animacion
                     root.getChildren().add(rect);
 
                     //Game window button------------------------------------------------------------------------------------------------------
-                    Button b1=new Button();
-                    b1.setOnAction(e -> {
-                        Lobby.hide();
+                    Button juegoInicia=new Button();
+                    juegoInicia.setOnAction(e -> {
+                        Lobby.hide(); //se esconde la ventana principal
                         try {
-                            GameWind.juego(Lobby);
+                            GameWind.juego(Lobby); //se abre la ventana de juego
                         } catch (FileNotFoundException fileNotFoundException) {
                             fileNotFoundException.printStackTrace();
                         }
                     });
-                    b1.setLayoutX(270);
-                    b1.setLayoutY(420);
-                    b1.setGraphic(img); //Se le da al boton la imagen
-                    b1.setWrapText(true); //La verdad no se
-                    root.getChildren().add(b1); //crea el boton el canvas
+                    juegoInicia.setLayoutX(270);
+                    juegoInicia.setLayoutY(420);
+                    juegoInicia.setGraphic(img); //Se le da al boton la imagen
+                    juegoInicia.setWrapText(true); //La verdad no se
+                    root.getChildren().add(juegoInicia); //crea el boton el canvas
 
                     // crear boton sonido
 
@@ -127,7 +127,7 @@ public class VentanaPrincipal {
                 @Override
                 public void handle(WorkerStateEvent event) {
                     t.getChildren().remove(m);
-                }
+                }//se encarga de remover el objeto/nodo de la ventana
             });
         }
         @Override
@@ -149,23 +149,23 @@ public class VentanaPrincipal {
                 @Override
                 public void handle(WorkerStateEvent event) {
                     ImageInput produc = new ImageInput(Imagenes.getInstancia().getTitulo());
-                    Rectangle mark3 = new Rectangle();
+                    Rectangle mark3 = new Rectangle();//crea el recatangulo de la imagen con los nombres de los involucrados en el proyecto
                     produc.setX(190);
                     produc.setY(200);
-                    mark3.setEffect(produc);
-
+                    mark3.setEffect(produc); //se le da al rectangulo la imagen con el texto
+                    //animacion de aparición y desaparición de la imagen
                     FadeTransition fade = new FadeTransition();
-                    fade.setDuration(Duration.millis(5000));
-                    fade.setFromValue(-10);
-                    fade.setToValue(10);
-                    fade.setCycleCount(800);
-                    fade.setAutoReverse(true);
+                    fade.setDuration(Duration.millis(5000)); //duración de la animación
+                    fade.setFromValue(-10); //valor inicial de opacidad
+                    fade.setToValue(10); //valor final de opacidad
+                    fade.setCycleCount(800); //duración antes de revertirse
+                    fade.setAutoReverse(true); //se indica que si se revierte la animación
                     fade.setNode(mark3);
                     fade.play();
                     t.getChildren().add(mark3);
 
-                    new Destro(t,mark3).start();
-                    new SleepServ(t, Lobby).start();
+                    new Destro(t,mark3).start(); //hilo que elimina un nodo
+                    new SleepServ(t, Lobby).start(); //hilo que le dará comienzo a la pantalla principal
 
                 }
             });
