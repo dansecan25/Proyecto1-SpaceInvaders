@@ -7,7 +7,6 @@ import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.effect.ImageInput;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -15,7 +14,6 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 import javafx.concurrent.Service;
 import javafx.util.Duration;
@@ -45,7 +43,7 @@ public class VentanaPrincipal {
     // nadie me toque esto!!!!!!!!----------------------------------------------------------------------------------------------------
     private static class SleepServ extends Service<String> {
         private static final int SLEEP_TIME = 10000;
-        private SleepServ(Group root, Stage Lobby){
+        private MostrarVentanaPrincipal(Group root, Stage Lobby){
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                 @Override
                 public void handle(WorkerStateEvent event) {
@@ -82,7 +80,7 @@ public class VentanaPrincipal {
                     juegoInicia.setOnAction(e -> {
                         Lobby.hide(); //se esconde la ventana principal
                         try {
-                            GameWind.juego(Lobby); //se abre la ventana de juego
+                            VentanaDeJuego.iniciarVentanaDeJuego(Lobby); //se abre la ventana de juego
                         } catch (FileNotFoundException fileNotFoundException) {
                             fileNotFoundException.printStackTrace();
                         }
