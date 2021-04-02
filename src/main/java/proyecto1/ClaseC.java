@@ -1,6 +1,7 @@
 package proyecto1;
 
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 import java.io.FileNotFoundException;
@@ -8,17 +9,12 @@ import java.io.FileNotFoundException;
 public class ClaseC {
     static ListaCircular l = new ListaCircular();
     public static void IniciarClase(Group juego) throws FileNotFoundException {
-        var ufo = LoadImg.loadImage("Imagenes/UFO1.png");
-        ImageView nave1 = new ImageView();
-        ImageView nave2 = new ImageView();
-        ImageView nave3 = new ImageView();
-        ImageView nave4 = new ImageView();
-        ImageView nave5 = new ImageView();
-        nave1.setImage(ufo);
-        nave2.setImage(ufo);
-        nave3.setImage(ufo);
-        nave4.setImage(ufo);
-        nave5.setImage(ufo);
+        Image ufo = Imagenes.getInstancia().getUfo1();
+        ImageView nave1 = new ImageView(ufo);
+        ImageView nave2 = new ImageView(ufo);
+        ImageView nave3 = new ImageView(ufo);
+        ImageView nave4 = new ImageView(ufo);
+        ImageView nave5 = new ImageView(ufo);
         int x = 110;
         nave1.setX(x);
         nave1.setY(100);
