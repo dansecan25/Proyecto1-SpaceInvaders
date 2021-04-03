@@ -3,6 +3,7 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 
 class Nodo{
     int dato;
@@ -13,9 +14,7 @@ class Nodo{
         this.next=null;
         this.prev=null;
     }
-    public int get_value(){
-        return this.dato;
-    }
+    public int get_value(){ return this.dato;}
 }
 
 public class ListaCircular {
@@ -171,19 +170,15 @@ public class ListaCircular {
     }
     public static int set_pos(float x){
         if (x>largo){
-
             float res;
             res = x/largo;
             float old = res;
             int nuevo = (int) res;
             float resu = res-nuevo;
-            System.out.println("Resultado= "+resu);
             float end = largo*resu;
             int position = (int) end;
-            //return obtenerDato(position);
-
-        }
-        return 0;
+            return position;
+        }else return 0;
     }
     public void setFin(boolean x){
         Fin=x;
