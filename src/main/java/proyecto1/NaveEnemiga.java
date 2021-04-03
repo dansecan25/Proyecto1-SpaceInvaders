@@ -12,7 +12,7 @@ public class NaveEnemiga {
         ImageView nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
-        nave.setId("ufos");
+        new animation(nave); //inicia la animación, se le manda el nodo a animar
         juego.getChildren().add(nave);
     }
 }

@@ -5,40 +5,40 @@ import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 
-class Nodo{
-    int dato;
-    Nodo next;
-    Nodo prev;
-    public Nodo(int dato){
+class Node{
+    Object dato;
+    Node next;
+    Node prev;
+    public Node(Object dato){
         this.dato=dato;
         this.next=null;
         this.prev=null;
     }
-    public int get_value(){ return this.dato;}
+    public Object get_value(){ return this.dato;}
 }
 
-public class ListaCircular {
-    private static boolean Fin = false;
+class ListaCircularImagenes {
+    boolean Fin= false;
     public int largo=0;
-    int position =0;
+    int position=0;
 
-    private Nodo first;
-    private Nodo last;
-    public ListaCircular(){
+    private Node first;
+    private Node last;
+    public ListaCircularImagenes(){
         this.first=null;
         this.last=null;
     }
     //E: un valor entero
-    public void addFirst(int valor){
+    public void addFirst(ImageView valor){
         if (this.first==null){
-            this.first = new Nodo(valor);
+            this.first = new Node(valor);
             this.last = this.first;
             this.first.next = this.last;
             this.last.prev = this.first;
             largo+=1;
 
         }else {
-            Nodo current= new Nodo(valor);
+            Node current= new Node(valor);
             current.next=this.first;
             this.first.prev=current;
             this.first=current;
@@ -48,21 +48,21 @@ public class ListaCircular {
         }
     }
     //E: un valor entero
-    public void addLast(int dato) {
+    public void addLast(Object dato) {
         if (this.first == null) {
-            this.first = new Nodo(dato);
+            this.first = new Node(dato);
             this.last = this.first;
             this.first.next = this.last;
             this.last.prev = this.first;
             largo+=1;
         }else{
-            Nodo current = this.first;
+            Node current = this.first;
             while(current.next != this.first){
                 current= current.next;
             }
-            Nodo tmp=this.last;
-            Nodo ant = tmp;
-            tmp.next= new Nodo(dato);
+            Node tmp=this.last;
+            Node ant = tmp;
+            tmp.next= new Node(dato);
             tmp=tmp.next;
             tmp.prev=ant;
             this.last=tmp;
@@ -71,7 +71,7 @@ public class ListaCircular {
         }
     }
     public void leer(){
-        Nodo current = this.first;
+        Node current = this.first;
         if(this.first==null){
             System.out.println("Vacia");
         }
@@ -82,15 +82,15 @@ public class ListaCircular {
             i+=1;
         }
     }
-    public int obtenerDato(int posicion) {
-        Nodo current = this.first;
+    public Object obtenerDato(int posicion) {
+        Node current = this.first;
         if (this.first == null) {
-            return 0;
+            return null;
         }
         int i = 0;
-        int res = 0;
+        Object res = null;
         while (i != largo) {
-            if ((i + 1) == posicion) {
+            if (i == posicion) {
                 res = current.get_value();
                 break;
             } else {
@@ -103,7 +103,7 @@ public class ListaCircular {
     public void eraseFirst(){
         if(this.first == null){
         }else{
-            Nodo temp = this.first;
+            Node temp = this.first;
             this.first=temp.next;
             this.first.prev=this.last;
             temp.next = null;
@@ -117,7 +117,7 @@ public class ListaCircular {
         if(this.first==null){
             return;
         }else{
-            Nodo temp=this.last;
+            Node temp=this.last;
             this.last=temp.prev;
             this.last.next=this.first;
             temp.next=null;
@@ -128,13 +128,13 @@ public class ListaCircular {
     }
     public void erasePos(int posicion){
         int i =0;
-        Nodo actual = this.first;
+        Node actual = this.first;
         if(posicion>=0) {
             if (posicion < largo) {
                 while (i < largo) {
                     if (posicion == i) {
-                        Nodo siguiente = actual.next;
-                        Nodo anterior = actual.prev;
+                        Node siguiente = actual.next;
+                        Node anterior = actual.prev;
                         siguiente.prev = anterior;
                         anterior.next = siguiente;
                         actual.prev = null;
@@ -149,15 +149,15 @@ public class ListaCircular {
             }
         }
     }
-    public void replacePos(int posicion, int nuevoValor) {
-        Nodo current = this.first;
+    public void replacePos(int posicion, Object nuevoValor) {
+        Node current = this.first;
         int i = 0;
         while (i < largo) {
             if (i == posicion) {
-                Nodo sig = current.next;
-                Nodo ant = current.prev;
-                ant.next = new Nodo(nuevoValor);
-                Nodo nuevo = ant.next;
+                Node sig = current.next;
+                Node ant = current.prev;
+                ant.next = new Node(nuevoValor);
+                Node nuevo = ant.next;
                 nuevo.prev = ant;
                 nuevo.next = sig;
                 current.next = null;
@@ -172,7 +172,9 @@ public class ListaCircular {
     public void setFin(boolean x){
         Fin=x;
     }
-    public void setPosicion(int pos){position = pos;}
+    public void setPosicion(int pos){
+        position = pos;
+    }
     public Object nuevoJefe(){
         int res;
         Thread posicion = new Thread(()->{
@@ -195,3 +197,4 @@ public class ListaCircular {
         return obtenerDato(res);
     }
 }
+

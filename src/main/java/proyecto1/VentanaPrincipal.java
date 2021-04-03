@@ -68,7 +68,7 @@ public class VentanaPrincipal {
                     rect.setEffect(naveUsuario); //se le da al rectangulo la imagen
 
                     TranslateTransition translate = new TranslateTransition(); //se inicia a crear la animacion
-                    translate.setByX(650); //destino final de la nave al moverse
+                    translate.setByX(600); //destino final de la nave al moverse
                     translate.setDuration(Duration.millis(1200)); //tiempo que dura trasladandose
                     translate.setCycleCount(500); //cantitad de veces que se repite el traslado
                     translate.setAutoReverse(true); //se regresa a la posicion original

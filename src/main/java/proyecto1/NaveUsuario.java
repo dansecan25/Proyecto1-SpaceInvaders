@@ -28,7 +28,7 @@ public class NaveUsuario {
             @Override
             public void handle(MouseEvent event) {
                 double posicionMouseX = event.getX();
-                System.out.println(posicionMouseX);
+                //System.out.println(posicionMouseX);
             }
         });
     }
