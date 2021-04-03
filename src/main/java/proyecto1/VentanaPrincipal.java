@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.scene.control.Button;
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 
 import javafx.concurrent.Service;
@@ -36,12 +36,12 @@ public class VentanaPrincipal {
         scene.lookup("move");
 
         //Imagen titulo
-        new VentanaPrincipal.crearProd(root, Lobby).start();
+        new mostrarCreditos(root, Lobby).start();
 
         Lobby.show();
     }
     // nadie me toque esto!!!!!!!!----------------------------------------------------------------------------------------------------
-    private static class SleepServ extends Service<String> {
+    private static class MostrarVentanaPrincipal extends Service<String> {
         private static final int SLEEP_TIME = 10000;
         private MostrarVentanaPrincipal(Group root, Stage Lobby){
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
@@ -118,9 +118,9 @@ public class VentanaPrincipal {
         }
     }
     //eliminar el titulo
-    private static class Destro extends Service<String> {
+    private static class eliminarTitulo extends Service<String> {
         private static final int SLEEP_TIME = 10000;
-        private Destro(Group t, Rectangle m){
+        private eliminarTitulo(Group t, Rectangle m){
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                 @Override
                 public void handle(WorkerStateEvent event) {
@@ -140,9 +140,9 @@ public class VentanaPrincipal {
         }
     }
     //creacion inical del titulo
-    private static class crearProd extends Service<String> {
+    private static class mostrarCreditos extends Service<String> {
         private static final int SLEEP_TIME = 1000;
-        private crearProd(Group t, Stage Lobby){
+        private mostrarCreditos(Group t, Stage Lobby){
             setOnSucceeded(new EventHandler<WorkerStateEvent>() {
                 @Override
                 public void handle(WorkerStateEvent event) {
@@ -162,8 +162,8 @@ public class VentanaPrincipal {
                     fade.play();
                     t.getChildren().add(mark3);
 
-                    new Destro(t,mark3).start(); //hilo que elimina un nodo
-                    new SleepServ(t, Lobby).start(); //hilo que le dará comienzo a la pantalla principal
+                    new eliminarTitulo(t,mark3).start();
+                    new MostrarVentanaPrincipal(t, Lobby).start();
 
                 }
             });

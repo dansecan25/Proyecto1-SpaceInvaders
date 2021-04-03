@@ -6,6 +6,7 @@ import java.io.InputStream;
 /*
 usar singleton para cargar cada imagen que se usa solo una vez
  */
+
 public class Imagenes {
     private static Imagenes INSTANCIA = null;
 

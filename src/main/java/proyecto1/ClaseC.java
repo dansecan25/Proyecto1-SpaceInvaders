@@ -8,7 +8,7 @@ import java.io.FileNotFoundException;
 
 public class ClaseC {
     static ListaCircular l = new ListaCircular();
-    public static void IniciarClase(Group juego) throws FileNotFoundException {
+    public static void IniciarClaseC(Group juego) throws FileNotFoundException {
         Image ufo = Imagenes.getInstancia().getUfo1();
         new NaveEnemiga(110, 100, juego);
         new NaveEnemiga(220, 100, juego);
