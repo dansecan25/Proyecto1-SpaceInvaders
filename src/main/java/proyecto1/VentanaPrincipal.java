@@ -22,7 +22,7 @@ public class VentanaPrincipal {
     public static void ventana(Stage Lobby) throws FileNotFoundException {
         Lobby.setTitle( "Space Invaders" );
         Group root = new Group(); //se crea la ventana
-        Scene scene = new Scene( root,850,700,Color.valueOf("#262934")); //se liga scene al root
+        Scene scene = new Scene( root,800,750,Color.valueOf("#262934")); //se liga scene al root
         Lobby.setScene( scene ); //se le da al metodo el scene
 
         //Imagen de fondo
@@ -34,6 +34,7 @@ public class VentanaPrincipal {
         mark1.setId("move"); //id del fondo, por el momento es solo para probar los ids, se eliminará luego
         root.getChildren().add(mark1);
         scene.lookup("move");
+
 
         //Imagen titulo
         new mostrarCreditos(root, Lobby).start();

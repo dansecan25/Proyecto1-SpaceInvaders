@@ -13,7 +13,7 @@ import java.io.FileNotFoundException;
 public class VentanaDeJuego {
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
-        Scene gameScene = new Scene(ventanaDeJuego, 800, 750, Color.valueOf("#262934"));
+        Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
         Stage GameStage = new Stage();
         GameStage.setScene(gameScene);
         // Boton para destruir ventana secundaria
@@ -28,7 +28,9 @@ public class VentanaDeJuego {
         botonExit.setLayoutX(50); //define la posicion en x del boton
         botonExit.setLayoutY(50); //posicion y
         ventanaDeJuego.getChildren().add(botonExit);
+        Fondo.IniciarFondo(ventanaDeJuego);
         ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C, luego se cambiara en un loop aleatorio, esto es solo para probarlo
+        NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
         GameStage.show(); //requerido para mostrar el stage
     }
 }

@@ -21,6 +21,12 @@ public class Imagenes {
     private Image ufoBoss = null;
     private Image botonConfiguracion = null;
     private Image botonMusicaON = null;
+    private Image fondo1 = null;
+    private Image fondo2 = null;
+    private Image fondo3 = null;
+    private Image fondo4 = null;
+    private Image fondo5 = null;
+
 
     // constructor privado para que solo exista una instancia
     private Imagenes(){
@@ -47,6 +53,11 @@ public class Imagenes {
         ufoBoss = cargarImagen("/Imagenes/boss.png");
         botonConfiguracion = cargarImagen("/Imagenes/configIC.png");
         botonMusicaON = cargarImagen("/Imagenes/sonidoON.png");
+        fondo1 = cargarImagen("/Imagenes/fondo1.png");
+        fondo2 = cargarImagen("/Imagenes/fondo2.png");
+        fondo3 = cargarImagen("/Imagenes/fondo3.png");
+        fondo4 = cargarImagen("/Imagenes/fondo4.png");
+        fondo5 = cargarImagen("/Imagenes/fondo5.png");
 
     }
 
@@ -99,6 +110,26 @@ public class Imagenes {
 
     public Image getBotonMusicaON(){
         return botonMusicaON;
+    }
+
+    public Image getFondo1() {
+        return fondo1;
+    }
+
+    public Image getFondo2() {
+        return fondo1;
+    }
+
+    public Image getFondo3() {
+        return fondo1;
+    }
+
+    public Image getFondo4() {
+        return fondo1;
+    }
+
+    public Image getFondo5() {
+        return fondo1;
     }
 }
 
