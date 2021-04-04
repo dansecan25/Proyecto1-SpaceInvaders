@@ -173,7 +173,7 @@ public class ListaCircular {
         Fin=x;
     }
     public void setPosicion(int pos){position = pos;}
-    public Object nuevoJefe(){
+    public int nuevoJefe(){
         int res;
         Thread posicion = new Thread(()->{
             int i=0;
@@ -188,7 +188,6 @@ public class ListaCircular {
                     e.printStackTrace();
                 }
             }
-
         });
         posicion.start();
         res=position;

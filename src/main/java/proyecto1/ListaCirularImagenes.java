@@ -6,15 +6,15 @@ import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 
 class Node{
-    Object dato;
+    ImageView dato;
     Node next;
     Node prev;
-    public Node(Object dato){
+    public Node(ImageView dato){
         this.dato=dato;
         this.next=null;
         this.prev=null;
     }
-    public Object get_value(){ return this.dato;}
+    public ImageView get_value(){ return this.dato;}
 }
 
 class ListaCircularImagenes {
@@ -48,7 +48,7 @@ class ListaCircularImagenes {
         }
     }
     //E: un valor entero
-    public void addLast(Object dato) {
+    public void addLast(ImageView dato) {
         if (this.first == null) {
             this.first = new Node(dato);
             this.last = this.first;
@@ -82,13 +82,13 @@ class ListaCircularImagenes {
             i+=1;
         }
     }
-    public Object obtenerDato(int posicion) {
+    public ImageView obtenerDato(double posicion) {
         Node current = this.first;
         if (this.first == null) {
             return null;
         }
         int i = 0;
-        Object res = null;
+        ImageView res = null;
         while (i != largo) {
             if (i == posicion) {
                 res = current.get_value();
@@ -149,7 +149,7 @@ class ListaCircularImagenes {
             }
         }
     }
-    public void replacePos(int posicion, Object nuevoValor) {
+    public void replacePos(double posicion, ImageView nuevoValor) {
         Node current = this.first;
         int i = 0;
         while (i < largo) {
@@ -175,7 +175,7 @@ class ListaCircularImagenes {
     public void setPosicion(int pos){
         position = pos;
     }
-    public Object nuevoJefe(){
+    public ImageView nuevoJefe(){
         int res;
         Thread posicion = new Thread(()->{
             int i=0;
