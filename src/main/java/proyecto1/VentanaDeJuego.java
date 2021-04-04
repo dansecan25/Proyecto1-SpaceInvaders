@@ -56,10 +56,50 @@ public class VentanaDeJuego {
 
             //lo que dijo arriba
             if (!estado) {
-                try {
-                    ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
+//                double hill = Math.random()*6;
+//                int hilera = (int) hill;
+                int hilera = 3;
+                if (hilera == 0){ //clase basic
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(hilera == 1){ //clase A
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(hilera == 2){ //clase B
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(hilera == 3){ //clase C
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if (hilera == 4){ //Clase D
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                }
+                if(hilera == 5){ //Clase E
+                    try {
+                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
             crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
