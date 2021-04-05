@@ -30,7 +30,6 @@ public class VentanaDeJuego {
         ventanaDeJuego.getChildren().add(botonExit);
 
 
-
         NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
@@ -47,13 +46,11 @@ public class VentanaDeJuego {
                     Thread.sleep(1000);
                 } else {
                     estado = false; //no hay enemigos en la ventana
-                    System.out.println("No hay enemigos");
                 }
                 return null;
             }
         };
         clasesAleatorias.setOnSucceeded(event -> {
-
             //lo que dijo arriba
             if (!estado) {
 //                double hill = Math.random()*6;

@@ -14,4 +14,9 @@ public class NaveEnemiga {
         new animation(nave); //inicia la animación, se le manda el nodo a animar
         juego.getChildren().add(nave);
     }
+    public static void toBoss(ImageView nodo){
+        double x = nodo.getX();
+        nodo.setImage(Imagenes.getInstancia().getUfoBoss());
+        nodo.setX(x-10);
+    }
 }
