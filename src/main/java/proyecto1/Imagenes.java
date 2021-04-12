@@ -26,6 +26,8 @@ public class Imagenes {
     private Image fondo3 = null;
     private Image fondo4 = null;
     private Image fondo5 = null;
+    private Image laser = null;
+    private Image explosion = null;
 
 
     // constructor privado para que solo exista una instancia
@@ -58,6 +60,8 @@ public class Imagenes {
         fondo3 = cargarImagen("/Imagenes/fondo3.png");
         fondo4 = cargarImagen("/Imagenes/fondo4.png");
         fondo5 = cargarImagen("/Imagenes/fondo5.png");
+        laser = cargarImagen("/Imagenes/laser.png");
+        explosion = cargarImagen("/Imagenes/explosion.png");
 
     }
 
@@ -131,5 +135,9 @@ public class Imagenes {
     public Image getFondo5() {
         return fondo1;
     }
+
+    public Image getLaser() { return laser; }
+
+    public Image getExplosion() {return explosion;}
 }
 
