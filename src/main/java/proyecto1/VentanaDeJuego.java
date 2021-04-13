@@ -30,6 +30,9 @@ public class VentanaDeJuego {
         ventanaDeJuego.getChildren().add(botonExit);
         Fondo.IniciarFondo(ventanaDeJuego);
         ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C, luego se cambiara en un loop aleatorio, esto es solo para probarlo
+        ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
+        AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
+        animacionClaseE.iniciarAnimacion();
         NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
         GameStage.show(); //requerido para mostrar el stage
     }

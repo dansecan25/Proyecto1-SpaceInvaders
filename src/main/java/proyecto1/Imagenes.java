@@ -1,6 +1,8 @@
 package proyecto1;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
 import java.io.InputStream;
 
 /*
@@ -28,6 +30,7 @@ public class Imagenes {
     private Image fondo5 = null;
     private Image laser = null;
     private Image explosion = null;
+    //private double parametroEncoger = 0.8;
 
 
     // constructor privado para que solo exista una instancia
@@ -75,6 +78,14 @@ public class Imagenes {
         }
         return resultado;
     }
+
+//    public Image cambiarTamano(Image image) {
+//        ImageView imageView = new ImageView(image);
+//        imageView.setPreserveRatio(true);
+//        imageView.setFitWidth(image.getWidth()* parametroEncoger);
+//        imageView.setFitHeight(image.getHeight()* parametroEncoger);
+//        return imageView.snapshot(null, null);
+//    }
 
     public Image getNaveUsuario() {
         return naveUsuario;
