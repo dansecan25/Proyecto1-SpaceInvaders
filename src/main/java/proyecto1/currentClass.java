@@ -2,8 +2,9 @@ package proyecto1;
 
 public class currentClass {
     private static String clas = "";
-    private static ListaCircular listA = new ListaCircular();
-    private static ListaCircular listaNodos = new ListaCircular();
+
+    private static ListaCircular listA = new ListaCircular<>();
+    private static ListaCircular listaNodos = new ListaCircular<>();
     public static String currentClassActual(){
         String clase = clas;
         return clase;

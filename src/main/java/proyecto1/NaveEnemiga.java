@@ -2,6 +2,9 @@ package proyecto1;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import java.io.FileNotFoundException;
+import java.io.Serializable;
+
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
