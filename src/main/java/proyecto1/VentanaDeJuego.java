@@ -18,7 +18,7 @@ public class VentanaDeJuego {
         GameStage.setScene(gameScene);
         // Boton para destruir ventana secundaria
         Button botonExit = new Button("Exit");
-        botonExit.setOnAction(new EventHandler<ActionEvent>() {
+        botonExit.setOnAction(new EventHandler<>() {
             @Override
             public void handle(ActionEvent event) {
                 GameStage.close();
