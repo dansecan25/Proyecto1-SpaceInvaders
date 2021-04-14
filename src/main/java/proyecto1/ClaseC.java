@@ -1,48 +1,67 @@
 package proyecto1;
 
+import javafx.concurrent.Task;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.transform.Translate;
+
 
 import java.io.FileNotFoundException;
-import java.util.Set;
 
 
+/**
+ * The type Clase c.
+ */
 public class ClaseC {
-    static ListaCircularImagenes l = new ListaCircularImagenes();
+    /**
+     * The L.
+     */
+    static ListaCircular l = new ListaCircular();
+    private static boolean alive = true;
+
+    /**
+     * Iniciar clase c.
+     *
+     * @param juego the juego
+     * @throws FileNotFoundException the file not found exception
+     */
     public static void IniciarClaseC(Group juego) throws FileNotFoundException {
+        currentClass.setClass("C", l);
         new NaveEnemiga(110, 100, juego);
         new NaveEnemiga(220, 100, juego);
         new NaveEnemiga(330, 100, juego);
         new NaveEnemiga(440, 100, juego);
         new NaveEnemiga(550, 100, juego);
-//        Set<Node> listaNodos = juego.lookupAll("#ufos");
-//        Object[] z= listaNodos.toArray();
-//        int largo = z.length;
-//        int i =0;
-//        while (i<largo){
-//            l.addLast(z[i]);
-//            i+=1;
-//        }
-//        Thread animacion = new Thread(() -> {
+        var naveBoss = l.obtenerDato(3);
+        //NaveEnemiga.toBoss((ImageView) naveBoss);
 //
+//        Task<Void> vivo = new Task<Void>() {
+//            @Override
+//            protected Void call() throws Exception {
+//                int i = 0;
+//                while(i<10){
+//                    if(i==3){
+//                        alive=false;
+//                        break;
+//                    }
+//                    i+=1;
+//                    try {
+//                        Thread.sleep(2000);
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                return null;
+//            }
+//        };
+//        vivo.setOnSucceeded(event -> {
+//            if(!alive){
+//                double pos=Math.random()*l.tamanoLista();
+//                int posicion =  (int) pos;
+//                var nodo =l.obtenerDato(posicion);
+//                //NaveEnemiga.toBoss((ImageView) nodo);
+//            }
 //        });
-//        animacion.start();
-
-//        Translate mover = new Translate();
-//        mover.setX(220);
-//        mover.setY(200);
-//        m.getTransforms().add(mover);
-
-
-
-
-
-
-
+//        new Thread(vivo).start();
     }
 
 }

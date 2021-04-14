@@ -9,7 +9,15 @@ import javafx.scene.image.ImageView;
  fondo con el cambio de nivel
  */
 
+/**
+ * The type Fondo.
+ */
 public class Fondo {
+    /**
+     * Instantiates a new Fondo.
+     *
+     * @param juego the juego
+     */
     public Fondo(Group juego) {
         ImageView fondo = new ImageView(Imagenes.getInstancia().getFondo1());
         fondo.setX(0);
@@ -17,6 +25,11 @@ public class Fondo {
         juego.getChildren().add(fondo);
     }
 
+    /**
+     * Iniciar fondo.
+     *
+     * @param ventanaDeJuego the ventana de juego
+     */
     public static void IniciarFondo(Group ventanaDeJuego) {
         new Fondo(ventanaDeJuego);
     }
