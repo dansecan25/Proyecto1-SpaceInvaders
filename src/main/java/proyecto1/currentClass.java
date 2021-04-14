@@ -1,5 +1,5 @@
 package proyecto1;
-
+/*
 public class currentClass {
     private static String clas = "";
     private static ListaCircularImagenes listA = new ListaCircularImagenes();
@@ -19,3 +19,4 @@ public class currentClass {
         return listaNodos;
     }
 }
+*/

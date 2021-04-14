@@ -1,11 +1,9 @@
 package proyecto1;
 
 import javafx.concurrent.Task;
+import javafx.event.EventHandler;
+import javafx.scene.Group;
 import javafx.scene.image.ImageView;
-
-import static javafx.application.Application.launch;
-import javafx.event.*;
-import javafx.scene.*;
 import javafx.scene.input.MouseEvent;
 
 
@@ -17,6 +15,7 @@ public class NaveUsuario {
     private ImageView laser = new ImageView(Imagenes.getInstancia().getLaser());
     private Task<Void> animacionLaser;
     private boolean pararAnimacion = false;
+    private boolean disparoAcertado = false;
 
     public NaveUsuario(Group juego) {
         user.setX(posicionX);
@@ -58,7 +57,9 @@ public class NaveUsuario {
             }
         });
     }
-
+    public void setAcierto(){
+        this.disparoAcertado = true;
+    }
     public void animacionLaser(){
         animacionLaser = new Task<Void>() {
             @Override
@@ -68,8 +69,7 @@ public class NaveUsuario {
                         Thread.sleep(250);
                         if (laser.getY() > 75) {
                             laser.setY(laser.getY() - 30);
-
-                        } else{
+                        }else{
                             laser.setVisible(false);
                         }
                     } catch (Exception e) {

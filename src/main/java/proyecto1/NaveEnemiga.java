@@ -1,10 +1,12 @@
 package proyecto1;
 
-import java.io.FileNotFoundException;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
+
+import java.io.FileNotFoundException;
 
 public class NaveEnemiga {
     ListaCircular l = new ListaCircular();
@@ -19,11 +21,18 @@ public class NaveEnemiga {
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
-//        var boundingBox = nave.getBoundsInLocal();
-//        var f = boundingBox.intersects(banano.getBoundsInLocal());
-        //System.out.println(f);
     }
-
+    private void colision(ImageView Laser){
+        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
+            Laser.setC;
+        }
+        return false;
+    }
+    private void comprobarColision(ImageView Laser){
+        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
+        comprobacion.setCycleCount(Timeline.INDEFINITE);
+        comprobacion.play();
+    }
     public ImageView getImagenNave(){
         return nave;
     }
