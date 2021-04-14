@@ -1,16 +1,17 @@
 package proyecto1;
 
 import java.io.FileNotFoundException;
+import java.io.Serializable;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 
 public class NaveEnemiga {
-    public NaveEnemiga(int x, int y, Group juego, ListaCircularImagenes l) throws FileNotFoundException {
+    public NaveEnemiga(int x, int y, Group juego, ListaCircular l) throws FileNotFoundException {
         ImageView nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
-        l.addLast(nave);
+        l.agregarUltimo(nave);
         new animation(nave); //inicia la animación, se le manda el nodo a animar
         juego.getChildren().add(nave);
     }

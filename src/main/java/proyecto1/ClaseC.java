@@ -2,6 +2,7 @@ package proyecto1;
 
 import javafx.concurrent.Task;
 import javafx.scene.Group;
+import javafx.scene.image.ImageView;
 
 
 import java.io.FileNotFoundException;
@@ -9,7 +10,7 @@ import java.io.FileNotFoundException;
 
 
 public class ClaseC {
-    static ListaCircularImagenes l = new ListaCircularImagenes();
+    static ListaCircular l = new ListaCircular();
     private static boolean alive = true;
     public static void IniciarClaseC(Group juego) throws FileNotFoundException {
         currentClass.setClass("C", l);
@@ -19,7 +20,7 @@ public class ClaseC {
         new NaveEnemiga(440, 100, juego, l);
         new NaveEnemiga(550, 100, juego, l);
         var naveBoss = l.obtenerDato(3);
-        NaveEnemiga.toBoss(naveBoss);
+        NaveEnemiga.toBoss((ImageView) naveBoss);
 
         Task<Void> vivo = new Task<Void>() {
             @Override
@@ -42,10 +43,10 @@ public class ClaseC {
         };
         vivo.setOnSucceeded(event -> {
             if(!alive){
-                double pos=Math.random()*l.largo;
+                double pos=Math.random()*l.tamanoLista();
                 int posicion =  (int) pos;
                 var nodo =l.obtenerDato(posicion);
-                NaveEnemiga.toBoss(nodo);
+                NaveEnemiga.toBoss((ImageView) nodo);
             }
         });
         new Thread(vivo).start();

@@ -28,8 +28,6 @@ public class VentanaDeJuego {
         //botonExit.setGraphic(Imagenes.getInstancia().);
         //botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
-
-
         NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
@@ -40,7 +38,7 @@ public class VentanaDeJuego {
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                if (currentClass.getLista().largo > 0) {
+                if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     System.out.println("Hay enemigos");
                     Thread.sleep(1000);

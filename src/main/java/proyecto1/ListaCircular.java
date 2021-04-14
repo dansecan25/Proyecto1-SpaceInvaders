@@ -3,194 +3,194 @@ import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
-import javafx.scene.image.ImageView;
 
-class Nodo{
-    int dato;
-    Nodo next;
-    Nodo prev;
-    public Nodo(int dato){
+import java.io.Serializable;
+
+class Nodo<T> implements Serializable {
+    Nodo<T> sig;
+    Nodo<T> prev;
+    T dato;
+    public Nodo(T dato){
         this.dato=dato;
-        this.next=null;
+        this.sig =null;
         this.prev=null;
     }
-    public int get_value(){ return this.dato;}
+    public T getValue(){
+        return this.dato;
+    }
 }
 
-public class ListaCircular {
-    private static boolean Fin = false;
-    public int largo=0;
-    int position =0;
-
-    private Nodo first;
-    private Nodo last;
+public class ListaCircular<T> implements Serializable {
+    private Nodo<T> primero;
     public ListaCircular(){
-        this.first=null;
-        this.last=null;
+        primero = null;
     }
-    //E: un valor entero
-    public void addFirst(int valor){
-        if (this.first==null){
-            this.first = new Nodo(valor);
-            this.last = this.first;
-            this.first.next = this.last;
-            this.last.prev = this.first;
-            largo+=1;
-
-        }else {
-            Nodo current= new Nodo(valor);
-            current.next=this.first;
-            this.first.prev=current;
-            this.first=current;
-            this.last.next=this.first;
-            this.first.prev= this.last;
-            largo+=1;
+    //E: cualquier tipo de dato
+    public void agregarPrimero(T dato){
+        if (primero == null){
+            primero = new Nodo<T>(dato);
+            primero.sig = primero;
+            primero.prev = primero;
+        } else {
+            Nodo<T> ultimo = primero.prev;
+            Nodo<T> nuevo= new Nodo<T>(dato);
+            nuevo.sig = primero;
+            nuevo.prev = ultimo;
+            primero.prev = nuevo;
+            ultimo.sig = nuevo;
+            primero = nuevo;
         }
     }
-    //E: un valor entero
-    public void addLast(int dato) {
-        if (this.first == null) {
-            this.first = new Nodo(dato);
-            this.last = this.first;
-            this.first.next = this.last;
-            this.last.prev = this.first;
-            largo+=1;
+    //E:cualquier tipo de dato
+    public void agregarUltimo(T dato) {
+        if (primero == null) {
+            agregarPrimero(dato);
         }else{
-            Nodo current = this.first;
-            while(current.next != this.first){
-                current= current.next;
-            }
-            Nodo tmp=this.last;
-            Nodo ant = tmp;
-            tmp.next= new Nodo(dato);
-            tmp=tmp.next;
-            tmp.prev=ant;
-            this.last=tmp;
-            this.last.next=this.first;
-            largo+=1;
+            Nodo<T> nuevo = new Nodo<T>(dato);
+            Nodo<T> ultimo = primero.prev;
+            nuevo.sig = primero;
+            nuevo.prev = ultimo;
+            primero.prev = nuevo;
+            ultimo.sig = nuevo;
         }
     }
-    public void leer(){
-        Nodo current = this.first;
-        if(this.first==null){
+    public void imprimirLista(){
+        if (primero == null) {
             System.out.println("Vacia");
-        }
-        int i=0;
-        while (i != largo){
-            System.out.println(current.get_value());
-            current=current.next;
-            i+=1;
+        } else {
+            Nodo<T> actual = primero;
+            do { // se ejecuta al menos una vez
+                System.out.print(actual.getValue() + ", ");
+                actual = actual.sig;
+            } while (actual != primero);
+            System.out.println();
         }
     }
-    public int obtenerDato(int posicion) {
-        Nodo current = this.first;
-        if (this.first == null) {
+    public int tamanoLista() {
+        if (primero == null) {
             return 0;
-        }
-        int i = 0;
-        int res = 0;
-        while (i != largo) {
-            if ((i + 1) == posicion) {
-                res = current.get_value();
-                break;
-            } else {
-                current = current.next;
-                i += 1;
-            }
-        }
-        return res;
-    }
-    public void eraseFirst(){
-        if(this.first == null){
-        }else{
-            Nodo temp = this.first;
-            this.first=temp.next;
-            this.first.prev=this.last;
-            temp.next = null;
-            temp.prev=null;
-            this.last.next=this.first;
-            largo-=1;
-        }
+        } else {
+            Nodo<T> actual = primero;
+            Nodo<T> ultimo = primero.prev;
+            int tamano = 0;
 
-    }
-    public void eraseLast(){
-        if(this.first==null){
-            return;
-        }else{
-            Nodo temp=this.last;
-            this.last=temp.prev;
-            this.last.next=this.first;
-            temp.next=null;
-            temp.prev=null;
-            this.first.prev=this.last;
-            largo-=1;
+            do { // se ejecuta al menos una vez
+                tamano++;
+                actual = actual.sig;
+            } while (actual != primero);
+            return tamano;
         }
     }
-    public void erasePos(int posicion){
-        int i =0;
-        Nodo actual = this.first;
-        if(posicion>=0) {
-            if (posicion < largo) {
-                while (i < largo) {
-                    if (posicion == i) {
-                        Nodo siguiente = actual.next;
-                        Nodo anterior = actual.prev;
-                        siguiente.prev = anterior;
-                        anterior.next = siguiente;
-                        actual.prev = null;
-                        actual.next = null;
-                        largo -= 1;
-                        break;
-                    } else {
-                        actual = actual.next;
-                        i+=1;
-                    }
-                }
+    public T obtenerDato(int posicion) {
+        if (posicion < 0 || primero == null) {
+            return null;
+        }
+        Nodo<T> actual = primero;
+        int indice = 0;
+        do {
+            if (indice == posicion) {
+                return actual.getValue();
             }
-        }
+            indice++;
+            actual = actual.sig;
+        } while (actual != primero);
+        return null; // la posicion sobrepasa el indice
     }
-    public void replacePos(int posicion, int nuevoValor) {
-        Nodo current = this.first;
-        int i = 0;
-        while (i < largo) {
-            if (i == posicion) {
-                Nodo sig = current.next;
-                Nodo ant = current.prev;
-                ant.next = new Nodo(nuevoValor);
-                Nodo nuevo = ant.next;
-                nuevo.prev = ant;
-                nuevo.next = sig;
-                current.next = null;
-                current.prev = null;
-                break;
+    public void borrarPrimero() {
+        if (primero != null) {
+            if (primero.sig == primero){
+                primero = null;
             } else {
-                current = current.next;
-                i += 1;
+                Nodo<T> temp = primero;
+                Nodo<T> ultimo = temp.prev;
+                primero = temp.sig;
+                primero.prev = temp.prev;
+                ultimo.sig = primero;
+                temp.sig = null;
+                temp.prev = null;
+                // this.last.sig = this.primero;
+                // largo -= 1;
             }
         }
     }
-    public void setFin(boolean x){
-        Fin=x;
-    }
-    public void setPosicion(int pos){position = pos;}
-    public int nuevoJefe(){
-        int res;
-        Thread posicion = new Thread(()->{
-            int i=0;
-            while(!Fin){ //fin es cuando muere el jefe
-                i+=1;
-                if(i>=largo){ //compara si el indice es mayor a largo
-                    i=0;
-                }
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+    public void borrarUltimo() {
+        if (primero != null) {
+            if (primero.sig == primero){
+                primero = null;
+            } else {
+                Nodo<T> temp = primero.prev;
+                Nodo<T> ultimo = temp.prev;
+                ultimo.sig = primero;
+                primero.prev = ultimo;
+                temp.prev = null;
+                temp.sig = null;
             }
-        });
-        posicion.start();
-        res=position;
-        return obtenerDato(res);
+        }
     }
+    public void borrarPosicion(int posicion){
+        if (posicion >= 0) {
+            if (posicion == 0) {
+                borrarPrimero();
+            } else {
+                Nodo<T> actual = primero;
+                int indice = 0;
+
+                do {
+                    if (indice == posicion) {
+                        Nodo<T> nodoPrev = actual.prev;
+                        Nodo<T> nodoSig = actual.sig;
+                        nodoPrev.sig = nodoSig;
+                        nodoSig.prev = nodoPrev;
+                        actual.prev = null;
+                        actual.sig = null;
+                        break;
+                    }
+                    indice++;
+                    actual = actual.sig;
+                } while (actual != primero);
+            }
+        }
+    }
+    public void reemplazarDato(int posicion, T nuevoDato) {
+        if (posicion < 0 || primero == null) {
+            return;
+        }
+        Nodo<T> actual = primero;
+        int indice = 0;
+        do {
+            if (indice == posicion) {
+                actual.dato = nuevoDato;
+                break;
+            }
+            indice++;
+            actual = actual.sig;
+        } while (actual != primero);
+    }
+//    public static void main(String[] args) {
+//        // pruebas
+//        ListaCircular lista = new ListaCircular();
+//        System.out.println("tam lista: " + lista.tamanoLista() );
+//        lista.agregarPrimero("1");
+//        System.out.println("tam lista: " + lista.tamanoLista() );
+//        lista.imprimirLista();
+//        lista.agregarUltimo("2");
+//        lista.imprimirLista();
+//        lista.agregarPrimero("3");
+//        lista.imprimirLista();
+//        lista.agregarUltimo("4");
+//        lista.imprimirLista();
+//        lista.borrarPosicion(2); // borrar el 2
+//        lista.imprimirLista();
+//        lista.borrarPrimero();
+//        lista.imprimirLista();
+//        lista.borrarUltimo();
+//        lista.imprimirLista();
+//        lista.reemplazarDato(0,"uno");
+//        lista.imprimirLista();
+//        lista.borrarUltimo();
+//        lista.imprimirLista();
+    //}
+
+
 }
+
