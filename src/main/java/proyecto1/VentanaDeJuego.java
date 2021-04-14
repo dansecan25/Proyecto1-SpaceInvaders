@@ -11,6 +11,7 @@ import javafx.stage.Stage;
 import java.io.FileNotFoundException;
 
 public class VentanaDeJuego {
+    private static NaveUsuario jugador;
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
@@ -33,7 +34,13 @@ public class VentanaDeJuego {
         ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
         AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
         animacionClaseE.iniciarAnimacion();
-        NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
+        setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
+    }
+    public static NaveUsuario getJugador(){
+        return jugador;
+    }
+    private static void setJugador(NaveUsuario naveJugador){
+        jugador = naveJugador;
     }
 }

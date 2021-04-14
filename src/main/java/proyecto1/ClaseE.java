@@ -1,7 +1,8 @@
 package proyecto1;
 
-import java.io.FileNotFoundException;
 import javafx.scene.Group;
+
+import java.io.FileNotFoundException;
 
 public class ClaseE {
     private ListaCircular lista = new ListaCircular();

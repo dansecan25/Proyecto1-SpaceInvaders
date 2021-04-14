@@ -6,30 +6,25 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.io.FileNotFoundException;
-
 public class NaveEnemiga {
-    ListaCircular l = new ListaCircular();
-    ListaCircular m = new ListaCircular();
     ImageView nave;
 
-    public NaveEnemiga(int x, int y, Group juego) throws FileNotFoundException {
-        //Image imagen = Imagenes.getInstancia().getUfo1();
-        //imagen = Imagenes.getInstancia().cambiarTamano(imagen);
+    public NaveEnemiga(int x, int y, Group juego) {
         nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
+        comprobarColision();
     }
-    private void colision(ImageView Laser){
-        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
-            Laser.setC;
+    private void colision(){
+        if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
+            VentanaDeJuego.getJugador().setEstadoDisparo(true);
+            System.out.println("Colision detectada");
         }
-        return false;
     }
-    private void comprobarColision(ImageView Laser){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
+    private void comprobarColision(){
+        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
