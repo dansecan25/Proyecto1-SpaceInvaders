@@ -10,7 +10,6 @@ import java.io.FileNotFoundException;
 
 public class NaveEnemiga {
     ListaCircular l = new ListaCircular();
-    ListaCircular m = new ListaCircular();
     ImageView nave;
 
     public NaveEnemiga(int x, int y, Group juego) throws FileNotFoundException {
@@ -20,19 +19,37 @@ public class NaveEnemiga {
         nave.setX(x);
         nave.setY(y);
         nave.setId("ufos");
+        l.agregarUltimo(nave);
         juego.getChildren().add(nave);
     }
+    /*
     private void colision(ImageView Laser){
         if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
             Laser.setC;
         }
-        return false;
     }
     private void comprobarColision(ImageView Laser){
         Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
+
+//        var boundingBox = nave.getBoundsInLocal();
+//        var f = boundingBox.intersects(banano.getBoundsInLocal());
+        //System.out.println(f);
+
+    private void colision(ImageView Laser){
+        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
+            Laser.setC;
+        }
+    }
+    private void comprobarColision(ImageView Laser){
+        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
+        comprobacion.setCycleCount(Timeline.INDEFINITE);
+        comprobacion.play();
+    }
+
+ */
     public ImageView getImagenNave(){
         return nave;
     }
