@@ -5,16 +5,29 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import javafx.concurrent.Task;
 
+/**
+ * The type Animacion clase e.
+ */
 public class AnimacionClaseE {
     private ClaseE claseE;
     private Task<Void> animacion;
     private double anguloActual = 0;
     private boolean pararAnimacion = false;
 
+    /**
+     * Instantiates a new Animacion clase e.
+     *
+     * @param claseE the clase e
+     */
     public AnimacionClaseE(ClaseE claseE) {
         this.claseE = claseE;
     }
 
+    /**
+     * Rotar.
+     *
+     * @param theta the theta
+     */
     public void rotar(double theta){
         ListaCircular lista = claseE.getLista();
         int tamlista = lista.tamanoLista();
@@ -42,6 +55,9 @@ public class AnimacionClaseE {
         }
     }
 
+    /**
+     * Iniciar animacion.
+     */
     public void iniciarAnimacion(){
         animacion = new Task<Void>() {
             @Override

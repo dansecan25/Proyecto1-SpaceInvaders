@@ -18,7 +18,16 @@ import java.io.FileNotFoundException;
 import javafx.concurrent.Service;
 import javafx.util.Duration;
 
+/**
+ * The type Ventana principal.
+ */
 public class VentanaPrincipal {
+    /**
+     * Ventana.
+     *
+     * @param Lobby the lobby
+     * @throws FileNotFoundException the file not found exception
+     */
     public static void ventana(Stage Lobby) throws FileNotFoundException {
         Lobby.setTitle( "Space Invaders" );
         Group root = new Group(); //se crea la ventana

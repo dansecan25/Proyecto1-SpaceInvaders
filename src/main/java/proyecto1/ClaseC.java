@@ -8,10 +8,22 @@ import javafx.scene.image.ImageView;
 import java.io.FileNotFoundException;
 
 
-
+/**
+ * The type Clase c.
+ */
 public class ClaseC {
+    /**
+     * The L.
+     */
     static ListaCircular l = new ListaCircular();
     private static boolean alive = true;
+
+    /**
+     * Iniciar clase c.
+     *
+     * @param juego the juego
+     * @throws FileNotFoundException the file not found exception
+     */
     public static void IniciarClaseC(Group juego) throws FileNotFoundException {
         currentClass.setClass("C", l);
         new NaveEnemiga(110, 100, juego);

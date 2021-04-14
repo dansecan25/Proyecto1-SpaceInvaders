@@ -6,26 +6,67 @@ import javafx.event.EventHandler;
 
 import java.io.Serializable;
 
+/**
+ * The type Nodo.
+ *
+ * @param <T> the type parameter
+ */
 class Nodo<T> implements Serializable {
+    /**
+     * The Sig.
+     */
     Nodo<T> sig;
+    /**
+     * The Prev.
+     */
     Nodo<T> prev;
+    /**
+     * The Dato.
+     */
     T dato;
+
+    /**
+     * Instantiates a new Nodo.
+     *
+     * @param dato the dato
+     */
     public Nodo(T dato){
         this.dato=dato;
         this.sig =null;
         this.prev=null;
     }
+
+    /**
+     * Get value t.
+     *
+     * @return the t
+     */
     public T getValue(){
         return this.dato;
     }
 }
 
+/**
+ * The type Lista circular.
+ *
+ * @param <T> the type parameter
+ */
 public class ListaCircular<T> implements Serializable {
     private Nodo<T> primero;
+
+    /**
+     * Instantiates a new Lista circular.
+     */
     public ListaCircular(){
         primero = null;
     }
-    //E: cualquier tipo de dato
+
+    /**
+     * Agregar primero.
+     *
+     * @param dato the dato
+     */
+//E: cualquier tipo de dato
     public void agregarPrimero(T dato){
         if (primero == null){
             primero = new Nodo<T>(dato);
@@ -41,7 +82,13 @@ public class ListaCircular<T> implements Serializable {
             primero = nuevo;
         }
     }
-    //E:cualquier tipo de dato
+
+    /**
+     * Agregar ultimo.
+     *
+     * @param dato the dato
+     */
+//E:cualquier tipo de dato
     public void agregarUltimo(T dato) {
         if (primero == null) {
             agregarPrimero(dato);
@@ -54,6 +101,10 @@ public class ListaCircular<T> implements Serializable {
             ultimo.sig = nuevo;
         }
     }
+
+    /**
+     * Imprimir lista.
+     */
     public void imprimirLista(){
         if (primero == null) {
             System.out.println("Vacia");
@@ -66,6 +117,12 @@ public class ListaCircular<T> implements Serializable {
             System.out.println();
         }
     }
+
+    /**
+     * Tamano lista int.
+     *
+     * @return the int
+     */
     public int tamanoLista() {
         if (primero == null) {
             return 0;
@@ -81,6 +138,13 @@ public class ListaCircular<T> implements Serializable {
             return tamano;
         }
     }
+
+    /**
+     * Obtener dato t.
+     *
+     * @param posicion the posicion
+     * @return the t
+     */
     public T obtenerDato(int posicion) {
         if (posicion < 0 || primero == null) {
             return null;
@@ -96,6 +160,10 @@ public class ListaCircular<T> implements Serializable {
         } while (actual != primero);
         return null; // la posicion sobrepasa el indice
     }
+
+    /**
+     * Borrar primero.
+     */
     public void borrarPrimero() {
         if (primero != null) {
             if (primero.sig == primero){
@@ -113,6 +181,10 @@ public class ListaCircular<T> implements Serializable {
             }
         }
     }
+
+    /**
+     * Borrar ultimo.
+     */
     public void borrarUltimo() {
         if (primero != null) {
             if (primero.sig == primero){
@@ -127,6 +199,12 @@ public class ListaCircular<T> implements Serializable {
             }
         }
     }
+
+    /**
+     * Borrar posicion.
+     *
+     * @param posicion the posicion
+     */
     public void borrarPosicion(int posicion){
         if (posicion >= 0) {
             if (posicion == 0) {
@@ -151,6 +229,13 @@ public class ListaCircular<T> implements Serializable {
             }
         }
     }
+
+    /**
+     * Reemplazar dato.
+     *
+     * @param posicion  the posicion
+     * @param nuevoDato the nuevo dato
+     */
     public void reemplazarDato(int posicion, T nuevoDato) {
         if (posicion < 0 || primero == null) {
             return;

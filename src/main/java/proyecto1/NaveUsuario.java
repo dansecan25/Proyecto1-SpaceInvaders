@@ -7,6 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 
+/**
+ * La clase Nave usuario, la nave del usuario que puede mover y disparar.
+ */
 public class NaveUsuario {
     private double posicionX = 200;
     private double posicionY = 600;
@@ -17,6 +20,11 @@ public class NaveUsuario {
     private boolean pararAnimacion = false;
     private boolean disparoAcertado = false;
 
+    /**
+     * Instancia nueva Nave usuario.
+     *
+     * @param juego the juego
+     */
     public NaveUsuario(Group juego) {
         user.setX(posicionX);
         user.setY(posicionY);
@@ -30,10 +38,21 @@ public class NaveUsuario {
         animacionLaser();
     }
 
+    /**
+     * Iniciar nave usuario.
+     *
+     * @param ventanaDeJuego la ventana de juego
+     */
     public static void IniciarNaveUsuario(Group ventanaDeJuego) {
         new NaveUsuario(ventanaDeJuego);
     }
 
+    /**
+     * Configuracion mouse x, permite qe el usuario pueda mover
+     * la nave mediante el mouse.
+     *
+     * @param juego la ventana de juego
+     */
     public void configuracionMouseX(Group juego) {
         juego.setOnMouseMoved(new EventHandler<MouseEvent>() {
             @Override
@@ -45,6 +64,12 @@ public class NaveUsuario {
         });
     }
 
+    /**
+     * Disparar laser, permite que el usuario dispare el laser con el
+     * clic del mouse.
+     *
+     * @param juego la ventana de juego
+     */
     public void dispararLaser(Group juego) {
         juego.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -57,9 +82,18 @@ public class NaveUsuario {
             }
         });
     }
+
+    /**
+     * Set acierto.
+     */
     public void setAcierto(){
         this.disparoAcertado = true;
     }
+
+    /**
+     * Animacion laser, para que el laser se mueva en el
+     * eje y hasta que llege al final o colisione.
+     */
     public void animacionLaser(){
         animacionLaser = new Task<Void>() {
             @Override

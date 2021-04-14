@@ -9,8 +9,18 @@ import javafx.stage.Stage;
 
 import java.io.FileNotFoundException;
 
+/**
+ * The type Ventana de juego.
+ */
 public class VentanaDeJuego {
     private static boolean estado = true;
+
+    /**
+     * Iniciar ventana de juego.
+     *
+     * @param mainStage the main stage
+     * @throws FileNotFoundException the file not found exception
+     */
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
@@ -39,6 +49,12 @@ public class VentanaDeJuego {
         
 
     }
+
+    /**
+     * Crear clases.
+     *
+     * @param ventanaDeJuego the ventana de juego
+     */
     public static void crearClases(Group ventanaDeJuego){
         //Hilo para generara las clases
         Task<Void> clasesAleatorias = new Task<>() {

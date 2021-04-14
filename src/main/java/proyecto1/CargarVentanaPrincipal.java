@@ -11,7 +11,17 @@ import javafx.util.Duration;
 
 import java.io.FileNotFoundException;
 
+/**
+ * The type Cargar ventana principal.
+ */
 public class CargarVentanaPrincipal {
+    /**
+     * Instantiates a new Cargar ventana principal.
+     *
+     * @param root               the root
+     * @param rectanguloCreditos the rectangulo creditos
+     * @param Lobby              the lobby
+     */
     public CargarVentanaPrincipal(Group root, Rectangle rectanguloCreditos, Stage Lobby){
         root.getChildren().remove(rectanguloCreditos);
         //Se crea imagen Start

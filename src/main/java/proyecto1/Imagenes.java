@@ -9,6 +9,9 @@ import java.io.InputStream;
 usar singleton para cargar cada imagen que se usa solo una vez
  */
 
+/**
+ * La clase Imagenes, un Singleton para cargar las imagenes utilizadas solo una vez.
+ */
 public class Imagenes {
     private static Imagenes INSTANCIA = null;
 
@@ -38,7 +41,12 @@ public class Imagenes {
         cargarImagenes();
     }
 
-    // metodo sincronizado para evitar problemas con hilos
+    /**
+     * Obtener instancia imagenes.
+     *
+     * @return imagenes
+     */
+// metodo sincronizado para evitar problemas con hilos
     public static synchronized Imagenes getInstancia(){
         if (INSTANCIA == null){
             INSTANCIA = new Imagenes();
@@ -87,68 +95,153 @@ public class Imagenes {
 //        return imageView.snapshot(null, null);
 //    }
 
+    /**
+     * Obtener nave usuario.
+     *
+     * @return  nave usuario
+     */
     public Image getNaveUsuario() {
         return naveUsuario;
     }
 
+    /**
+     * Obtener titulo.
+     *
+     * @return  titulo
+     */
     public Image getTitulo() {
         return titulo;
     }
 
+    /**
+     * Obtener fondo.
+     *
+     * @return fondo
+     */
     public Image getFondo() {
         return fondo;
     }
 
+    /**
+     * Obtener boton start.
+     *
+     * @return boton start
+     */
     public Image getBotonStart() {
         return botonStart;
     }
 
+    /**
+     * Obtnener ufo 1.
+     *
+     * @return ufo 1
+     */
     public Image getUfo1() {
         return ufo1;
     }
 
+    /**
+     * Obtener ufo 2.
+     *
+     * @return ufo 2
+     */
     public Image getUfo2() {
         return ufo2;
     }
 
+    /**
+     * Obtener ufo 3.
+     *
+     * @return ufo 3
+     */
     public Image getUfo3() {
         return ufo3;
     }
 
+    /**
+     * Obtener ufo boss.
+     *
+     * @return ufo boss
+     */
     public Image getUfoBoss() {
         return ufoBoss;
     }
 
+    /**
+     * Obtener boton configuracion.
+     *
+     * @return boton configuracion
+     */
     public Image getBotonConfiguracion() {
         return botonConfiguracion;
     }
 
+    /**
+     * Obtener boton musica on image.
+     *
+     * @return botonMusicaON
+     */
     public Image getBotonMusicaON(){
         return botonMusicaON;
     }
 
+    /**
+     * Obtener fondo 1.
+     *
+     * @return fondo 1
+     */
     public Image getFondo1() {
         return fondo1;
     }
 
+    /**
+     * Gets fondo 2.
+     *
+     * @return the fondo 2
+     */
     public Image getFondo2() {
         return fondo1;
     }
 
+    /**
+     * Gets fondo 3.
+     *
+     * @return the fondo 3
+     */
     public Image getFondo3() {
         return fondo1;
     }
 
+    /**
+     * Gets fondo 4.
+     *
+     * @return the fondo 4
+     */
     public Image getFondo4() {
         return fondo1;
     }
 
+    /**
+     * Gets fondo 5.
+     *
+     * @return the fondo 5
+     */
     public Image getFondo5() {
         return fondo1;
     }
 
+    /**
+     * Gets laser.
+     *
+     * @return the laser
+     */
     public Image getLaser() { return laser; }
 
+    /**
+     * Gets explosion.
+     *
+     * @return the explosion
+     */
     public Image getExplosion() {return explosion;}
 }
 
