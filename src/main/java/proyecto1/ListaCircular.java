@@ -4,7 +4,7 @@ import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 
-class Nodo{
+class Nodo<T extends Comparable<? super T>>{
     Object dato;
     Nodo sig;
     Nodo prev;

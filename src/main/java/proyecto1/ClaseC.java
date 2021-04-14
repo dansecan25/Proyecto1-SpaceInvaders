@@ -18,17 +18,6 @@ public class ClaseC {
         new NaveEnemiga(440, 100, juego);
         new NaveEnemiga(550, 100, juego);
 
-        //System.out.println(juego.lookupAll("#ufos"));
-        var m = juego.lookupAll("#ufos");
-//        Translate mover = new Translate();
-//        mover.setX(220);
-//        mover.setY(200);
-//        m.getTransforms().add(mover);
-
-        var z= m.toArray();
-        //System.out.println(z[0]);
-        //l.addLast();
-        //l.inicio();
 
 
 

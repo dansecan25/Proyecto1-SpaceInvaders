@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 
 public class NaveEnemiga {
     ListaCircular l = new ListaCircular();
+    ListaCircular m = new ListaCircular();
     ImageView nave;
 
     public NaveEnemiga(int x, int y, Group juego) throws FileNotFoundException {
@@ -18,6 +19,9 @@ public class NaveEnemiga {
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
+//        var boundingBox = nave.getBoundsInLocal();
+//        var f = boundingBox.intersects(banano.getBoundsInLocal());
+        //System.out.println(f);
     }
 
     public ImageView getImagenNave(){
