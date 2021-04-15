@@ -76,14 +76,14 @@ public class VentanaDeJuego {
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if(hilera == 1){ //clase A
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -97,14 +97,14 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 3){ //clase C
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if (hilera == 4){ //Clase D
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }

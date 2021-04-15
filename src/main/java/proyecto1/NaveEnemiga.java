@@ -19,7 +19,6 @@ public class NaveEnemiga {
 
     private int vida;
 
-    private boolean vivo;
     /**
      * Instantiates a new Nave enemiga.
      *
@@ -27,7 +26,7 @@ public class NaveEnemiga {
      * @param y     the y
      * @param juego the juego
      */
-    public NaveEnemiga(int x, int y, Group juego) {
+    public NaveEnemiga(int x, int y, Group juego,int pos) {
         this.nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
@@ -36,7 +35,7 @@ public class NaveEnemiga {
         this.posicionLis=pos;
         this.vida = 1;
         comprobarColision();
-        ventana= juego;
+        ventana = juego;
 
     }
     public void toBoss(){
