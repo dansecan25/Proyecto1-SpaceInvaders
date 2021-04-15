@@ -79,26 +79,19 @@ public class VentanaDeJuego {
         CLASE = cla;
         ventanaDeJuego.getChildren().add(cla);
         ventanaDeJuego.getChildren().add(puntos);
-
-        
-
     }
-
     /**
      * Crear clases.
      *
      * @param ventanaDeJuego the ventana de juego
      */
     public static void crearClases(Group ventanaDeJuego){
-        Text clase= new Text();
-
         //Hilo para generara las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
-                    System.out.println("Hay enemigos");
                     currentClass.getLista().imprimirLista();
                     Thread.sleep(1000);
                 } else {
@@ -122,9 +115,6 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 1){ //clase A
                     try {
-
-
-
                         new ClaseC(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
@@ -149,7 +139,6 @@ public class VentanaDeJuego {
                 }
                 if (hilera == 4){ //Clase D
                     try {
-
                         new ClaseC(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {

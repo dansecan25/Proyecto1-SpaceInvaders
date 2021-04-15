@@ -36,9 +36,12 @@ public class ClaseC {
             posicion = 0;
         }
         //arreglar naveBoss se vuelve null
+
         NaveEnemiga naveBoss = lista.obtenerDato(posicion);
-        naveBoss.toBoss();
-        naveBoss.setPosicionLis(posicion);
+        if(naveBoss!=null) {
+            naveBoss.toBoss();
+            naveBoss.setPosicionLis(posicion);
+        }
     }
 
 }
