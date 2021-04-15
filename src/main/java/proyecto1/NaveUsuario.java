@@ -98,7 +98,7 @@ public class NaveUsuario {
             public Void call(){
                 while (!pararAnimacion) {
                     try {
-                        Thread.sleep(250);
+                        Thread.sleep(150);
                         if (laser.getY() > 75 && !disparoAcertado) {
                             laser.setY(laser.getY() - 30);
                         }
