@@ -24,6 +24,7 @@ public class ClaseE {
     public ClaseE(Group juego, int x, int y) throws FileNotFoundException {
         this.x = x;
         this.y = y;
+        currentClass.setClass("E", lista);
         lista.agregarPrimero(new NaveEnemiga(x-120, y, juego));
         lista.agregarPrimero(new NaveEnemiga(x-60, y, juego));
         lista.agregarPrimero(new NaveEnemiga(x, y, juego));

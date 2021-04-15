@@ -15,7 +15,7 @@ public class ClaseC {
     /**
      * The L.
      */
-    static ListaCircular l = new ListaCircular();
+    static ListaCircular listaC = new ListaCircular();
     private static boolean alive = true;
 
     /**
@@ -25,13 +25,14 @@ public class ClaseC {
      * @throws FileNotFoundException the file not found exception
      */
     public static void IniciarClaseC(Group juego) throws FileNotFoundException {
-        currentClass.setClass("C", l);
-        new NaveEnemiga(110, 100, juego);
-        new NaveEnemiga(220, 100, juego);
-        new NaveEnemiga(330, 100, juego);
-        new NaveEnemiga(440, 100, juego);
-        new NaveEnemiga(550, 100, juego);
-        var naveBoss = l.obtenerDato(3);
+        currentClass.setClass("C", listaC);
+        listaC.agregarUltimo(new NaveEnemiga(110, 100, juego));
+        listaC.agregarUltimo(new NaveEnemiga(220, 100, juego));
+        listaC.agregarUltimo(new NaveEnemiga(330, 100, juego));
+        listaC.agregarUltimo(new NaveEnemiga(440, 100, juego));
+        listaC.agregarUltimo(new NaveEnemiga(550, 100, juego));
+
+//        var naveBoss = l.obtenerDato(3);
         //NaveEnemiga.toBoss((ImageView) naveBoss);
 //
 //        Task<Void> vivo = new Task<Void>() {
@@ -40,7 +41,7 @@ public class ClaseC {
 //                int i = 0;
 //                while(i<10){
 //                    if(i==3){
-//                        alive=false;
+//
 //                        break;
 //                    }
 //                    i+=1;
