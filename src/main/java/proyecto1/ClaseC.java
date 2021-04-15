@@ -26,11 +26,11 @@ public class ClaseC {
      */
     public static void IniciarClaseC(Group juego) throws FileNotFoundException {
         currentClass.setClass("C", listaC);
-        listaC.agregarUltimo(new NaveEnemiga(110, 100, juego));
-        listaC.agregarUltimo(new NaveEnemiga(220, 100, juego));
-        listaC.agregarUltimo(new NaveEnemiga(330, 100, juego));
-        listaC.agregarUltimo(new NaveEnemiga(440, 100, juego));
-        listaC.agregarUltimo(new NaveEnemiga(550, 100, juego));
+        listaC.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
+        listaC.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
+        listaC.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
+        listaC.agregarUltimo(new NaveEnemiga(440, 100, juego, 3));
+        listaC.agregarUltimo(new NaveEnemiga(550, 100, juego, 4));
 
 //        var naveBoss = l.obtenerDato(3);
         //NaveEnemiga.toBoss((ImageView) naveBoss);

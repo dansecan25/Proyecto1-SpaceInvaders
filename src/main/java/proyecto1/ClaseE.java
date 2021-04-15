@@ -25,11 +25,11 @@ public class ClaseE {
         this.x = x;
         this.y = y;
         currentClass.setClass("E", lista);
-        lista.agregarPrimero(new NaveEnemiga(x-120, y, juego));
-        lista.agregarPrimero(new NaveEnemiga(x-60, y, juego));
-        lista.agregarPrimero(new NaveEnemiga(x, y, juego));
-        lista.agregarPrimero(new NaveEnemiga(x+60, y, juego));
-        lista.agregarPrimero(new NaveEnemiga(x+120, y, juego));
+        lista.agregarPrimero(new NaveEnemiga(x-120, y, juego,0));
+        lista.agregarPrimero(new NaveEnemiga(x-60, y, juego, 1));
+        lista.agregarPrimero(new NaveEnemiga(x, y, juego,2));
+        lista.agregarPrimero(new NaveEnemiga(x+60, y, juego,3));
+        lista.agregarPrimero(new NaveEnemiga(x+120, y, juego,4));
     }
 
     /**

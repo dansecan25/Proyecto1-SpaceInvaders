@@ -10,6 +10,8 @@ import javafx.util.Duration;
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
+    int posicionLis;
+    Group ventana;
     /**
      * The Nave.
      */
@@ -21,13 +23,16 @@ public class NaveEnemiga {
      * @param y     the y
      * @param juego the juego
      */
-    public NaveEnemiga(int x, int y, Group juego) {
+    public NaveEnemiga(int x, int y, Group juego, int pos) {
         nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
+        this.posicionLis=pos;
         comprobarColision();
+        ventana= juego;
+
     }
     public void toBoss(){
         nave = new ImageView(Imagenes.getInstancia().getUfoBoss());
@@ -36,7 +41,8 @@ public class NaveEnemiga {
     private void colision(){
         if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
-            System.out.println("Colision detectada");
+            currentClass.getLista().borrarPosicion(this.posicionLis);
+            ventana.getChildren().remove(this.nave);
         }
     }
     private void comprobarColision(){

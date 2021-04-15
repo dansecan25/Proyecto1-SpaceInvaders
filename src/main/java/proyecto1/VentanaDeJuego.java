@@ -44,6 +44,7 @@ public class VentanaDeJuego {
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
+
         
 
     }
