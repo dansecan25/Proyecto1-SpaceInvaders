@@ -41,6 +41,9 @@ public class NaveEnemiga {
         ventana = juego;
 
     }
+    public void setPosicionLis(int posicion){
+        this.posicionLis = posicion;
+    }
     public void toBoss(){
         this.nave.setImage(Imagenes.getInstancia().getUfoBoss());
         this.vida += 2;

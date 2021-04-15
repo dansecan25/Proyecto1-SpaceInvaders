@@ -29,10 +29,16 @@ public class ClaseC {
     }
     public static void cambiarJefe(){
         ListaCircular<NaveEnemiga> lista = currentClass.getLista();
+
         double pos = Math.random()*lista.tamanoLista();
         int posicion =  (int) pos;
+        if (lista.tamanoLista()==1){
+            posicion = 0;
+        }
+        //arreglar naveBoss se vuelve null
         NaveEnemiga naveBoss = lista.obtenerDato(posicion);
         naveBoss.toBoss();
+        naveBoss.setPosicionLis(posicion);
     }
 
 }
