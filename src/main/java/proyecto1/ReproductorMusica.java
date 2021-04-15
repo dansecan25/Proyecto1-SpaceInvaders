@@ -1,6 +1,6 @@
 package proyecto1;
 
-import com.sun.glass.ui.Application;
+//import com.sun.glass.ui.Application;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;

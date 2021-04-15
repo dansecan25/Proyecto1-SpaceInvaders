@@ -7,6 +7,7 @@ public class currentClass {
     private static String clas = "";
 
     private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
+    private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
 
     /**
      * Current class actual string.
@@ -17,7 +18,17 @@ public class currentClass {
         String clase = clas;
         return clase;
     }
+    /**
+     * Set class.
+     *
+     * @param claseActual the clase actual
+     * @param b           the listaBasic
+     */
+        public static void setClass2(String claseActual, simpleLinkedList b){
+        clas=claseActual;
+        listaBasic=b;
 
+    }
     /**
      * Set class.
      *
@@ -28,7 +39,16 @@ public class currentClass {
         clas=claseActual;
         listA = l;
     }
+    /**
+     * Get simpleLinkedList.
+     *
+     * @return the simpleLinkedList listabasic.
+     */
 
+    public static simpleLinkedList getListaBasic(){
+        return listaBasic;
+
+    }
     /**
      * Get lista lista circular.
      *
@@ -37,6 +57,7 @@ public class currentClass {
     public static ListaCircular getLista(){
         return listA;
     }
+
     public static String getClase(){
         return clas;
     }

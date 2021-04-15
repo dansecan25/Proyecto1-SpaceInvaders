@@ -86,7 +86,7 @@ public class VentanaDeJuego {
      * @param ventanaDeJuego the ventana de juego
      */
     public static void crearClases(Group ventanaDeJuego){
-        //Hilo para generara las clases
+        //Hilo para generar las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
@@ -107,7 +107,7 @@ public class VentanaDeJuego {
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
-                        new ClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseBasic(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
