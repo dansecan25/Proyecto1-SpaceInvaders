@@ -12,10 +12,12 @@ import javafx.util.Duration;
 public class NaveEnemiga {
     int posicionLis;
     Group ventana;
+    Timeline comprobacion;
     /**
      * The Nave.
      */
     ImageView nave;
+    int puntosMorir = 5;
 
     private int vida;
 
@@ -34,13 +36,15 @@ public class NaveEnemiga {
         juego.getChildren().add(nave);
         this.posicionLis=pos;
         this.vida = 1;
+        comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobarColision();
         ventana = juego;
 
     }
     public void toBoss(){
-        this.nave = new ImageView(Imagenes.getInstancia().getUfoBoss());
+        this.nave.setImage(Imagenes.getInstancia().getUfoBoss());
         this.vida += 2;
+        puntosMorir+=10;
     }
 
     private void colision(){
@@ -50,11 +54,13 @@ public class NaveEnemiga {
             if (this.vida <= 0){
                 currentClass.getLista().borrarPosicion(this.posicionLis);
                 ventana.getChildren().remove(this.nave);
+                comprobacion.stop();
+                VentanaDeJuego.updatePuntos(puntosMorir);
             }
         }
     }
     private void comprobarColision(){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
+
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
