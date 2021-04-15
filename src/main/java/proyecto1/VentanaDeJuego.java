@@ -4,9 +4,16 @@ import javafx.concurrent.Task;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.effect.ImageInput;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+
+import javax.swing.text.Element;
 import java.io.FileNotFoundException;
 
 /**
@@ -14,6 +21,9 @@ import java.io.FileNotFoundException;
  */
 public class VentanaDeJuego {
     private static boolean estado = true;
+    public static int pts = 0;
+    private static Text valor;
+    private static Text CLASE;
 
     /**
      * Iniciar ventana de juego.
@@ -30,25 +40,46 @@ public class VentanaDeJuego {
         GameStage.setScene(gameScene);
         // Boton para destruir ventana secundaria
         Fondo.IniciarFondo(ventanaDeJuego);
-        Button botonExit = new Button("Exit");
+        ImageView EXIT = new ImageView(Imagenes.getInstancia().getBotonExit());
+        Button botonExit = new Button();
         botonExit.setOnAction(event -> {
             GameStage.close();
             mainStage.show();
         });
         botonExit.setLayoutX(750); //define la posicion en x del boton
         botonExit.setLayoutY(20); //posicion y
-        //botonExit.setGraphic(Imagenes.getInstancia().);
-        //botonExit.setWrapText(true);
+
+        botonExit.setGraphic(EXIT);
+        botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
-        Fondo.IniciarFondo(ventanaDeJuego);
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
+        Text puntos = new Text();
+        String puntaje = Integer.toString(pts);
+        puntos.setText(puntaje);
+        puntos.setX(105);
+        puntos.setY(50);
+        puntos.setFill(Color.valueOf("#55d147"));
+        valor = puntos;
+        double fontSize = 40;
+        FontWeight fontWeight = FontWeight.BOLD;
+        Font font1 = Font.font("Arial", fontWeight,fontSize);
+        puntos.setFont(font1);
 
-        
-
+        Text cla = new Text();
+        cla.setText("");
+        cla.setY(185);
+        cla.setX(750);
+        cla.setFill(Color.valueOf("#55d147"));
+        double fontSize2 = 75;
+        FontWeight fontWeight1 = FontWeight.BOLD;
+        Font font2 = Font.font("Arial", fontWeight1,fontSize2);
+        cla.setFont(font2);
+        CLASE = cla;
+        ventanaDeJuego.getChildren().add(cla);
+        ventanaDeJuego.getChildren().add(puntos);
     }
-
     /**
      * Crear clases.
      *
@@ -61,7 +92,7 @@ public class VentanaDeJuego {
             protected Void call() throws Exception {
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
-                    System.out.println("Hay enemigos");
+                    currentClass.getLista().imprimirLista();
                     Thread.sleep(1000);
                 } else {
                     estado = false; //no hay enemigos en la ventana
@@ -77,6 +108,7 @@ public class VentanaDeJuego {
                 if (hilera == 0){ //clase basic
                     try {
                         new ClaseC(ventanaDeJuego); //inicia la clase C
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -84,6 +116,7 @@ public class VentanaDeJuego {
                 if(hilera == 1){ //clase A
                     try {
                         new ClaseC(ventanaDeJuego); //inicia la clase C
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -91,6 +124,7 @@ public class VentanaDeJuego {
                 if(hilera == 2){ //clase B
                     try {
                         ClaseB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -98,6 +132,7 @@ public class VentanaDeJuego {
                 if(hilera == 3){ //clase C
                     try {
                         new ClaseC(ventanaDeJuego); //inicia la clase C
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -105,6 +140,7 @@ public class VentanaDeJuego {
                 if (hilera == 4){ //Clase D
                     try {
                         new ClaseC(ventanaDeJuego); //inicia la clase C
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -114,6 +150,7 @@ public class VentanaDeJuego {
                         ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
                         AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
                         animacionClaseE.iniciarAnimacion();
+                        setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -129,4 +166,14 @@ public class VentanaDeJuego {
     private static void setJugador(NaveUsuario naveJugador){
         jugador = naveJugador;
     }
+    public static void updatePuntos(int suma){
+        pts = pts+suma;
+        var puntaje = Integer.toString(pts);
+        valor.setText(puntaje);
+    }
+    public static void setCLASE(){
+        String classs = currentClass.getClase();
+        CLASE.setText(classs);
+    }
+
 }

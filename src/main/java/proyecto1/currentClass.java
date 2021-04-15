@@ -6,8 +6,7 @@ package proyecto1;
 public class currentClass {
     private static String clas = "";
 
-    private static ListaCircular listA = new ListaCircular<>();
-    private static ListaCircular listaNodos = new ListaCircular<>();
+    private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
 
     /**
      * Current class actual string.
@@ -38,13 +37,19 @@ public class currentClass {
     public static ListaCircular getLista(){
         return listA;
     }
-
-    /**
-     * Get lista boundings lista circular.
-     *
-     * @return the lista circular
-     */
-    public static ListaCircular getListaBoundings(){
-        return listaNodos;
+    public static String getClase(){
+        return clas;
     }
+    public static void reordenar(){
+        int i = (listA.tamanoLista()-1);
+        while(i!=0){
+
+            NaveEnemiga data = listA.obtenerDato(i);
+            data.setPosicionLis(i);
+            i-=1;
+
+
+        }
+    }
+
 }
