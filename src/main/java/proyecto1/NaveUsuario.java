@@ -36,7 +36,7 @@ public class NaveUsuario {
         configuracionMouseX(juego);
         dispararLaser(juego);
         animacionLaser();
-        this.disparoAcertado = false;
+        disparoAcertado = false;
     }
 
     /**
@@ -84,7 +84,8 @@ public class NaveUsuario {
      * Set acierto.
      */
     public void setEstadoDisparo(boolean Valor){
-        this.disparoAcertado = Valor;
+
+        disparoAcertado = Valor;
     }
 
     /**
@@ -98,9 +99,11 @@ public class NaveUsuario {
                 while (!pararAnimacion) {
                     try {
                         Thread.sleep(250);
-                        if (laser.getY() > 75) {
+                        if (laser.getY() > 75 && !disparoAcertado) {
                             laser.setY(laser.getY() - 30);
-                        }else{
+                        }
+                        else{
+                            disparoAcertado = false;
                             laser.setVisible(false);
                         }
                     } catch (Exception e) {
