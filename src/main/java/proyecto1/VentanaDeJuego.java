@@ -82,6 +82,7 @@ public class VentanaDeJuego {
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     System.out.println("Hay enemigos");
+                    currentClass.getLista().imprimirLista();
                     Thread.sleep(1000);
                 } else {
                     estado = false; //no hay enemigos en la ventana

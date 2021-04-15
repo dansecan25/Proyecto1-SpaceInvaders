@@ -7,7 +7,6 @@ public class currentClass {
     private static String clas = "";
 
     private static ListaCircular listA = new ListaCircular<>();
-    private static ListaCircular listaNodos = new ListaCircular<>();
 
     /**
      * Current class actual string.
@@ -38,13 +37,8 @@ public class currentClass {
     public static ListaCircular getLista(){
         return listA;
     }
-
-    /**
-     * Get lista boundings lista circular.
-     *
-     * @return the lista circular
-     */
-    public static ListaCircular getListaBoundings(){
-        return listaNodos;
+    public static String getClase(){
+        return clas;
     }
+
 }

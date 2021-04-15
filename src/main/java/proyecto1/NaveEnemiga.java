@@ -56,6 +56,9 @@ public class NaveEnemiga {
                 ventana.getChildren().remove(this.nave);
                 comprobacion.stop();
                 VentanaDeJuego.updatePuntos(puntosMorir);
+                if(puntosMorir == 15 && currentClass.getClase()=="C"){
+                    ClaseC.cambiarJefe();
+                }
             }
         }
     }
