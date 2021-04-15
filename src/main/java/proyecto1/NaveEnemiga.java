@@ -34,6 +34,7 @@ public class NaveEnemiga {
         juego.getChildren().add(nave);
         this.posicionLis=pos;
         this.vida = 1;
+        Animacion.iniciarAnimacion(this.nave);
         comprobarColision();
         ventana = juego;
 
