@@ -33,6 +33,7 @@ public class Imagenes {
     private Image fondo5 = null;
     private Image laser = null;
     private Image explosion = null;
+    private Image botonExit = null;
     //private double parametroEncoger = 0.8;
 
 
@@ -73,6 +74,7 @@ public class Imagenes {
         fondo5 = cargarImagen("/Imagenes/fondo5.png");
         laser = cargarImagen("/Imagenes/laser.png");
         explosion = cargarImagen("/Imagenes/explosion.png");
+        botonExit = cargarImagen("/Imagenes/botonEXIT.png");
 
     }
 
@@ -195,53 +197,60 @@ public class Imagenes {
     }
 
     /**
-     * Gets fondo 2.
+     * Obtiene fondo 2.
      *
-     * @return the fondo 2
+     * @return fondo 2
      */
     public Image getFondo2() {
         return fondo1;
     }
 
     /**
-     * Gets fondo 3.
+     * Obtiene fondo 3.
      *
-     * @return the fondo 3
+     * @return fondo 3
      */
     public Image getFondo3() {
         return fondo1;
     }
 
     /**
-     * Gets fondo 4.
+     * Obtiene fondo 4.
      *
-     * @return the fondo 4
+     * @return fondo 4
      */
     public Image getFondo4() {
         return fondo1;
     }
 
     /**
-     * Gets fondo 5.
+     * Obtiene fondo 5.
      *
-     * @return the fondo 5
+     * @return fondo 5
      */
     public Image getFondo5() {
         return fondo1;
     }
 
     /**
-     * Gets laser.
+     * Obtiene laser.
      *
-     * @return the laser
+     * @return laser
      */
     public Image getLaser() { return laser; }
 
     /**
-     * Gets explosion.
+     * Obtiene explosion.
      *
-     * @return the explosion
+     * @return explosion
      */
     public Image getExplosion() {return explosion;}
+
+
+    /** Obtiene explosion.
+            *
+            * @return explosion
+     */
+    public Image getBotonExit() {return botonExit;}
 }
 

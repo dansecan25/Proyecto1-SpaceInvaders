@@ -21,6 +21,8 @@ public class VentanaDeJuego {
      * @param mainStage the main stage
      * @throws FileNotFoundException the file not found exception
      */
+    
+    private static NaveUsuario jugador;
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
@@ -28,7 +30,7 @@ public class VentanaDeJuego {
         GameStage.setScene(gameScene);
         // Boton para destruir ventana secundaria
         Fondo.IniciarFondo(ventanaDeJuego);
-        Button botonExit = new Button();
+        Button botonExit = new Button("Exit");
         botonExit.setOnAction(event -> {
             GameStage.close();
             mainStage.show();
@@ -39,13 +41,10 @@ public class VentanaDeJuego {
         //botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
         Fondo.IniciarFondo(ventanaDeJuego);
-        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C, luego se cambiara en un loop aleatorio, esto es solo para probarlo
-        ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
-        AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
-        animacionClaseE.iniciarAnimacion();
-        NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
+        setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
+
         
 
     }
@@ -73,47 +72,48 @@ public class VentanaDeJuego {
         clasesAleatorias.setOnSucceeded(event -> {
             //lo que dijo arriba
             if (!estado) {
-//                double hill = Math.random()*6;
-//                int hilera = (int) hill;
-                int hilera = 3;
+                double hill = Math.random()*6;
+                int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if(hilera == 1){ //clase A
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if(hilera == 2){ //clase B
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        ClaseB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if(hilera == 3){ //clase C
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if (hilera == 4){ //Clase D
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        new ClaseC(ventanaDeJuego); //inicia la clase C
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if(hilera == 5){ //Clase E
                     try {
-                        ClaseC.IniciarClaseC(ventanaDeJuego); //inicia la clase C
+                        ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
+                        AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
+                        animacionClaseE.iniciarAnimacion();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -122,5 +122,11 @@ public class VentanaDeJuego {
             crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
         });
         new Thread(clasesAleatorias).start();
+    }
+    public static NaveUsuario getJugador(){
+        return jugador;
+    }
+    private static void setJugador(NaveUsuario naveJugador){
+        jugador = naveJugador;
     }
 }

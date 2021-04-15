@@ -2,62 +2,62 @@ package proyecto1;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import java.io.FileNotFoundException;
-import java.io.Serializable;
-
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-
-import java.io.FileNotFoundException;
 
 /**
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
-    ImageView nave = new ImageView(Imagenes.getInstancia().getUfo1());
+    int posicionLis;
+    Group ventana;
+    /**
+     * The Nave.
+     */
+    ImageView nave;
 
-    public NaveEnemiga(int x, int y, Group juego) {
-        this.nave.setX(x);
-        this.nave.setY(y);
-        this.nave.setId("ufos");
-        Animacion.iniciarAnimacion(this.nave); //inicia la animación, se le manda el nodo a animar
-        juego.getChildren().add(this.nave);
-    }
+    private int vida;
 
     /**
-     * Get imagen nave image view.
+     * Instantiates a new Nave enemiga.
      *
-     * @return the image view
+     * @param x     the x
+     * @param y     the y
+     * @param juego the juego
      */
-/*
-    private void colision(ImageView Laser){
-        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
-            Laser.setC;
+    public NaveEnemiga(int x, int y, Group juego,int pos) {
+        this.nave = new ImageView(Imagenes.getInstancia().getUfo1());
+        nave.setX(x);
+        nave.setY(y);
+        nave.setId("ufos");
+        juego.getChildren().add(nave);
+        this.posicionLis=pos;
+        this.vida = 1;
+        comprobarColision();
+        ventana = juego;
+
+    }
+    public void toBoss(){
+        this.nave = new ImageView(Imagenes.getInstancia().getUfoBoss());
+        this.vida += 2;
+    }
+
+    private void colision(){
+        if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
+            VentanaDeJuego.getJugador().setEstadoDisparo(true);
+            this.vida -= 1;
+            if (this.vida <= 0){
+                currentClass.getLista().borrarPosicion(this.posicionLis);
+                ventana.getChildren().remove(this.nave);
+            }
         }
     }
-    private void comprobarColision(ImageView Laser){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
+    private void comprobarColision(){
+        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
-
-//        var boundingBox = nave.getBoundsInLocal();
-//        var f = boundingBox.intersects(banano.getBoundsInLocal());
-        //System.out.println(f);
-
-    private void colision(ImageView Laser){
-        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
-            Laser.setC;
-        }
-    }
-    private void comprobarColision(ImageView Laser){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
-        comprobacion.setCycleCount(Timeline.INDEFINITE);
-        comprobacion.play();
-    }
-
- */
     public ImageView getImagenNave(){
         return nave;
     }
