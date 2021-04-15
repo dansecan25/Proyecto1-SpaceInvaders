@@ -107,7 +107,7 @@ public class VentanaDeJuego {
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
-                        new ClaseBasic(ventanaDeJuego); //inicia la clase C
+                        new ClaseBasic(ventanaDeJuego); //inicia la clase Basic
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
