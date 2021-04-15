@@ -29,6 +29,9 @@ public class NaveEnemiga {
         juego.getChildren().add(nave);
         comprobarColision();
     }
+    public void toBoss(){
+        nave = new ImageView(Imagenes.getInstancia().getUfoBoss());
+    }
     private void colision(){
         if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
