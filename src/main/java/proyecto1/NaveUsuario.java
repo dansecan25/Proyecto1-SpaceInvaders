@@ -18,7 +18,7 @@ public class NaveUsuario {
     private ImageView laser = new ImageView(Imagenes.getInstancia().getLaser());
     private Task<Void> animacionLaser;
     private boolean pararAnimacion = false;
-    private boolean disparoAcertado = false;
+    private boolean disparoAcertado;
 
     /**
      * Instancia nueva Nave usuario.
@@ -36,15 +36,7 @@ public class NaveUsuario {
         configuracionMouseX(juego);
         dispararLaser(juego);
         animacionLaser();
-    }
-
-    /**
-     * Iniciar nave usuario.
-     *
-     * @param ventanaDeJuego la ventana de juego
-     */
-    public static void IniciarNaveUsuario(Group ventanaDeJuego) {
-        new NaveUsuario(ventanaDeJuego);
+        this.disparoAcertado = false;
     }
 
     /**
@@ -64,12 +56,17 @@ public class NaveUsuario {
         });
     }
 
+    public ImageView getDisparo(){
+            return this.laser;
+        }
+        
     /**
      * Disparar laser, permite que el usuario dispare el laser con el
      * clic del mouse.
      *
      * @param juego la ventana de juego
      */
+    
     public void dispararLaser(Group juego) {
         juego.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -86,8 +83,8 @@ public class NaveUsuario {
     /**
      * Set acierto.
      */
-    public void setAcierto(){
-        this.disparoAcertado = true;
+    public void setEstadoDisparo(boolean Valor){
+        this.disparoAcertado = Valor;
     }
 
     /**

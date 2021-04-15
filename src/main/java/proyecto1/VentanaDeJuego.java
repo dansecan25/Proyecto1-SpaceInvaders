@@ -21,6 +21,8 @@ public class VentanaDeJuego {
      * @param mainStage the main stage
      * @throws FileNotFoundException the file not found exception
      */
+    
+    private static NaveUsuario jugador;
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
@@ -43,7 +45,7 @@ public class VentanaDeJuego {
         ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
         AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
         animacionClaseE.iniciarAnimacion();
-        NaveUsuario.IniciarNaveUsuario(ventanaDeJuego);
+        setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
         crearClases(ventanaDeJuego);
         
@@ -122,5 +124,11 @@ public class VentanaDeJuego {
             crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
         });
         new Thread(clasesAleatorias).start();
+    }
+    public static NaveUsuario getJugador(){
+        return jugador;
+    }
+    private static void setJugador(NaveUsuario naveJugador){
+        jugador = naveJugador;
     }
 }

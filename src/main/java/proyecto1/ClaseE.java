@@ -1,11 +1,12 @@
 package proyecto1;
 
-import java.io.FileNotFoundException;
 import javafx.scene.Group;
+import java.io.FileNotFoundException;
 
 /**
  * La clase Clase E. las naves rotan en torno a un boss.
  */
+
 public class ClaseE {
     private ListaCircular lista = new ListaCircular();
     private int x;

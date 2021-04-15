@@ -9,68 +9,39 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
-import java.io.FileNotFoundException;
-
 /**
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
     /**
-     * The L.
-     */
-    ListaCircular l = new ListaCircular();
-    /**
      * The Nave.
      */
     ImageView nave;
-
+    
     /**
      * Instantiates a new Nave enemiga.
      *
      * @param x     the x
      * @param y     the y
      * @param juego the juego
-     * @throws FileNotFoundException the file not found exception
      */
-    public NaveEnemiga(int x, int y, Group juego) throws FileNotFoundException {
-        //Image imagen = Imagenes.getInstancia().getUfo1();
-        //imagen = Imagenes.getInstancia().cambiarTamano(imagen);
+    public NaveEnemiga(int x, int y, Group juego) {
         nave = new ImageView(Imagenes.getInstancia().getUfo1());
         nave.setX(x);
         nave.setY(y);
         nave.setId("ufos");
         l.agregarUltimo(nave);
         juego.getChildren().add(nave);
+        comprobarColision();
     }
-
-    /**
-     * Get imagen nave image view.
-     *
-     * @return the image view
-     */
-/*
-    private void colision(ImageView Laser){
-        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
-            Laser.setC;
+    private void colision(){
+        if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
+            VentanaDeJuego.getJugador().setEstadoDisparo(true);
+            System.out.println("Colision detectada");
         }
     }
-    private void comprobarColision(ImageView Laser){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
-        comprobacion.setCycleCount(Timeline.INDEFINITE);
-        comprobacion.play();
-    }
-
-//        var boundingBox = nave.getBoundsInLocal();
-//        var f = boundingBox.intersects(banano.getBoundsInLocal());
-        //System.out.println(f);
-
-    private void colision(ImageView Laser){
-        if (this.nave.getBoundsInParent().intersects(Laser.getBoundsInParent())){
-            Laser.setC;
-        }
-    }
-    private void comprobarColision(ImageView Laser){
-        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision(Laser)));
+    private void comprobarColision(){
+        Timeline comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
