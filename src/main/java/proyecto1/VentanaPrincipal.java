@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 
 import java.io.FileNotFoundException;
+import java.net.URISyntaxException;
 
 import javafx.concurrent.Service;
 import javafx.util.Duration;
@@ -28,7 +29,8 @@ public class VentanaPrincipal {
      * @param Lobby the lobby
      * @throws FileNotFoundException the file not found exception
      */
-    public static void ventana(Stage Lobby) throws FileNotFoundException {
+    public static void ventana(Stage Lobby) throws FileNotFoundException, URISyntaxException {
+        ReproductorMusica reproductorMusica = new ReproductorMusica();
         Lobby.setTitle( "Space Invaders" );
         Group root = new Group(); //se crea la ventana
         Scene scene = new Scene( root,800,750,Color.valueOf("#262934")); //se liga scene al root

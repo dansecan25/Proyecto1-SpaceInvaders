@@ -9,7 +9,7 @@ repositories {
 
 javafx {
     version = "13"
-    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.swing' ]
+    modules = [ 'javafx.controls', 'javafx.fxml', 'javafx.graphics', 'javafx.swing', 'javafx.media']
 }
 
 mainClassName = 'proyecto1.Main'
