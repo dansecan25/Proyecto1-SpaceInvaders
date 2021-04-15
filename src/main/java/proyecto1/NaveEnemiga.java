@@ -2,9 +2,6 @@ package proyecto1;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import java.io.FileNotFoundException;
-import java.io.Serializable;
-
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
@@ -17,7 +14,6 @@ public class NaveEnemiga {
      * The Nave.
      */
     ImageView nave;
-    
     /**
      * Instantiates a new Nave enemiga.
      *
@@ -30,7 +26,6 @@ public class NaveEnemiga {
         nave.setX(x);
         nave.setY(y);
         nave.setId("ufos");
-        l.agregarUltimo(nave);
         juego.getChildren().add(nave);
         comprobarColision();
     }
@@ -45,8 +40,6 @@ public class NaveEnemiga {
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
-
- */
     public ImageView getImagenNave(){
         return nave;
     }
