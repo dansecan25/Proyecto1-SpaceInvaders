@@ -71,7 +71,7 @@ public class simpleLinkedList<T>{
     }
 
     //Obtener el largo de la lista
-    public int getLargo(){
+    public int tamanoLista(){
 
         return largo;
     }
@@ -185,7 +185,7 @@ public class simpleLinkedList<T>{
         return null;
     }
     //Borrar elemento específico contenido en el indice
-    public void deleteElemento(T t){
+    public void borrarDato(T t){
         NodoLL<T> aux= new NodoLL<>();
         aux= primero;
         if (estaVacia()){

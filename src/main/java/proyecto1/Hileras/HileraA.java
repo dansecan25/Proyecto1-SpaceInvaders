@@ -13,7 +13,7 @@ public class HileraA {
     public HileraA(Group juego) throws FileNotFoundException{
         simpleLinkedList<NaveEnemiga> listaA= new simpleLinkedList<>();
 
-        currentClass.setClass("A", null, listaA );
+        currentClass.setClass("A", null, listaA , null);
         listaA.addUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaA.addUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaA.addUltimo(new NaveEnemiga(330, 100, juego, 2));

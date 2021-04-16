@@ -58,7 +58,7 @@ public class doubleLinkedList<T> {
     }
 
     //Obtener largo de la lista Doble
-    public int getLargo(){
+    public int tamanoLista(){
         return largo;
     }
 
@@ -124,7 +124,7 @@ public class doubleLinkedList<T> {
     }
 
     //Borrar dato en indice específico
-    public void borrarIndice(T t) {
+    public void borrarDato(T t) {
         if (this.primero == null) {
             return;
         }
