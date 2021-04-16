@@ -10,14 +10,14 @@ import java.io.FileNotFoundException;
 /**
  * The type Clase c.
  */
-public class ClaseC {
+public class HileraC {
 
     /**
      * Iniciar clase c.
      *
      * @param juego the juego
      */
-    public ClaseC(Group juego) throws FileNotFoundException {
+    public HileraC(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaNaves = new ListaCircular<>();
         currentClass.setClass("C", listaNaves, null);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));

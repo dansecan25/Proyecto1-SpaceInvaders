@@ -3,14 +3,14 @@ package proyecto1.Animaciones;
 import javafx.scene.image.ImageView;
 import javafx.concurrent.Task;
 import proyecto1.Enemigos.NaveEnemiga;
-import proyecto1.Hileras.ClaseE;
+import proyecto1.Hileras.HileraE;
 import proyecto1.ListasEnlazadas.ListaCircular;
 
 /**
  * The type Animacion clase e.
  */
 public class AnimacionClaseE {
-    private ClaseE claseE;
+    private HileraE hileraE;
     private Task<Void> animacion;
     private double anguloActual = 0;
     private boolean pararAnimacion = false;
@@ -18,10 +18,10 @@ public class AnimacionClaseE {
     /**
      * Instantiates a new Animacion clase e.
      *
-     * @param claseE the clase e
+     * @param hileraE the clase e
      */
-    public AnimacionClaseE(ClaseE claseE) {
-        this.claseE = claseE;
+    public AnimacionClaseE(HileraE hileraE) {
+        this.hileraE = hileraE;
     }
 
     /**
@@ -30,10 +30,10 @@ public class AnimacionClaseE {
      * @param theta the theta
      */
     public void rotar(double theta){
-        ListaCircular lista = claseE.getLista();
+        ListaCircular lista = hileraE.getLista();
         int tamlista = lista.tamanoLista();
-        int x = claseE.getX();
-        int y = claseE.getY();
+        int x = hileraE.getX();
+        int y = hileraE.getY();
         int centro = tamlista/2;
         double raiz2 = Math.sqrt(2);
 

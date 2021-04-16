@@ -11,13 +11,13 @@ import java.io.FileNotFoundException;
 /**
  * La clase Básica solo tiene una hilera de minions uniformes.
  */
-public class ClaseBasic {
+public class HileraBasic {
     /**
      * Instancia Case Basica
      * @param juego la ventana de juego
      * @throws FileNotFoundException  file not found exception
      */
-    public ClaseBasic(Group juego) throws FileNotFoundException{
+    public HileraBasic(Group juego) throws FileNotFoundException{
         simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
 
         currentClass.setClass("Basic", null,listaBasic);

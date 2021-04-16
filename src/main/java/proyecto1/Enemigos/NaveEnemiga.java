@@ -7,7 +7,7 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
-import proyecto1.Hileras.ClaseC;
+import proyecto1.Hileras.HileraC;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Ventanas.VentanaDeJuego;
 
@@ -87,7 +87,7 @@ public class NaveEnemiga {
                 comprobacion.stop();
                 VentanaDeJuego.updatePuntos(puntosMorir);
                 if(puntosMorir == 15 && currentClass.getClase().equals("C")){
-                    ClaseC.cambiarJefe();
+                    HileraC.cambiarJefe();
                     //ClaseE.cambiarJefe();
                 }
             }

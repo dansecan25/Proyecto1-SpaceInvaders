@@ -7,7 +7,7 @@ import proyecto1.Animaciones.currentClass;
 
 import java.io.FileNotFoundException;
 
-public class ClaseB {
+public class HileraB {
 
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaB = new ListaCircular<>();

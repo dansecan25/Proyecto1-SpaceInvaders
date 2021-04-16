@@ -11,7 +11,7 @@ import java.io.FileNotFoundException;
  * La clase Clase E. las naves rotan en torno a un boss.
  */
 
-public class ClaseE {
+public class HileraE {
     private ListaCircular lista = new ListaCircular();
     private int x;
     private int y;
@@ -25,7 +25,7 @@ public class ClaseE {
      * @param y     el paramtero y
      * @throws FileNotFoundException  file not found exception
      */
-    public ClaseE(Group juego, int x, int y) throws FileNotFoundException {
+    public HileraE(Group juego, int x, int y) throws FileNotFoundException {
         this.x = x;
         this.y = y;
         ListaCircular<NaveEnemiga> lista = new ListaCircular<>();

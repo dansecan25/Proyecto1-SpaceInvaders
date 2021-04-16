@@ -12,10 +12,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
-import proyecto1.Hileras.ClaseB;
-import proyecto1.Hileras.ClaseBasic;
-import proyecto1.Hileras.ClaseC;
-import proyecto1.Hileras.ClaseE;
+import proyecto1.Hileras.HileraB;
+import proyecto1.Hileras.HileraBasic;
+import proyecto1.Hileras.HileraC;
+import proyecto1.Hileras.HileraE;
 import proyecto1.Imagenes.Fondo;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Usuario.NaveUsuario;
@@ -114,7 +114,7 @@ public class VentanaDeJuego {
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
-                        new ClaseBasic(ventanaDeJuego); //inicia la clase Basic
+                        new HileraBasic(ventanaDeJuego); //inicia la clase Basic
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -122,7 +122,7 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 1){ //clase A
                     try {
-                        new ClaseC(ventanaDeJuego); //inicia la clase C
+                        new HileraC(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -130,7 +130,7 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 2){ //clase B
                     try {
-                        ClaseB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
+                        HileraB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -138,7 +138,7 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 3){ //clase C
                     try {
-                        new ClaseC(ventanaDeJuego); //inicia la clase C
+                        new HileraC(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -146,7 +146,7 @@ public class VentanaDeJuego {
                 }
                 if (hilera == 4){ //Clase D
                     try {
-                        new ClaseC(ventanaDeJuego); //inicia la clase C
+                        new HileraC(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -154,8 +154,8 @@ public class VentanaDeJuego {
                 }
                 if(hilera == 5){ //Clase E
                     try {
-                        ClaseE claseE = new ClaseE(ventanaDeJuego, 330, 300);
-                        AnimacionClaseE animacionClaseE = new AnimacionClaseE(claseE);
+                        HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300);
+                        AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
                         animacionClaseE.iniciarAnimacion();
                         setCLASE();
                     } catch (FileNotFoundException e) {
