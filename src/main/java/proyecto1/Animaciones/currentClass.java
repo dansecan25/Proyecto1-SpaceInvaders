@@ -9,7 +9,7 @@ import proyecto1.ListasEnlazadas.simpleLinkedList;
  */
 public class currentClass {
     private static String claseActual = "";
-    private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
+    private static ListaCircular<NaveEnemiga> listCirculo = new ListaCircular<>();
     private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
     private static int nivel=1;
     private static int puntaje;
@@ -22,14 +22,13 @@ public class currentClass {
     public static void setClass(String claseActual, ListaCircular listaCirc, simpleLinkedList listaS){
         currentClass.claseActual =claseActual;
         if(listaCirc != null){
-            listA = listaCirc;
+            listCirculo = listaCirc;
             listaBasic = null;
         }
         if(listaS!=null){
-            listA = null;
+            listCirculo = null;
             listaBasic = listaS;
         }
-
     }
     /**
      * Get simpleLinkedList.
@@ -38,32 +37,25 @@ public class currentClass {
      */
 
     public static simpleLinkedList getListaBasic(){
-        if(listaBasic == null){
-            return null;
-        }else return listaBasic;
-
+        return listaBasic;
     }
     /**
      * Get lista lista circular.
      *
      * @return the lista circular
      */
-    public static ListaCircular getLista(){
-        if(listA == null){
-            return null;
-        }else return listA;
-
+    public static ListaCircular getListaCirular(){
+        return listCirculo;
     }
-
     public static String getClase(){
         return claseActual;
     }
     public static void reordenar(){
-        if(listA != null){
-            int i = (listA.tamanoLista()-1);
+        if(listCirculo != null){
+            int i = (listCirculo.tamanoLista()-1);
             while(i!=0){
 
-                NaveEnemiga data = listA.obtenerDato(i);
+                NaveEnemiga data = listCirculo.obtenerDato(i);
                 data.setPosicionLis(i);
                 i-=1;
             }
