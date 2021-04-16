@@ -26,13 +26,6 @@ public class VentanaDeJuego {
     public static int pts = 0;
     private static Text valor;
     private static Text CLASE;
-
-    /**
-     * Iniciar ventana de juego.
-     *
-     * @param mainStage the main stage
-     * @throws FileNotFoundException the file not found exception
-     */
     
     private static NaveUsuario jugador;
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
@@ -118,51 +111,41 @@ public class VentanaDeJuego {
             if (!estado) {
                 double hill = Math.random()*6;
                 int hilera = (int) hill;
-                if (hilera == 0){ //clase basic
-                    try {
-                        new HileraBasic(ventanaDeJuego); //inicia la clase Basic
+                switch(hilera){
+                    case 1: try {
+                        new HileraC(ventanaDeJuego); //inicia la hilera A
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                }
-                if(hilera == 1){ //clase A
-                    try {
-                        new HileraC(ventanaDeJuego); //inicia la clase C
+                    case 2: try {
+                        HileraB.IniciarClaseB(ventanaDeJuego); //inicia la hilera B
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                }
-                if(hilera == 2){ //clase B
-                    try {
-                        HileraB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
+                    case 3: try {
+                        new HileraC(ventanaDeJuego); //inicia la hilera C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                }
-                if(hilera == 3){ //clase C
-                    try {
-                        new HileraC(ventanaDeJuego); //inicia la clase C
+                    case 4: try {
+                        new HileraD(ventanaDeJuego); //inicia la hilera D
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
-                }
-                if (hilera == 4){ //Clase D
-                    try {
-                        new HileraD(ventanaDeJuego); //inicia la clase C
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                if(hilera == 5){ //Clase E
-                    try {
+                    case 5: try {
                         HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300);
                         AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
                         animacionClaseE.iniciarAnimacion();
+                        setCLASE();
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    }
+                    default: try {
+                        new HileraBasic(ventanaDeJuego); //inicia la clase Basic
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
