@@ -51,7 +51,7 @@ public class NaveEnemiga {
     }
 
     public void toBossE() {
-        nave.setImage(Imagenes.getInstancia().getUfoBoss());
+        nave.setImage(Imagenes.getInstancia().getUfoBoss1());
         vida = 2;
         puntosMorir = 10;
     }

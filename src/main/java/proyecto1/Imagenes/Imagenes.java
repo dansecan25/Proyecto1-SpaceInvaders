@@ -22,7 +22,10 @@ public class Imagenes extends currentClass {
     private Image ufo1 = null;
     private Image ufo2 = null;
     private Image ufo3 = null;
-    private Image ufoBoss = null;
+    private Image ufoBoss1 = null;
+    private Image ufoBoss2 = null;
+    private Image ufoBoss3 = null;
+    private Image ufoBoss4 = null;
     private Image botonConfiguracion = null;
     private Image botonMusicaON = null;
     private Image fondo1 = null;
@@ -63,7 +66,10 @@ public class Imagenes extends currentClass {
         ufo1 = cargarImagen("/Imagenes/UFO1.png");
         ufo2 = cargarImagen("/Imagenes/UFO2.png");
         ufo3 = cargarImagen("/Imagenes/UFO3.png");
-        ufoBoss = cargarImagen("/Imagenes/boss.png");
+        ufoBoss1 = cargarImagen("/Imagenes/boss.png");
+        ufoBoss2 = cargarImagen("/Imagenes/boss2.png");
+        ufoBoss3 = cargarImagen("/Imagenes/boss3.png");
+        ufoBoss4 = cargarImagen("/Imagenes/boss4.png");
         botonConfiguracion = cargarImagen("/Imagenes/configIC.png");
         botonMusicaON = cargarImagen("/Imagenes/sonidoON.png");
         fondo1 = cargarImagen("/Imagenes/fondo1.png");
@@ -164,8 +170,20 @@ public class Imagenes extends currentClass {
      *
      * @return ufo boss
      */
-    public Image getUfoBoss() {
-        return ufoBoss;
+    public Image getUfoBoss1() {
+        return ufoBoss1;
+    }
+
+    public Image getUfoBoss2() {
+        return ufoBoss2;
+    }
+
+    public Image getUfoBoss3() {
+        return ufoBoss3;
+    }
+
+    public Image getUfoBoss4() {
+        return ufoBoss4;
     }
 
     /**
@@ -173,6 +191,9 @@ public class Imagenes extends currentClass {
      *
      * @return boton configuracion
      */
+
+
+
     public Image getBotonConfiguracion() {
         return botonConfiguracion;
     }

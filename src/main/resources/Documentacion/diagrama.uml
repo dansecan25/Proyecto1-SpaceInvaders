@@ -1,0 +1,432 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/adria/OneDrive/Documentos/TEC/I SEMESTRE 2021/datos 1/Proyecto1-SpaceInvaders/src</OriginalElement>
+  <nodes>
+    <node x="515.5" y="1175.0">proyecto1.Enemigos.NaveEnemiga</node>
+    <node x="1470.58712121212" y="0.0">proyecto1.Animaciones.animation</node>
+    <node x="1716.58712121212" y="0.0">proyecto1.Controller</node>
+    <node x="406.50334821428595" y="196.0">proyecto1.ListasEnlazadas.ListaCircular</node>
+    <node x="509.5871212121202" y="3128.0">proyecto1.Main</node>
+    <node x="488.3371212121202" y="1614.0">proyecto1.Animaciones.currentClass</node>
+    <node x="506.0871212121202" y="2999.0">proyecto1.Ventanas.VentanaPrincipal</node>
+    <node x="46.5" y="1942.5">proyecto1.Hileras.HileraB</node>
+    <node x="405.6481331168811" y="800.0">proyecto1.Hileras.HileraC</node>
+    <node x="466.5871212121202" y="2536.0">proyecto1.Ventanas.VentanaDeJuego</node>
+    <node x="973.0871212121202" y="2107.0">proyecto1.Usuario.NaveUsuario</node>
+    <node x="836.0871212121202" y="1186.5">proyecto1.ListasEnlazadas.simpleLinkedList</node>
+    <node x="174.14813311688113" y="2184.5">proyecto1.Animaciones.AnimacionClaseE</node>
+    <node x="845.0871212121202" y="766.5">proyecto1.ListasEnlazadas.NodoLL</node>
+    <node x="255.89813311688113" y="1909.0">proyecto1.Hileras.HileraE</node>
+    <node x="573.6481331168811" y="755.5">proyecto1.Animaciones.Animacion</node>
+    <node x="1226.08712121212" y="1308.0">proyecto1.Imagenes.Fondo</node>
+    <node x="374.5871212121202" y="2845.0">proyecto1.Ventanas.CargarVentanaPrincipal</node>
+    <node x="255.48819730323282" y="2602.5">proyecto1.Musica.ReproductorMusica</node>
+    <node x="1128.75" y="568.0">proyecto1.Imagenes.Imagenes</node>
+    <node x="513.0" y="1954.0">proyecto1.Hileras.HileraBasic</node>
+    <node x="440.00334821428595" y="0.0">proyecto1.ListasEnlazadas.Nodo</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="CREATE">
+      <point x="-91.42857142857133" y="-106.5" />
+      <point x="556.9085497835489" y="1562.0" />
+      <point x="386.00378787878685" y="1562.0" />
+      <point x="386.00378787878685" y="548.0" />
+      <point x="86.253348214286" y="548.0" />
+      <point x="86.253348214286" y="538.0" />
+      <point x="455.50334821428595" y="538.0" />
+      <point x="-49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Hileras.HileraE" relationship="CREATE">
+      <point x="-42.90909090909099" y="-128.5" />
+      <point x="541.6780303030292" y="2484.0" />
+      <point x="374.6481331168811" y="2484.0" />
+      <point x="374.6481331168811" y="2076.0" />
+      <point x="383.3981331168811" y="2076.0" />
+      <point x="42.5" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Hileras.HileraC" relationship="CREATE">
+      <point x="-107.27272727272725" y="-128.5" />
+      <point x="477.31439393939297" y="2514.0" />
+      <point x="36.0" y="2514.0" />
+      <point x="36.0" y="1582.0" />
+      <point x="423.85565476190567" y="1582.0" />
+      <point x="423.85565476190567" y="1133.0" />
+      <point x="430.31479978354787" y="1133.0" />
+      <point x="-49.33333333333326" y="39.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Usuario.NaveUsuario" relationship="TO_ONE">
+      <point x="64.36363636363626" y="-128.5" />
+      <point x="648.9507575757565" y="2494.0" />
+      <point x="1147.08712121212" y="2494.0" />
+      <point x="58.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Imagenes.Fondo" relationship="DEPENDENCY">
+      <point x="107.27272727272725" y="-128.5" />
+      <point x="691.8598484848475" y="2514.0" />
+      <point x="1317.58712121212" y="2514.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="proyecto1.Animaciones.AnimacionClaseE" target="proyecto1.Hileras.HileraE" relationship="DEPENDENCY">
+      <point x="71.25" y="-95.0" />
+      <point x="340.3981331168811" y="2086.0" />
+      <point x="374.6481331168811" y="2086.0" />
+      <point x="374.6481331168811" y="2076.0" />
+      <point x="383.3981331168811" y="2076.0" />
+      <point x="42.5" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Main" target="proyecto1.Ventanas.VentanaPrincipal" relationship="DEPENDENCY">
+      <point x="0.0" y="-50.5" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="proyecto1.Enemigos.NaveEnemiga" target="proyecto1.Hileras.HileraC" relationship="DEPENDENCY">
+      <point x="-84.0" y="-172.5" />
+      <point x="543.5" y="1143.0" />
+      <point x="423.85565476190567" y="1143.0" />
+      <point x="423.85565476190567" y="1133.0" />
+      <point x="430.31479978354787" y="1133.0" />
+      <point x="-49.33333333333326" y="39.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Hileras.HileraBasic" relationship="CREATE">
+      <point x="0.0" y="-128.5" />
+      <point x="584.5871212121202" y="2514.0" />
+      <point x="589.0" y="2514.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="proyecto1.ListasEnlazadas.simpleLinkedList" target="proyecto1.ListasEnlazadas.NodoLL" relationship="CREATE">
+      <point x="-45.5" y="-161.0" />
+      <point x="881.5871212121202" y="1143.0" />
+      <point x="886.0871212121202" y="1143.0" />
+      <point x="-41.0" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.CargarVentanaPrincipal" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="140.0" y="-51.0" />
+      <point x="724.5871212121202" y="2819.0" />
+      <point x="1419.58712121212" y="2819.0" />
+      <point x="1419.58712121212" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Enemigos.NaveEnemiga" target="proyecto1.Ventanas.VentanaDeJuego" relationship="DEPENDENCY">
+      <point x="84.0" y="172.5" />
+      <point x="711.5" y="1562.0" />
+      <point x="820.0871212121202" y="1562.0" />
+      <point x="820.0871212121202" y="2474.0" />
+      <point x="606.0416666666657" y="2474.0" />
+      <point x="21.454545454545496" y="-128.5" />
+    </edge>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.Enemigos.NaveEnemiga" relationship="DEPENDENCY">
+      <point x="-137.1428571428571" y="-106.5" />
+      <point x="511.1942640692631" y="1592.0" />
+      <point x="271.74999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1552.0" />
+      <point x="543.5" y="1552.0" />
+      <point x="-84.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Enemigos.NaveEnemiga" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="-28.0" y="172.5" />
+      <point x="599.5" y="1542.0" />
+      <point x="449.35565476190567" y="1542.0" />
+      <point x="449.35565476190567" y="1582.0" />
+      <point x="602.6228354978347" y="1582.0" />
+      <point x="-45.71428571428555" y="-106.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraBasic" target="proyecto1.Enemigos.NaveEnemiga" relationship="CREATE">
+      <point x="0.0" y="-28.0" />
+      <point x="589.0" y="1858.0" />
+      <point x="375.00378787878685" y="1858.0" />
+      <point x="375.00378787878685" y="1592.0" />
+      <point x="271.74999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1552.0" />
+      <point x="543.5" y="1552.0" />
+      <point x="-84.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Animaciones.AnimacionClaseE" target="proyecto1.Enemigos.NaveEnemiga" relationship="DEPENDENCY">
+      <point x="-23.75" y="-95.0" />
+      <point x="245.39813311688113" y="2086.0" />
+      <point x="240.99999999999994" y="2086.0" />
+      <point x="240.99999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1552.0" />
+      <point x="543.5" y="1552.0" />
+      <point x="-84.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Enemigos.NaveEnemiga" target="proyecto1.Animaciones.Animacion" relationship="DEPENDENCY">
+      <point x="28.0" y="-172.5" />
+      <point x="655.5" y="1153.0" />
+      <point x="689.6481331168811" y="1153.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraE" target="proyecto1.Enemigos.NaveEnemiga" relationship="CREATE">
+      <point x="-34.0" y="-73.0" />
+      <point x="306.8981331168811" y="1868.0" />
+      <point x="274.10565476190567" y="1868.0" />
+      <point x="274.10565476190567" y="1592.0" />
+      <point x="271.74999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1552.0" />
+      <point x="543.5" y="1552.0" />
+      <point x="-84.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaPrincipal" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="52.33333333333334" y="-39.5" />
+      <point x="636.9204545454536" y="2973.0" />
+      <point x="1419.58712121212" y="2973.0" />
+      <point x="1419.58712121212" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraC" target="proyecto1.Enemigos.NaveEnemiga" relationship="CREATE">
+      <point x="49.33333333333326" y="39.5" />
+      <point x="528.9814664502144" y="1133.0" />
+      <point x="599.5" y="1133.0" />
+      <point x="-28.0" y="-172.5" />
+    </edge>
+    <edge source="proyecto1.Enemigos.NaveEnemiga" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="84.0" y="-172.5" />
+      <point x="711.5" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.CargarVentanaPrincipal" target="proyecto1.Ventanas.VentanaDeJuego" relationship="DEPENDENCY">
+      <point x="0.0" y="-51.0" />
+      <point x="0.0" y="128.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraB" target="proyecto1.Enemigos.NaveEnemiga" relationship="CREATE">
+      <point x="0.0" y="-39.5" />
+      <point x="138.5" y="1592.0" />
+      <point x="271.74999999999994" y="1592.0" />
+      <point x="271.74999999999994" y="1552.0" />
+      <point x="543.5" y="1552.0" />
+      <point x="-84.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.ListasEnlazadas.simpleLinkedList" target="proyecto1.ListasEnlazadas.NodoLL" relationship="TO_ONE">
+      <point x="45.5" y="-161.0" />
+      <point x="972.5871212121202" y="1143.0" />
+      <point x="968.0871212121202" y="1143.0" />
+      <point x="41.0" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="85.81818181818176" y="-128.5" />
+      <point x="670.405303030302" y="2504.0" />
+      <point x="1215.58712121212" y="2504.0" />
+      <point x="1215.58712121212" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraBasic" target="proyecto1.ListasEnlazadas.simpleLinkedList" relationship="CREATE">
+      <point x="50.66666666666674" y="-28.0" />
+      <point x="639.6666666666667" y="1868.0" />
+      <point x="943.75" y="1868.0" />
+      <point x="943.75" y="1572.0" />
+      <point x="972.5871212121202" y="1572.0" />
+      <point x="45.5" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraE" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="TO_ONE">
+      <point x="68.0" y="-73.0" />
+      <point x="408.8981331168811" y="1878.0" />
+      <point x="1028.58712121212" y="1878.0" />
+      <point x="1028.58712121212" y="548.0" />
+      <point x="553.503348214286" y="548.0" />
+      <point x="49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.ListasEnlazadas.simpleLinkedList" relationship="CREATE">
+      <point x="91.42857142857156" y="-106.5" />
+      <point x="739.7656926406918" y="1582.0" />
+      <point x="943.75" y="1582.0" />
+      <point x="943.75" y="1572.0" />
+      <point x="972.5871212121202" y="1572.0" />
+      <point x="45.5" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Animaciones.AnimacionClaseE" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="DEPENDENCY">
+      <point x="-71.25" y="-95.0" />
+      <point x="197.89813311688113" y="2086.0" />
+      <point x="25.0" y="2086.0" />
+      <point x="25.0" y="548.0" />
+      <point x="86.253348214286" y="548.0" />
+      <point x="86.253348214286" y="538.0" />
+      <point x="455.50334821428595" y="538.0" />
+      <point x="-49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraBasic" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="-50.66666666666674" y="-28.0" />
+      <point x="538.3333333333333" y="1888.0" />
+      <point x="489.24999999999994" y="1888.0" />
+      <point x="489.24999999999994" y="1848.0" />
+      <point x="648.3371212121202" y="1848.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraB" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="CREATE">
+      <point x="-61.33333333333326" y="-39.5" />
+      <point x="77.16666666666674" y="1888.0" />
+      <point x="25.0" y="1888.0" />
+      <point x="25.0" y="548.0" />
+      <point x="86.253348214286" y="548.0" />
+      <point x="86.253348214286" y="538.0" />
+      <point x="455.50334821428595" y="538.0" />
+      <point x="-49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraC" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="CREATE">
+      <point x="0.0" y="-39.5" />
+      <point x="479.6481331168811" y="548.0" />
+      <point x="86.253348214286" y="548.0" />
+      <point x="86.253348214286" y="538.0" />
+      <point x="455.50334821428595" y="538.0" />
+      <point x="-49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraC" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="0.0" y="39.5" />
+      <point x="479.6481331168811" y="1153.0" />
+      <point x="434.85565476190567" y="1153.0" />
+      <point x="434.85565476190567" y="1542.0" />
+      <point x="449.35565476190567" y="1542.0" />
+      <point x="449.35565476190567" y="1582.0" />
+      <point x="602.6228354978347" y="1582.0" />
+      <point x="-45.71428571428555" y="-106.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraB" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="61.33333333333326" y="-39.5" />
+      <point x="199.83333333333326" y="1888.0" />
+      <point x="489.24999999999994" y="1888.0" />
+      <point x="489.24999999999994" y="1848.0" />
+      <point x="648.3371212121202" y="1848.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraE" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="34.0" y="-73.0" />
+      <point x="374.8981331168811" y="1888.0" />
+      <point x="489.24999999999994" y="1888.0" />
+      <point x="489.24999999999994" y="1848.0" />
+      <point x="648.3371212121202" y="1848.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Animaciones.currentClass" relationship="DEPENDENCY">
+      <point x="-21.454545454545496" y="-128.5" />
+      <point x="563.1325757575747" y="2474.0" />
+      <point x="489.24999999999994" y="2474.0" />
+      <point x="489.24999999999994" y="1848.0" />
+      <point x="648.3371212121202" y="1848.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="TO_ONE">
+      <point x="137.1428571428571" y="-106.5" />
+      <point x="785.4799783549773" y="1592.0" />
+      <point x="1028.58712121212" y="1592.0" />
+      <point x="1028.58712121212" y="548.0" />
+      <point x="553.503348214286" y="548.0" />
+      <point x="49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraE" target="proyecto1.ListasEnlazadas.ListaCircular" relationship="CREATE">
+      <point x="-68.0" y="-73.0" />
+      <point x="272.8981331168811" y="1878.0" />
+      <point x="25.0" y="1878.0" />
+      <point x="25.0" y="548.0" />
+      <point x="86.253348214286" y="548.0" />
+      <point x="86.253348214286" y="538.0" />
+      <point x="455.50334821428595" y="538.0" />
+      <point x="-49.0" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Hileras.HileraE" target="proyecto1.Enemigos.NaveEnemiga" relationship="TO_ONE">
+      <point x="0.0" y="-73.0" />
+      <point x="340.8981331168811" y="1868.0" />
+      <point x="477.8371212121202" y="1868.0" />
+      <point x="477.8371212121202" y="1572.0" />
+      <point x="630.3556547619057" y="1572.0" />
+      <point x="630.3556547619057" y="1562.0" />
+      <point x="655.5" y="1562.0" />
+      <point x="28.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaPrincipal" target="proyecto1.Musica.ReproductorMusica" relationship="CREATE">
+      <point x="-52.33333333333334" y="-39.5" />
+      <point x="532.2537878787869" y="2973.0" />
+      <point x="347.4881973032328" y="2973.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="proyecto1.ListasEnlazadas.ListaCircular" target="proyecto1.ListasEnlazadas.Nodo" relationship="CREATE">
+      <point x="49.0" y="-161.0" />
+      <point x="553.503348214286" y="171.0" />
+      <point x="536.753348214286" y="171.0" />
+      <point x="32.25" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaPrincipal" target="proyecto1.Ventanas.CargarVentanaPrincipal" relationship="CREATE">
+      <point x="0.0" y="-39.5" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.CargarVentanaPrincipal" target="proyecto1.Musica.ReproductorMusica" relationship="DEPENDENCY">
+      <point x="-140.0" y="-51.0" />
+      <point x="444.5871212121202" y="2819.0" />
+      <point x="347.4881973032328" y="2819.0" />
+      <point x="0.0" y="62.0" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Usuario.NaveUsuario" relationship="CREATE">
+      <point x="42.90909090909099" y="-128.5" />
+      <point x="627.4962121212112" y="2484.0" />
+      <point x="1031.08712121212" y="2484.0" />
+      <point x="-58.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Animaciones.AnimacionClaseE" relationship="CREATE">
+      <point x="-64.36363636363626" y="-128.5" />
+      <point x="520.223484848484" y="2494.0" />
+      <point x="269.1481331168811" y="2494.0" />
+      <point x="0.0" y="95.0" />
+    </edge>
+    <edge source="proyecto1.ListasEnlazadas.ListaCircular" target="proyecto1.ListasEnlazadas.Nodo" relationship="TO_ONE">
+      <point x="-49.0" y="-161.0" />
+      <point x="455.50334821428595" y="171.0" />
+      <point x="472.25334821428595" y="171.0" />
+      <point x="-32.25" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.ListasEnlazadas.simpleLinkedList" relationship="TO_ONE">
+      <point x="45.71428571428578" y="-106.5" />
+      <point x="694.051406926406" y="1572.0" />
+      <point x="881.5871212121202" y="1572.0" />
+      <point x="-45.5" y="161.0" />
+    </edge>
+    <edge source="proyecto1.Animaciones.AnimacionClaseE" target="proyecto1.Hileras.HileraE" relationship="TO_ONE">
+      <point x="23.75" y="-95.0" />
+      <point x="292.8981331168811" y="2086.0" />
+      <point x="298.3981331168811" y="2086.0" />
+      <point x="-42.5" y="73.0" />
+    </edge>
+    <edge source="proyecto1.Usuario.NaveUsuario" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="0.0" y="-172.5" />
+      <point x="1089.08712121212" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Animaciones.currentClass" target="proyecto1.Enemigos.NaveEnemiga" relationship="TO_ONE">
+      <point x="0.0" y="-106.5" />
+      <point x="648.3371212121202" y="1572.0" />
+      <point x="630.3556547619057" y="1572.0" />
+      <point x="630.3556547619057" y="1562.0" />
+      <point x="655.5" y="1562.0" />
+      <point x="28.0" y="172.5" />
+    </edge>
+    <edge source="proyecto1.Imagenes.Fondo" target="proyecto1.Imagenes.Imagenes" relationship="DEPENDENCY">
+      <point x="0.0" y="-39.5" />
+      <point x="1317.58712121212" y="1153.0" />
+      <point x="1228.25" y="1153.0" />
+      <point x="0.0" y="271.5" />
+    </edge>
+    <edge source="proyecto1.Ventanas.VentanaDeJuego" target="proyecto1.Hileras.HileraB" relationship="DEPENDENCY">
+      <point x="-85.81818181818176" y="-128.5" />
+      <point x="498.76893939393847" y="2504.0" />
+      <point x="138.5" y="2504.0" />
+      <point x="0.0" y="39.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.5634656817482302" showDependencies="true" x="916.0" y="2849.5848582509425" />
+  <SelectedNodes>
+    <node>proyecto1.Musica.ReproductorMusica</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

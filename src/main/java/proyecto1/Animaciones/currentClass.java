@@ -11,6 +11,8 @@ public class currentClass {
     private static String claseActual = "";
     private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
     private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
+    private static int nivel=1;
+    private static int puntaje;
     /**
      * Set class.
      *
@@ -76,4 +78,16 @@ public class currentClass {
         }
 
     }
+    public static void setNivel(int niv){
+        nivel = niv;
+    }
+    public static int getNivel(){
+        return nivel;
+    }
+//    public static void setPuntos(int puntos){
+//        puntaje = puntos;
+//    }
+//    public static int getPuntaje(){
+//        return puntaje;
+//    }
 }
