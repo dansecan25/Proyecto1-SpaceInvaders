@@ -1,10 +1,16 @@
-package proyecto1;
+package proyecto1.Enemigos;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import proyecto1.Animaciones.Animacion;
+import proyecto1.Animaciones.currentClass;
+import proyecto1.Hileras.ClaseC;
+import proyecto1.Imagenes.Imagenes;
+import proyecto1.Ventanas.VentanaDeJuego;
+
 import java.util.Random;
 
 /**
@@ -70,7 +76,7 @@ public class NaveEnemiga {
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
             vida -= 1;
             if (vida <= 0){
-                System.out.println("Lista en la posicion actual: "+this.posicionLis+" dato "+currentClass.getLista().obtenerDato(this.posicionLis));
+                System.out.println("Lista en la posicion actual: "+this.posicionLis+" dato "+ currentClass.getLista().obtenerDato(this.posicionLis));
                 //currentClass.getLista().borrarPosicion(this.posicionLis);
                 currentClass.getLista().borrarDato(this);
                 System.out.println("Tamano = "+currentClass.getLista().tamanoLista());

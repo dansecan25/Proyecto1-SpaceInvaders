@@ -1,9 +1,10 @@
-package proyecto1;
+package proyecto1.Animaciones;
 
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import javafx.concurrent.Task;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Hileras.ClaseE;
+import proyecto1.ListasEnlazadas.ListaCircular;
 
 /**
  * The type Animacion clase e.

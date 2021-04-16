@@ -1,7 +1,11 @@
-package proyecto1;
+package proyecto1.Hileras;
 
 
 import javafx.scene.Group;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Animaciones.currentClass;
+import proyecto1.ListasEnlazadas.simpleLinkedList;
+
 import java.io.FileNotFoundException;
 
 /**

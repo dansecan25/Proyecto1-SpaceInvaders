@@ -1,19 +1,26 @@
-package proyecto1;
+package proyecto1.Ventanas;
 
 import javafx.concurrent.Task;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import proyecto1.Animaciones.AnimacionClaseE;
+import proyecto1.Animaciones.currentClass;
+import proyecto1.Hileras.ClaseB;
+import proyecto1.Hileras.ClaseBasic;
+import proyecto1.Hileras.ClaseC;
+import proyecto1.Hileras.ClaseE;
+import proyecto1.Imagenes.Fondo;
+import proyecto1.Imagenes.Imagenes;
+import proyecto1.Usuario.NaveUsuario;
 
 
-import javax.swing.text.Element;
 import java.io.FileNotFoundException;
 
 /**

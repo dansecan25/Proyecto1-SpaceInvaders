@@ -1,4 +1,4 @@
-package proyecto1;
+package proyecto1.Imagenes;
 
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;

@@ -1,4 +1,4 @@
-package proyecto1;
+package proyecto1.Animaciones;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
