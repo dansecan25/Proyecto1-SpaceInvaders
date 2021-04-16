@@ -2,9 +2,9 @@ package proyecto1.Animaciones;
 
 import javafx.scene.image.ImageView;
 import javafx.concurrent.Task;
-import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Hileras.HileraE;
 import proyecto1.ListasEnlazadas.ListaCircular;
+import proyecto1.Enemigos.NaveEnemiga;
 
 /**
  * The type Animacion clase e.
@@ -21,6 +21,7 @@ public class AnimacionClaseE {
      * @param hileraE the clase e
      */
     public AnimacionClaseE(HileraE hileraE) {
+
         this.hileraE = hileraE;
     }
 
@@ -35,6 +36,7 @@ public class AnimacionClaseE {
         int x = hileraE.getX();
         int y = hileraE.getY();
         int centro = tamlista/2;
+        System.out.println(centro);
         double raiz2 = Math.sqrt(2);
 
         for (int indice = 0; indice < tamlista; indice++){
@@ -45,6 +47,10 @@ public class AnimacionClaseE {
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
+            nave.toNave();
+            if (indice == centro) {
+                nave.toBossE();
+            }
             //TranslateTransition girar = new TranslateTransition();
             //girar.setToX((x + rotacionX));
             //girar.setToY((y + rotacionY));
@@ -59,6 +65,7 @@ public class AnimacionClaseE {
     /**
      * Iniciar animacion.
      */
+
     public void iniciarAnimacion(){
         animacion = new Task<Void>() {
             @Override

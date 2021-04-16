@@ -111,6 +111,7 @@ public class VentanaDeJuego {
             //lo que dijo arriba
             if (!estado) {
                 double hill = Math.random()*6;
+                //int hilera = 5;
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {

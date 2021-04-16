@@ -52,6 +52,19 @@ public class NaveEnemiga {
     public void setPosicionLis(int posicion){
         this.posicionLis = posicion;
     }
+
+    public void toBossE() {
+        nave.setImage(Imagenes.getInstancia().getUfoBoss());
+        vida = 2;
+        puntosMorir = 10;
+    }
+
+    public void toNave(){
+        nave.setImage(Imagenes.getInstancia().getUfo2());
+        vida = 0;
+        puntosMorir = 5;
+    }
+
     public void toBoss(){
         nave.setImage(Imagenes.getInstancia().getUfoBoss());
         vida += 2;
