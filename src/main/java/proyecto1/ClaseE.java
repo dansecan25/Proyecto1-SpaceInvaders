@@ -24,13 +24,33 @@ public class ClaseE {
     public ClaseE(Group juego, int x, int y) throws FileNotFoundException {
         this.x = x;
         this.y = y;
+        ListaCircular<NaveEnemiga> lista = new ListaCircular<>();
         currentClass.setClass("E", lista);
         lista.agregarPrimero(new NaveEnemiga(x-120, y, juego,0));
         lista.agregarPrimero(new NaveEnemiga(x-60, y, juego, 1));
         lista.agregarPrimero(new NaveEnemiga(x, y, juego,2));
         lista.agregarPrimero(new NaveEnemiga(x+60, y, juego,3));
         lista.agregarPrimero(new NaveEnemiga(x+120, y, juego,4));
+        NaveEnemiga naveBoss = lista.obtenerDato(2);
+        naveBoss.toBoss();
+
     }
+//    public static void cambiarJefe(){
+//        ListaCircular<NaveEnemiga> lista = currentClass.getLista();
+//
+//        double pos = Math.random()*lista.tamanoLista();
+//        int posicion =  (int) pos;
+//        if (lista.tamanoLista()==1){
+//            posicion = 0;
+//        }
+//        //arreglar naveBoss se vuelve null
+//
+//        NaveEnemiga naveBoss = lista.obtenerDato(posicion);
+//        if(naveBoss!=null) {
+//            naveBoss.toBoss();
+//            naveBoss.setPosicionLis(posicion);
+//        }
+//    }
 
     /**
      * Obtiene lista.
