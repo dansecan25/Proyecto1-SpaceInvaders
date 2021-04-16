@@ -1,4 +1,6 @@
 package proyecto1.ListasEnlazadas;
+import proyecto1.Enemigos.NaveEnemiga;
+
 import java.io.Serializable;
 
 /**
@@ -56,6 +58,7 @@ public class ListaCircular<T> implements Serializable {
         primero = null;
     }
 
+
     /**
      * Agregar primero.
      *
@@ -64,12 +67,12 @@ public class ListaCircular<T> implements Serializable {
 //E: cualquier tipo de dato
     public void agregarPrimero(T dato){
         if (primero == null){
-            primero = new Nodo<T>(dato);
+            primero = new Nodo<>(dato);
             primero.sig = primero;
             primero.prev = primero;
         } else {
             Nodo<T> ultimo = primero.prev;
-            Nodo<T> nuevo= new Nodo<T>(dato);
+            Nodo<T> nuevo= new Nodo<>(dato);
             nuevo.sig = primero;
             nuevo.prev = ultimo;
             primero.prev = nuevo;
@@ -88,7 +91,7 @@ public class ListaCircular<T> implements Serializable {
         if (primero == null) {
             agregarPrimero(dato);
         }else{
-            Nodo<T> nuevo = new Nodo<T>(dato);
+            Nodo<T> nuevo = new Nodo<>(dato);
             Nodo<T> ultimo = primero.prev;
             nuevo.sig = primero;
             nuevo.prev = ultimo;
@@ -123,7 +126,6 @@ public class ListaCircular<T> implements Serializable {
             return 0;
         } else {
             Nodo<T> actual = primero;
-            Nodo<T> ultimo = primero.prev;
             int tamano = 0;
 
             do { // se ejecuta al menos una vez
@@ -267,6 +269,28 @@ public class ListaCircular<T> implements Serializable {
             indice++;
             actual = actual.sig;
         } while (actual != primero);
+    }
+    public void bubbleSort(){
+        Nodo<NaveEnemiga> actual = (Nodo<NaveEnemiga>) primero;
+        Nodo<NaveEnemiga> index;
+        NaveEnemiga temp;
+
+        if (this.tamanoLista() == 0){
+            System.out.println("Lista Vacia");
+        }else{
+            do{
+                index = actual.sig;
+                while(index != primero){
+                    if (actual.dato.getVida() < index.dato.getVida()){
+                        temp = actual.dato;
+                        actual.dato = index.dato;
+                        index.dato = temp;
+                    }
+                    index = index.sig;
+                }
+                actual = actual.sig;
+            } while (actual != primero);
+        }
     }
 }
 

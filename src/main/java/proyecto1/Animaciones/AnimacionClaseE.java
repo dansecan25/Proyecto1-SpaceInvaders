@@ -49,7 +49,7 @@ public class AnimacionClaseE {
             imagenNave.setY(y + rotacionY);
             nave.toNave();
             if (indice == centro) {
-                nave.toBossE();
+                nave.toBoss();
             }
             //TranslateTransition girar = new TranslateTransition();
             //girar.setToX((x + rotacionX));

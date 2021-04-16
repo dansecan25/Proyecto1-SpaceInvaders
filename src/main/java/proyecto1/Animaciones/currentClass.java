@@ -56,7 +56,7 @@ public class currentClass {
     }
 
     public static String getClase(){
-        return clas;
+        return claseActual;
     }
     public static void reordenar(){
         if(listA != null){
