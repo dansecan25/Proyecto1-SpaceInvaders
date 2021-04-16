@@ -1,4 +1,4 @@
-package proyecto1;
+package proyecto1.Musica;
 
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;

@@ -1,10 +1,13 @@
-package proyecto1;
+package proyecto1.Hileras;
 
 import javafx.scene.Group;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.ListasEnlazadas.ListaCircular;
+import proyecto1.Animaciones.currentClass;
 
 import java.io.FileNotFoundException;
 
-public class ClaseB {
+public class HileraB {
 
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaB = new ListaCircular<>();

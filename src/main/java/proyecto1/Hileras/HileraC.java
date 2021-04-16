@@ -1,19 +1,23 @@
-package proyecto1;
+package proyecto1.Hileras;
 
 import javafx.scene.Group;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.ListasEnlazadas.ListaCircular;
+import proyecto1.Animaciones.currentClass;
+
 import java.io.FileNotFoundException;
 
 /**
  * The type Clase c.
  */
-public class ClaseC {
+public class HileraC {
 
     /**
      * Iniciar clase c.
      *
      * @param juego the juego
      */
-    public ClaseC(Group juego) throws FileNotFoundException {
+    public HileraC(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaNaves = new ListaCircular<>();
         currentClass.setClass("C", listaNaves, null);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));

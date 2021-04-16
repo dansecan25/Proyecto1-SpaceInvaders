@@ -1,10 +1,11 @@
-package proyecto1;
+package proyecto1.Usuario;
 
 import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import proyecto1.Imagenes.Imagenes;
 
 
 /**

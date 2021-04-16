@@ -1,10 +1,16 @@
-package proyecto1;
+package proyecto1.Enemigos;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
+import proyecto1.Animaciones.Animacion;
+import proyecto1.Animaciones.currentClass;
+import proyecto1.Hileras.HileraC;
+import proyecto1.Imagenes.Imagenes;
+import proyecto1.Ventanas.VentanaDeJuego;
+
 import java.util.Random;
 
 /**
@@ -42,6 +48,18 @@ public class NaveEnemiga {
     }
     public void setPosicionLis(int posicion){
         this.posicionLis = posicion;
+    }
+
+    public void toBossE() {
+        nave.setImage(Imagenes.getInstancia().getUfoBoss());
+        vida = 2;
+        puntosMorir = 10;
+    }
+
+    public void toNave(){
+        nave.setImage(Imagenes.getInstancia().getUfo2());
+        vida = 0;
+        puntosMorir = 5;
     }
 
     public void toBoss(){

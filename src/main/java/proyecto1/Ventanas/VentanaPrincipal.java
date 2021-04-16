@@ -1,23 +1,19 @@
-package proyecto1;
+package proyecto1.Ventanas;
 import javafx.animation.FadeTransition;
-import javafx.animation.TranslateTransition;
 import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.Group;
 import javafx.scene.effect.ImageInput;
-import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.scene.control.Button;
 
 import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 
-import javafx.concurrent.Service;
 import javafx.util.Duration;
+import proyecto1.Imagenes.Imagenes;
+import proyecto1.Musica.ReproductorMusica;
 
 /**
  * The type Ventana principal.
