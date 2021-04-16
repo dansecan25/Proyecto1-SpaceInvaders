@@ -47,11 +47,19 @@ public class doubleLinkedList<T> {
     //Atributos de la clase doubleLinkedList
     private NodoDLL<T> primero;
     private NodoDLL<T> ultimo;
+    private int largo;
 
+    //Constructor lista doble
     public doubleLinkedList(){
 
         this.primero = null;
         this.ultimo = null;
+        largo=0;
+    }
+
+    //Obtener largo de la lista Doble
+    public int getLargo(){
+        return largo;
     }
 
     //Agregar un nodo a la cabeza
@@ -65,7 +73,9 @@ public class doubleLinkedList<T> {
             this.primero.anterior = actual;
             this.primero = actual;
         }
+        largo++;
     }
+
 
     //Agregar un nodo a la cola
     public void addUltimo(T dato) {
@@ -84,6 +94,7 @@ public class doubleLinkedList<T> {
             temporal.anterior = anterior;
             this.ultimo = temporal;
         }
+        largo++;
     }
 
     //Borrar primero
@@ -96,6 +107,7 @@ public class doubleLinkedList<T> {
             this.primero.anterior = null;
             temporal.siguiente = null;
         }
+        largo--;
     }
 
     //Borrar ultimo
@@ -108,6 +120,7 @@ public class doubleLinkedList<T> {
             this.ultimo.siguiente = null;
             temporal.siguiente = null;
         }
+        largo--;
     }
 
     //Borrar dato en indice específico
@@ -132,7 +145,26 @@ public class doubleLinkedList<T> {
                     temporal = temporal.siguiente;
                 }
             }
+        }largo--;
+    }
+    public T getElemento(int index){
+        if (index >= largo){
+            try {
+                throw new Exception();
+
+            }catch (Exception e){
+                e.printStackTrace();
+            }
         }
+        NodoDLL<T> actual= primero;
+        while (actual!=primero){
+            if(actual.getPosicion()==index){
+                return actual.getDato();
+            }
+            actual=actual.getSiguiente();
+        }
+        return null;
+
     }
 }
 

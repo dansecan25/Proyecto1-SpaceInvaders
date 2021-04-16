@@ -23,7 +23,7 @@ public class HileraA {
         int posJefe= (int) posBoss;
 
         NaveEnemiga naveJefe= listaA.get(posJefe);
-        naveJefe.toBoss();
+        naveJefe.toBossA();
 
     }
 
