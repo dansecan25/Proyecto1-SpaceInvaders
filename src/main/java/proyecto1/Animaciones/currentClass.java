@@ -12,7 +12,6 @@ public class currentClass {
     private static ListaCircular<NaveEnemiga> listCirculo = new ListaCircular<>();
     private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
     private static int nivel=1;
-    private static int puntaje;
     /**
      * Set class.
      *
@@ -69,5 +68,15 @@ public class currentClass {
             }
         }
 
+    }
+    public static ListaCircular<NaveEnemiga> getElista(){
+        ListaCircular<NaveEnemiga> lista = listCirculo;
+        return lista;
+    }
+    public static void setNivel(int niv){
+        nivel = niv;
+    }
+    public static int getNivel(){
+        return nivel;
     }
 }

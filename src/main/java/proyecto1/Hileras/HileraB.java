@@ -31,11 +31,11 @@ public class HileraB {
             }
         };
         navesAleatorio.setOnSucceeded(event->{
-            if(currentClass.getLista().tamanoLista()>0){
+            if(currentClass.getListaCirular().tamanoLista()>0){
                 if(naveAnt != null){
                     naveAnt.toNave();
                 }
-                double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
+                double getRandom = Math.random()*(currentClass.getListaCirular().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
                 NaveEnemiga nave = listaB.obtenerDato(naveRandom);
                 nave.toBoss();
@@ -45,4 +45,5 @@ public class HileraB {
         });
         new Thread(navesAleatorio).start();
     }
+
 }
