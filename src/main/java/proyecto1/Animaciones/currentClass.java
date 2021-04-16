@@ -73,4 +73,10 @@ public class currentClass {
         ListaCircular<NaveEnemiga> lista = listCirculo;
         return lista;
     }
+    public static void setNivel(int niv){
+        nivel = niv;
+    }
+    public static int getNivel(){
+        return nivel;
+    }
 }
