@@ -8,7 +8,7 @@ class NodoLL<T> {
     private NodoLL<T> siguiente;
     private int posicion;
 
-    //Constructor clase Nodo 1
+    //Constructor clase NodoLL
     public NodoLL(){
 
         this.valor= null;
