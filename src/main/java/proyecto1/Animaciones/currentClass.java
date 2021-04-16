@@ -78,16 +78,4 @@ public class currentClass {
         }
 
     }
-    public static void setNivel(int niv){
-        nivel = niv;
-    }
-    public static int getNivel(){
-        return nivel;
-    }
-//    public static void setPuntos(int puntos){
-//        puntaje = puntos;
-//    }
-//    public static int getPuntaje(){
-//        return puntaje;
-//    }
 }
