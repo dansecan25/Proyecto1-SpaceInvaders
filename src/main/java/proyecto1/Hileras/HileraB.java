@@ -20,4 +20,7 @@ public class HileraB {
         NaveEnemiga naveBoss = listaB.obtenerDato(2);
         naveBoss.toBoss();
     }
+    public static void cambioaBoss(){
+
+    }
 }

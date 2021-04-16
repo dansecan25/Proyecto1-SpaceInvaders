@@ -34,19 +34,19 @@ public class CargarVentanaPrincipal {
         ImageView img = new ImageView(Imagenes.getInstancia().getBotonStart());
         //Se crea imagen Titulo
         ImageInput titulo = new ImageInput(Imagenes.getInstancia().getTitulo());
-        titulo.setX(190);
+        titulo.setX(167);
         titulo.setY(200);
         Rectangle tituloRectan= new Rectangle();
         tituloRectan.setEffect(titulo);
         root.getChildren().add(tituloRectan);
         //Imagen de la nave animada--------------------------------------------------------------------------------------------------------
-        ImageInput naveUsuario = new ImageInput(Imagenes.getInstancia().getNaveUsuario());
+        ImageInput naveUsuario = new ImageInput(Imagenes.getInstancia().getNaveAnimacion());
         Rectangle nave = new Rectangle(); //crea un rectangulo, nodo donde se insertará la imagen
         naveUsuario.setX(20); //posicione en x
-        naveUsuario.setY(550); //posicion en y
+        naveUsuario.setY(600); //posicion en y
         nave.setEffect(naveUsuario); //se le da al rectangulo la imagen
         TranslateTransition translate = new TranslateTransition(); //se inicia a crear la animacion
-        translate.setByX(650); //destino final de la nave al moverse
+        translate.setByX(630); //destino final de la nave al moverse
         translate.setDuration(Duration.millis(1200)); //tiempo que dura trasladandose
         translate.setCycleCount(500); //cantitad de veces que se repite el traslado
         translate.setAutoReverse(true); //se regresa a la posicion original
@@ -64,7 +64,7 @@ public class CargarVentanaPrincipal {
                 fileNotFoundException.printStackTrace();
             }
         });
-        juegoInicia.setLayoutX(270);
+        juegoInicia.setLayoutX(265);
         juegoInicia.setLayoutY(420);
         juegoInicia.setGraphic(img); //Se le da al boton la imagen
         juegoInicia.setWrapText(true); //La verdad no se
@@ -81,8 +81,6 @@ public class CargarVentanaPrincipal {
                 reproductorMusica.detener();
                 System.out.println("not playing");
             }
-            //Musica.play();
-            //System.out.println("playing");
         });
         music.setLayoutY(10);
         music.setLayoutX(10);
