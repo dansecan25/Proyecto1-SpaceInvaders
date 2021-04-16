@@ -19,7 +19,7 @@ import java.util.Random;
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
-    private int posicionLis;
+    private int posicionLista;
     private final Group ventana;
     private final Timeline comprobacion;
     private final ImageView nave;
@@ -40,7 +40,7 @@ public class NaveEnemiga {
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
-        posicionLis=pos;
+        posicionLista=pos;
         vida = 1;
         Animacion.iniciarAnimacion(nave);
         comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
@@ -48,8 +48,8 @@ public class NaveEnemiga {
         ventana = juego;
 
     }
-    public void setPosicionLis(int posicion){
-        this.posicionLis = posicion;
+    public void setPosicionLista(int posicion){
+        this.posicionLista = posicion;
     }
 
     public void toNave(){
@@ -99,9 +99,8 @@ public class NaveEnemiga {
                 HileraD.ordenarNaves();
             }
             if (vida <= 0){
-                assert currentClass.getLista() != null;
-                currentClass.getLista().borrarDato(this);
-                if(currentClass.getLista().tamanoLista()>0){
+                currentClass.getListaCirular().borrarDato(this);
+                if(currentClass.getListaCirular().tamanoLista()>0){
                     currentClass.reordenar();
                 }
                 ventana.getChildren().remove(nave);
@@ -126,7 +125,7 @@ public class NaveEnemiga {
     public int getVida(){
         return vida;
     }
-    public int getPosicion(){
-        return posicionLis;
+    public int getPosicionLista(){
+        return posicionLista;
     }
 }

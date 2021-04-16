@@ -56,7 +56,7 @@ public class currentClass {
             while(i!=0){
 
                 NaveEnemiga data = listCirculo.obtenerDato(i);
-                data.setPosicionLis(i);
+                data.setPosicionLista(i);
                 i-=1;
             }
         }else if(listaBasic!=null){
@@ -64,7 +64,7 @@ public class currentClass {
             while(i!=0){
 
                 NaveEnemiga datos = listaBasic.get(i);
-                datos.setPosicionLis(i);
+                datos.setPosicionLista(i);
                 i-=1;
             }
         }

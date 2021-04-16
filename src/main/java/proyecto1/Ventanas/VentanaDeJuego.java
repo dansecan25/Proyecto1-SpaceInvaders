@@ -12,10 +12,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
-import proyecto1.Hileras.HileraB;
-import proyecto1.Hileras.HileraBasic;
-import proyecto1.Hileras.HileraC;
-import proyecto1.Hileras.HileraE;
+import proyecto1.Hileras.*;
 import proyecto1.Imagenes.Fondo;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Usuario.NaveUsuario;
@@ -106,7 +103,7 @@ public class VentanaDeJuego {
                 if (pts>=2750){
                     cambiarNivel(5);
                 }
-                if (currentClass.getLista().tamanoLista() > 0) {
+                if (currentClass.getListaCirular().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     //currentClass.getLista().imprimirLista();
                     Thread.sleep(1000);
@@ -155,7 +152,7 @@ public class VentanaDeJuego {
                 }
                 if (hilera == 4){ //Clase D
                     try {
-                        new HileraC(ventanaDeJuego); //inicia la clase C
+                        new HileraD(ventanaDeJuego); //inicia la clase C
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();

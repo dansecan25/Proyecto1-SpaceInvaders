@@ -157,7 +157,21 @@ public class ListaCircular<T> implements Serializable {
         } while (actual != primero);
         return null; // la posicion sobrepasa el indice
     }
-
+    public NaveEnemiga obtenerNave(int posicion){
+        if (posicion < 0 || (Nodo<NaveEnemiga>) primero == null) {
+            return null;
+        }
+        Nodo<NaveEnemiga> actual = primero;
+        int indice = 0;
+        do {
+            if (indice == posicion) {
+                return actual.getValue();
+            }
+            indice++;
+            actual = actual.sig;
+        } while (actual != primero);
+        return null; // la posicion sobrepasa el indice
+    }
     /**
      * Borrar primero.
      */

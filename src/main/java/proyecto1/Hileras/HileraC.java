@@ -31,7 +31,7 @@ public class HileraC {
 
     }
     public static void cambiarJefe(){
-        ListaCircular<NaveEnemiga> lista = currentClass.getLista();
+        ListaCircular<NaveEnemiga> lista = currentClass.getListaCirular();
 
         double pos = Math.random()*lista.tamanoLista();
         int posicion =  (int) pos;
@@ -43,7 +43,7 @@ public class HileraC {
         NaveEnemiga naveBoss = lista.obtenerDato(posicion);
         if(naveBoss!=null) {
             naveBoss.toBoss();
-            naveBoss.setPosicionLis(posicion);
+            naveBoss.setPosicionLista(posicion);
         }
     }
 
