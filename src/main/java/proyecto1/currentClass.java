@@ -5,19 +5,8 @@ package proyecto1;
  */
 public class currentClass {
     private static String clas = "";
-
     private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
     private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
-
-    /**
-     * Current class actual string.
-     *
-     * @return the string
-     */
-    public static String currentClassActual(){
-        String clase = clas;
-        return clase;
-    }
     /**
      * Set class.
      *

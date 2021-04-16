@@ -176,8 +176,6 @@ public class ListaCircular<T> implements Serializable {
                 ultimo.sig = primero;
                 temp.sig = null;
                 temp.prev = null;
-                // this.last.sig = this.primero;
-                // largo -= 1;
             }
         }
     }
