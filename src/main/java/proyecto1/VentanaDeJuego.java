@@ -4,7 +4,6 @@ import javafx.concurrent.Task;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -12,8 +11,6 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-
-import javax.swing.text.Element;
 import java.io.FileNotFoundException;
 
 /**
@@ -92,7 +89,7 @@ public class VentanaDeJuego {
             protected Void call() throws Exception {
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
-                    currentClass.getLista().imprimirLista();
+                    //currentClass.getLista().imprimirLista();
                     Thread.sleep(1000);
                 } else {
                     estado = false; //no hay enemigos en la ventana

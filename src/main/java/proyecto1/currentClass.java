@@ -42,7 +42,7 @@ public class currentClass {
      *
      * @return the lista circular
      */
-    public static ListaCircular getLista(){
+    public static ListaCircular<NaveEnemiga> getLista(){
         if(listA == null){
             return null;
         }else return listA;
@@ -50,7 +50,7 @@ public class currentClass {
     }
 
     public static String getClase(){
-        return claseActual;
+        return clas;
     }
     public static void reordenar(){
         if(listA != null){

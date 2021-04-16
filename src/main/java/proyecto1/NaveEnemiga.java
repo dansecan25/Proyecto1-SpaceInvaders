@@ -14,12 +14,9 @@ public class NaveEnemiga {
     private int posicionLis;
     private final Group ventana;
     private final Timeline comprobacion;
-    /**
-     * The Nave.
-     */
     private final ImageView nave;
+    private boolean isBoss = false;
     private int puntosMorir = 5;
-
     private int vida;
 
     /**
@@ -37,7 +34,7 @@ public class NaveEnemiga {
         juego.getChildren().add(nave);
         posicionLis=pos;
         vida = 1;
-        Animacion.iniciarAnimacion(this.nave);
+        Animacion.iniciarAnimacion(nave);
         comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobarColision();
         ventana = juego;
@@ -46,15 +43,17 @@ public class NaveEnemiga {
     public void setPosicionLis(int posicion){
         this.posicionLis = posicion;
     }
+
     public void toBoss(){
+        isBoss = true;
         nave.setImage(Imagenes.getInstancia().getUfoBoss());
-        vida += 2;
+        nave.setX(nave.getX() - 28);
+        vida += new Random().nextInt(4);
         puntosMorir+=10;
     }
     private ImageView spriteAleatorio(){
         ImageView sprite;
-        Random random = new Random();
-        int spriteID = random.nextInt(3);
+        int spriteID = new Random().nextInt(3);
         switch (spriteID) {
             case 1 -> sprite = new ImageView(Imagenes.getInstancia().getUfo2());
             case 2 -> sprite = new ImageView(Imagenes.getInstancia().getUfo3());
@@ -70,17 +69,15 @@ public class NaveEnemiga {
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
             vida -= 1;
             if (vida <= 0){
-                System.out.println("Lista en la posicion actual: "+this.posicionLis+" dato "+currentClass.getLista().obtenerDato(this.posicionLis));
-                //currentClass.getLista().borrarPosicion(this.posicionLis);
+                assert currentClass.getLista() != null;
                 currentClass.getLista().borrarDato(this);
-                System.out.println("Tamano = "+currentClass.getLista().tamanoLista());
                 if(currentClass.getLista().tamanoLista()>0){
                     currentClass.reordenar();
                 }
                 ventana.getChildren().remove(nave);
                 comprobacion.stop();
                 VentanaDeJuego.updatePuntos(puntosMorir);
-                if(puntosMorir == 15 && currentClass.getClase().equals("C")){
+                if(isBoss && (currentClass.getClase().equals("C") || currentClass.getClase().equals("E"))){
                     ClaseC.cambiarJefe();
                     //ClaseE.cambiarJefe();
                 }
