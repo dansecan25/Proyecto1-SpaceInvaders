@@ -7,8 +7,9 @@ import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
 public class Animacion {
+    private static Task<Void> animacion;
     public static void iniciarAnimacion(ImageView nodo){
-        Task<Void> animacion = new Task<>() {
+        animacion = new Task<>() {
             @Override
             public Void call() {
                 if (nodo.getY() < 710) {

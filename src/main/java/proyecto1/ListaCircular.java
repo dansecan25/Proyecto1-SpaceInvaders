@@ -1,9 +1,4 @@
 package proyecto1;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
-
 import java.io.Serializable;
 
 /**
@@ -251,31 +246,5 @@ public class ListaCircular<T> implements Serializable {
             actual = actual.sig;
         } while (actual != primero);
     }
-//    public static void main(String[] args) {
-//        // pruebas
-//        ListaCircular lista = new ListaCircular();
-//        System.out.println("tam lista: " + lista.tamanoLista() );
-//        lista.agregarPrimero("1");
-//        System.out.println("tam lista: " + lista.tamanoLista() );
-//        lista.imprimirLista();
-//        lista.agregarUltimo("2");
-//        lista.imprimirLista();
-//        lista.agregarPrimero("3");
-//        lista.imprimirLista();
-//        lista.agregarUltimo("4");
-//        lista.imprimirLista();
-//        lista.borrarPosicion(2); // borrar el 2
-//        lista.imprimirLista();
-//        lista.borrarPrimero();
-//        lista.imprimirLista();
-//        lista.borrarUltimo();
-//        lista.imprimirLista();
-//        lista.reemplazarDato(0,"uno");
-//        lista.imprimirLista();
-//        lista.borrarUltimo();
-//        lista.imprimirLista();
-    //}
-
-
 }
 

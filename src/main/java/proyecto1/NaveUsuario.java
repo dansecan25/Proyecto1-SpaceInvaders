@@ -46,12 +46,12 @@ public class NaveUsuario {
      * @param juego la ventana de juego
      */
     public void configuracionMouseX(Group juego) {
-        juego.setOnMouseMoved(new EventHandler<MouseEvent>() {
+        juego.setOnMouseMoved(new EventHandler<>() {
             @Override
             public void handle(MouseEvent event) {
                 double posicionMouseX = event.getX();
                 // System.out.println(posicionMouseX);
-                user.setX(posicionMouseX - 70);
+                user.setX(posicionMouseX - 50);
             }
         });
     }
@@ -68,7 +68,7 @@ public class NaveUsuario {
      */
     
     public void dispararLaser(Group juego) {
-        juego.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        juego.setOnMouseClicked(new EventHandler<>() {
             @Override
             public void handle(MouseEvent event) {
                 if (!laser.isVisible()) {
@@ -93,16 +93,15 @@ public class NaveUsuario {
      * eje y hasta que llege al final o colisione.
      */
     public void animacionLaser(){
-        animacionLaser = new Task<Void>() {
+        animacionLaser = new Task<>() {
             @Override
-            public Void call(){
+            public Void call() {
                 while (!pararAnimacion) {
                     try {
                         Thread.sleep(150);
                         if (laser.getY() > 75 && !disparoAcertado) {
                             laser.setY(laser.getY() - 30);
-                        }
-                        else{
+                        } else {
                             disparoAcertado = false;
                             laser.setVisible(false);
                         }

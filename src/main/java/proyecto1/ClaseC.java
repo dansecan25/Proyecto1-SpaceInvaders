@@ -1,6 +1,5 @@
 package proyecto1;
 
-import javafx.concurrent.Task;
 import javafx.scene.Group;
 import java.io.FileNotFoundException;
 
