@@ -31,8 +31,8 @@ public class ClaseE {
         lista.agregarPrimero(new NaveEnemiga(x, y, juego,2));
         lista.agregarPrimero(new NaveEnemiga(x+60, y, juego,3));
         lista.agregarPrimero(new NaveEnemiga(x+120, y, juego,4));
-        NaveEnemiga naveBoss = lista.obtenerDato(2);
-        naveBoss.toBoss();
+        //NaveEnemiga naveBoss = lista.obtenerDato(2);
+        //naveBoss.toBoss();
 
     }
 //    public static void cambiarJefe(){
