@@ -1,4 +1,4 @@
-package proyecto1;
+package proyecto1.Ventanas;
 
 import javafx.animation.TranslateTransition;
 import javafx.scene.Group;
@@ -8,6 +8,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import proyecto1.Imagenes.Imagenes;
+import proyecto1.Musica.ReproductorMusica;
 
 import java.io.FileNotFoundException;
 import java.io.InputStream;

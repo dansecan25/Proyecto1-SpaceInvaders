@@ -2,8 +2,7 @@ package proyecto1;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
-
-import javax.print.attribute.standard.Media;
+import proyecto1.Ventanas.VentanaPrincipal;
 
 
 /**

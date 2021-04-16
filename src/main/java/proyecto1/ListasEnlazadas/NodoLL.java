@@ -1,4 +1,4 @@
-package proyecto1;
+package proyecto1.ListasEnlazadas;
 
 public class NodoLL<T> {
 

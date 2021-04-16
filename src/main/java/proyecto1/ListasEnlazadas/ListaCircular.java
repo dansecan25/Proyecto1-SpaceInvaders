@@ -1,8 +1,4 @@
-package proyecto1;
-import javafx.concurrent.Service;
-import javafx.concurrent.Task;
-import javafx.concurrent.WorkerStateEvent;
-import javafx.event.EventHandler;
+package proyecto1.ListasEnlazadas;
 
 import java.io.Serializable;
 
@@ -275,6 +271,7 @@ public class ListaCircular<T> implements Serializable {
             actual = actual.sig;
         } while (actual != primero);
     }
+
 //   public static void main(String[] args) {
 //        // pruebas
 //        ListaCircular <String> lista = new ListaCircular();

@@ -1,15 +1,16 @@
-package proyecto1;
+package proyecto1.Animaciones;
 
-import javafx.animation.TranslateTransition;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import javafx.concurrent.Task;
+import proyecto1.Hileras.HileraE;
+import proyecto1.ListasEnlazadas.ListaCircular;
+import proyecto1.Enemigos.NaveEnemiga;
 
 /**
  * The type Animacion clase e.
  */
 public class AnimacionClaseE {
-    private ClaseE claseE;
+    private HileraE hileraE;
     private Task<Void> animacion;
     private double anguloActual = 0;
     private boolean pararAnimacion = false;
@@ -17,10 +18,11 @@ public class AnimacionClaseE {
     /**
      * Instantiates a new Animacion clase e.
      *
-     * @param claseE the clase e
+     * @param hileraE the clase e
      */
-    public AnimacionClaseE(ClaseE claseE) {
-        this.claseE = claseE;
+    public AnimacionClaseE(HileraE hileraE) {
+
+        this.hileraE = hileraE;
     }
 
     /**
@@ -29,11 +31,12 @@ public class AnimacionClaseE {
      * @param theta the theta
      */
     public void rotar(double theta){
-        ListaCircular lista = claseE.getLista();
+        ListaCircular lista = hileraE.getLista();
         int tamlista = lista.tamanoLista();
-        int x = claseE.getX();
-        int y = claseE.getY();
+        int x = hileraE.getX();
+        int y = hileraE.getY();
         int centro = tamlista/2;
+        System.out.println(centro);
         double raiz2 = Math.sqrt(2);
 
         for (int indice = 0; indice < tamlista; indice++){
@@ -44,6 +47,10 @@ public class AnimacionClaseE {
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
+            nave.toNave();
+            if (indice == centro) {
+                nave.toBossE();
+                }
             //TranslateTransition girar = new TranslateTransition();
             //girar.setToX((x + rotacionX));
             //girar.setToY((y + rotacionY));
@@ -58,6 +65,7 @@ public class AnimacionClaseE {
     /**
      * Iniciar animacion.
      */
+
     public void iniciarAnimacion(){
         animacion = new Task<Void>() {
             @Override

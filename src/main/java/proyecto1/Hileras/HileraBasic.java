@@ -1,19 +1,23 @@
-package proyecto1;
+package proyecto1.Hileras;
 
 
 import javafx.scene.Group;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Animaciones.currentClass;
+import proyecto1.ListasEnlazadas.simpleLinkedList;
+
 import java.io.FileNotFoundException;
 
 /**
  * La clase Básica solo tiene una hilera de minions uniformes.
  */
-public class ClaseBasic {
+public class HileraBasic {
     /**
      * Instancia Case Basica
      * @param juego la ventana de juego
      * @throws FileNotFoundException  file not found exception
      */
-    public ClaseBasic(Group juego) throws FileNotFoundException{
+    public HileraBasic(Group juego) throws FileNotFoundException{
         simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<NaveEnemiga>();
 
         currentClass.setClass2("Basic", listaBasic);
