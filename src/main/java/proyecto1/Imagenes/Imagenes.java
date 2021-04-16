@@ -36,6 +36,7 @@ public class Imagenes{
     private Image laser = null;
     private Image explosion = null;
     private Image botonExit = null;
+    private Image naveAnimacion=null;
     //private double parametroEncoger = 0.8;
 
 
@@ -80,7 +81,7 @@ public class Imagenes{
         laser = cargarImagen("/Imagenes/laser.png");
         explosion = cargarImagen("/Imagenes/explosion.png");
         botonExit = cargarImagen("/Imagenes/botonEXIT.png");
-
+        naveAnimacion = cargarImagen("/Imagenes/navePantallaPrincipal.png");
     }
 
     private Image cargarImagen(String nombreImagen){
@@ -272,5 +273,7 @@ public class Imagenes{
             * @return explosion
      */
     public Image getBotonExit() {return botonExit;}
+
+    public Image getNaveAnimacion(){return naveAnimacion;}
 }
 

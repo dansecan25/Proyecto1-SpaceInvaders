@@ -51,8 +51,8 @@ public class VentanaDeJuego {
             GameStage.close();
             mainStage.show();
         });
-        botonExit.setLayoutX(750); //define la posicion en x del boton
-        botonExit.setLayoutY(20); //posicion y
+        botonExit.setLayoutX(765); //define la posicion en x del boton
+        botonExit.setLayoutY(8); //posicion y
 
         botonExit.setGraphic(EXIT);
         botonExit.setWrapText(true);

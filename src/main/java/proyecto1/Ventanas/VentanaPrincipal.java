@@ -42,12 +42,12 @@ public class VentanaPrincipal {
         //Imagen de creditos
         ImageInput produc = new ImageInput(Imagenes.getInstancia().getTitulo());
         Rectangle rectanguloCreditos = new Rectangle();//crea el recatangulo de la imagen con los nombres de los involucrados en el proyecto
-        produc.setX(190);
+        produc.setX(167);
         produc.setY(200);
         rectanguloCreditos.setEffect(produc); //se le da al rectangulo la imagen con el texto
         //animacion de aparición y desaparición de la imagen
         FadeTransition fade = new FadeTransition();
-        fade.setDuration(Duration.millis(3000)); //duración de la animación
+        fade.setDuration(Duration.millis(3500)); //duración de la animación
         fade.setFromValue(-10); //valor inicial de opacidad
         fade.setToValue(10); //valor final de opacidad
         fade.setCycleCount(2); //cantidad de veces que se repite
@@ -59,7 +59,7 @@ public class VentanaPrincipal {
         Task<Void> ventanaPrincipal = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
-                Thread.sleep(5000);
+                Thread.sleep(7000);
                 return null;
             }
         };
