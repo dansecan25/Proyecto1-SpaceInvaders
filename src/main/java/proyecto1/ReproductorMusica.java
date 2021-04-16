@@ -1,6 +1,5 @@
 package proyecto1;
 
-//import com.sun.glass.ui.Application;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
@@ -12,6 +11,7 @@ import java.net.URISyntaxException;
  * La clase Reproductor musica para reproducir musica de fondo.
  */
 public class ReproductorMusica {
+    private MediaPlayer mediaPlayer;
     /**
      * Instancia  nuevo Reproductor Musica.
      *
@@ -19,14 +19,22 @@ public class ReproductorMusica {
      */
     public ReproductorMusica() throws URISyntaxException {
         Media media = new Media(getClass().getResource("/Musica/8bitKirby.mp3").toURI().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
+
+    }
+
+    public void reproducir(){
         mediaPlayer.setOnEndOfMedia(new Runnable() {
             public void run() {
                 mediaPlayer.seek(Duration.ZERO);
             }
         });
+        mediaPlayer.setVolume(0.04);
         mediaPlayer.setAutoPlay(true);
-        System.out.println("Playing...");
+    }
+
+    public void detener(){
+        mediaPlayer.setVolume(0);
     }
 
 }

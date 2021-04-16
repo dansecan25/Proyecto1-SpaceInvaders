@@ -10,11 +10,14 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.FileNotFoundException;
+import java.io.InputStream;
+import java.net.URISyntaxException;
 
 /**
  * The type Cargar ventana principal.
  */
 public class CargarVentanaPrincipal {
+    private boolean estadoMusica = true;
     /**
      * Instantiates a new Cargar ventana principal.
      *
@@ -22,7 +25,9 @@ public class CargarVentanaPrincipal {
      * @param rectanguloCreditos the rectangulo creditos
      * @param Lobby              the lobby
      */
-    public CargarVentanaPrincipal(Group root, Rectangle rectanguloCreditos, Stage Lobby){
+    public CargarVentanaPrincipal(Group root, Rectangle rectanguloCreditos, Stage Lobby, ReproductorMusica reproductorMusica) throws URISyntaxException {
+        //ReproductorMusica reproductorMusica = new ReproductorMusica();
+        //reproductorMusica.reproducir();
         root.getChildren().remove(rectanguloCreditos);
         //Se crea imagen Start
         ImageView img = new ImageView(Imagenes.getInstancia().getBotonStart());
@@ -67,12 +72,29 @@ public class CargarVentanaPrincipal {
         ImageView imu = new ImageView(Imagenes.getInstancia().getBotonMusicaON());
         Button music = new Button();
         music.setOnAction(e->{
+            cambiarEstadoMusica();
+            if (estadoMusica){
+                reproductorMusica.reproducir();
+                System.out.println("playing");
+            } else{
+                reproductorMusica.detener();
+                System.out.println("not playing");
+            }
             //Musica.play();
-            System.out.println("playing");
+            //System.out.println("playing");
         });
         music.setLayoutY(10);
         music.setLayoutX(10);
         music.setGraphic(imu);
         root.getChildren().add(music);
+    }
+
+    public boolean cambiarEstadoMusica(){
+        if (!estadoMusica){
+            estadoMusica = true;
+        } else {
+            estadoMusica = false;
+        }
+        return estadoMusica;
     }
 }
