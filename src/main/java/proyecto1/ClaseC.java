@@ -16,7 +16,7 @@ public class ClaseC {
      */
     public ClaseC(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaNaves = new ListaCircular<>();
-        currentClass.setClass("C", listaNaves);
+        currentClass.setClass("C", listaNaves, null);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaNaves.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaNaves.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));

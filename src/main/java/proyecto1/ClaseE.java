@@ -25,7 +25,7 @@ public class ClaseE {
         this.x = x;
         this.y = y;
         ListaCircular<NaveEnemiga> lista = new ListaCircular<>();
-        currentClass.setClass("E", lista);
+        currentClass.setClass("E", lista, null);
         lista.agregarPrimero(new NaveEnemiga(x-120, y, juego,0));
         lista.agregarPrimero(new NaveEnemiga(x-60, y, juego, 1));
         NaveEnemiga boss = new NaveEnemiga(x, y, juego,2);

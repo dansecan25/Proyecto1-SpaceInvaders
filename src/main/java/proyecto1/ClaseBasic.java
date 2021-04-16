@@ -14,14 +14,14 @@ public class ClaseBasic {
      * @throws FileNotFoundException  file not found exception
      */
     public ClaseBasic(Group juego) throws FileNotFoundException{
-        simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<NaveEnemiga>();
+        simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
 
-        currentClass.setClass2("Basic", listaBasic);
-        listaBasic.addFrente(new NaveEnemiga(110, 100, juego, 0));
-        listaBasic.addFrente(new NaveEnemiga(220, 100, juego, 1));
-        listaBasic.addFrente(new NaveEnemiga(330, 100, juego, 2));
-        listaBasic.addFrente(new NaveEnemiga(440, 100, juego, 3));
-        listaBasic.addFrente(new NaveEnemiga(550, 100, juego, 4));
+        currentClass.setClass("Basic", null,listaBasic);
+        listaBasic.addUltimo(new NaveEnemiga(110, 100, juego, 0));
+        listaBasic.addUltimo(new NaveEnemiga(220, 100, juego, 1));
+        listaBasic.addUltimo(new NaveEnemiga(330, 100, juego, 2));
+        listaBasic.addUltimo(new NaveEnemiga(440, 100, juego, 3));
+        listaBasic.addUltimo(new NaveEnemiga(550, 100, juego, 4));
 
     }
 

@@ -8,7 +8,7 @@ public class ClaseB {
 
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
         ListaCircular<NaveEnemiga> listaB = new ListaCircular<>();
-        currentClass.setClass("B", listaB);
+        currentClass.setClass("B", listaB, null);
         listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
         listaB.agregarUltimo(new NaveEnemiga(220, 100, juego,1));
         listaB.agregarUltimo(new NaveEnemiga(330, 100, juego,2));

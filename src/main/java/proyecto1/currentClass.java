@@ -22,22 +22,19 @@ public class currentClass {
      * Set class.
      *
      * @param claseActual the clase actual
-     * @param b           the listaBasic
+     * @param listaCirc           the l
      */
-        public static void setClass2(String claseActual, simpleLinkedList b){
+    public static void setClass(String claseActual, ListaCircular listaCirc, simpleLinkedList listaS){
         clas=claseActual;
-        listaBasic=b;
+        if(listaCirc != null){
+            listA = listaCirc;
+            listaBasic = null;
+        }
+        if(listaS!=null){
+            listA = null;
+            listaBasic = listaS;
+        }
 
-    }
-    /**
-     * Set class.
-     *
-     * @param claseActual the clase actual
-     * @param l           the l
-     */
-    public static void setClass(String claseActual, ListaCircular l){
-        clas=claseActual;
-        listA = l;
     }
     /**
      * Get simpleLinkedList.
@@ -46,7 +43,9 @@ public class currentClass {
      */
 
     public static simpleLinkedList getListaBasic(){
-        return listaBasic;
+        if(listaBasic == null){
+            return null;
+        }else return listaBasic;
 
     }
     /**
@@ -55,22 +54,34 @@ public class currentClass {
      * @return the lista circular
      */
     public static ListaCircular getLista(){
-        return listA;
+        if(listA == null){
+            return null;
+        }else return listA;
+
     }
 
     public static String getClase(){
         return clas;
     }
     public static void reordenar(){
-        int i = (listA.tamanoLista()-1);
-        while(i!=0){
+        if(listA != null){
+            int i = (listA.tamanoLista()-1);
+            while(i!=0){
 
-            NaveEnemiga data = listA.obtenerDato(i);
-            data.setPosicionLis(i);
-            i-=1;
+                NaveEnemiga data = listA.obtenerDato(i);
+                data.setPosicionLis(i);
+                i-=1;
+            }
+        }else if(listaBasic!=null){
+            int i = (listaBasic.getLargo()-1);
+            while(i!=0){
 
-
+                NaveEnemiga datos = listaBasic.get(i);
+                datos.setPosicionLis(i);
+                i-=1;
+            }
         }
+
     }
 
 }
