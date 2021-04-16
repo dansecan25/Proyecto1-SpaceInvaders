@@ -4,7 +4,7 @@ package proyecto1;
  * The type Current class.
  */
 public class currentClass {
-    private static String clas = "";
+    private static String claseActual = "";
     private static ListaCircular<NaveEnemiga> listA = new ListaCircular<>();
     private static simpleLinkedList<NaveEnemiga> listaBasic= new simpleLinkedList<>();
     /**
@@ -14,7 +14,7 @@ public class currentClass {
      * @param listaCirc           the l
      */
     public static void setClass(String claseActual, ListaCircular listaCirc, simpleLinkedList listaS){
-        clas=claseActual;
+        currentClass.claseActual =claseActual;
         if(listaCirc != null){
             listA = listaCirc;
             listaBasic = null;
