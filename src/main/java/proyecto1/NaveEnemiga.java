@@ -63,12 +63,16 @@ public class NaveEnemiga {
         return sprite;
     }
     private void colision(){
-        if (nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
+        if (!VentanaDeJuego.getJugador().getDisparo().isVisible()){
+            return;
+        }
+        if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
             vida -= 1;
             if (vida <= 0){
                 System.out.println("Lista en la posicion actual: "+this.posicionLis+" dato "+currentClass.getLista().obtenerDato(this.posicionLis));
-                currentClass.getLista().borrarPosicion(this.posicionLis);
+                //currentClass.getLista().borrarPosicion(this.posicionLis);
+                currentClass.getLista().borrarDato(this);
                 System.out.println("Tamano = "+currentClass.getLista().tamanoLista());
                 if(currentClass.getLista().tamanoLista()>0){
                     currentClass.reordenar();
@@ -78,6 +82,7 @@ public class NaveEnemiga {
                 VentanaDeJuego.updatePuntos(puntosMorir);
                 if(puntosMorir == 15 && currentClass.getClase().equals("C")){
                     ClaseC.cambiarJefe();
+                    //ClaseE.cambiarJefe();
                 }
             }
         }

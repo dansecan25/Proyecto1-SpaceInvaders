@@ -31,6 +31,7 @@ public class VentanaPrincipal {
      */
     public static void ventana(Stage Lobby) throws FileNotFoundException, URISyntaxException {
         ReproductorMusica reproductorMusica = new ReproductorMusica();
+        reproductorMusica.reproducir();
         Lobby.setTitle( "Space Invaders" );
         Group root = new Group(); //se crea la ventana
         Scene scene = new Scene( root,800,750,Color.valueOf("#262934")); //se liga scene al root
@@ -67,8 +68,13 @@ public class VentanaPrincipal {
             }
         };
         ventanaPrincipal.setOnSucceeded(event -> {
-            new CargarVentanaPrincipal(root,rectanguloCreditos,Lobby);
-        });
+            try {
+                new CargarVentanaPrincipal(root, rectanguloCreditos, Lobby, reproductorMusica);
+            } catch (Exception e){
+                System.out.println(e.getMessage());
+            }
+
+            });
         new Thread(ventanaPrincipal).start();
         Lobby.show();
     }

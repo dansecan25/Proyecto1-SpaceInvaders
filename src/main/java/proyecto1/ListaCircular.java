@@ -171,8 +171,6 @@ public class ListaCircular<T> implements Serializable {
                 ultimo.sig = primero;
                 temp.sig = null;
                 temp.prev = null;
-                // this.last.sig = this.primero;
-                // largo -= 1;
             }
         }
     }
@@ -192,6 +190,23 @@ public class ListaCircular<T> implements Serializable {
                 temp.prev = null;
                 temp.sig = null;
             }
+        }
+    }
+
+    public int obtenerPosicion (T elemento){
+        if (primero == null) {
+            return -1;
+        } else {
+            int indice = 0;
+            Nodo<T> actual = primero;
+            do { // se ejecuta al menos una vez
+                if (actual.dato.equals(elemento)){
+                    return  indice;
+                }
+                indice++;
+                actual = actual.sig;
+            } while (actual != primero);
+            return -1;
         }
     }
 
@@ -222,6 +237,13 @@ public class ListaCircular<T> implements Serializable {
                     actual = actual.sig;
                 } while (actual != primero);
             }
+        }
+    }
+
+    public void borrarDato(T dato) {
+        int posicion = obtenerPosicion(dato);
+        if (posicion >= 0){
+            borrarPosicion(posicion);
         }
     }
 

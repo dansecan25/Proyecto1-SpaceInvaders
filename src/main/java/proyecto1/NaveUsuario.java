@@ -57,7 +57,7 @@ public class NaveUsuario {
     }
 
     public ImageView getDisparo(){
-            return this.laser;
+            return laser;
         }
         
     /**
@@ -99,7 +99,7 @@ public class NaveUsuario {
                 while (!pararAnimacion) {
                     try {
                         Thread.sleep(150);
-                        if (laser.getY() > 75 && !disparoAcertado) {
+                        if (laser.getY() > 75 && !disparoAcertado && laser.isVisible()) {
                             laser.setY(laser.getY() - 30);
                         } else {
                             disparoAcertado = false;
