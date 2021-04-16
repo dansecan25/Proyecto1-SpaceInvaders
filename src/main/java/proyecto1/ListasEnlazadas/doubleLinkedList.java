@@ -48,9 +48,8 @@ public class doubleLinkedList<T> {
     private NodoDLL<T> primero;
     private NodoDLL<T> ultimo;
 
-    public doubleLinkedList<T>
+    public doubleLinkedList(){
 
-    {
         this.primero = null;
         this.ultimo = null;
     }
