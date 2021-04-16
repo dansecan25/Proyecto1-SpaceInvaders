@@ -16,5 +16,6 @@ public class ClaseB {
         listaB.agregarUltimo(new NaveEnemiga(550, 100, juego,4));
         NaveEnemiga naveBoss = listaB.obtenerDato(2);
         naveBoss.toBoss();
+        int i;
     }
 }
