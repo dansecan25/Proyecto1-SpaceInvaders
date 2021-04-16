@@ -13,6 +13,7 @@ import javafx.scene.image.ImageView;
  * The type Fondo.
  */
 public class Fondo {
+    private static ImageView fond;
     /**
      * Instantiates a new Fondo.
      *
@@ -23,6 +24,7 @@ public class Fondo {
         fondo.setX(0);
         fondo.setY(0);
         juego.getChildren().add(fondo);
+        fond = fondo;
     }
 
     /**
@@ -32,5 +34,8 @@ public class Fondo {
      */
     public static void IniciarFondo(Group ventanaDeJuego) {
         new Fondo(ventanaDeJuego);
+    }
+    public static ImageView getFondo(){
+        return fond;
     }
 }

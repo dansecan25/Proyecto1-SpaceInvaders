@@ -73,7 +73,6 @@ public class VentanaDeJuego {
         FontWeight fontWeight = FontWeight.BOLD;
         Font font1 = Font.font("Arial", fontWeight,fontSize);
         puntos.setFont(font1);
-
         Text cla = new Text();
         cla.setText("");
         cla.setY(185);
@@ -97,6 +96,18 @@ public class VentanaDeJuego {
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
+                if (pts>250){
+                    cambiarNivel(2);
+                }
+                if (pts>=750){
+                    cambiarNivel(3);
+                }
+                if (pts>=1500){
+                    cambiarNivel(4);
+                }
+                if (pts>=2750){
+                    cambiarNivel(5);
+                }
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     currentClass.getLista().imprimirLista();
@@ -111,7 +122,6 @@ public class VentanaDeJuego {
             //lo que dijo arriba
             if (!estado) {
                 double hill = Math.random()*6;
-                //int hilera = 5;
                 int hilera = (int) hill;
                 if (hilera == 0){ //clase basic
                     try {
@@ -182,6 +192,23 @@ public class VentanaDeJuego {
     public static void setCLASE(){
         String classs = currentClass.getClase();
         CLASE.setText(classs);
+    }
+    public static void cambiarNivel(int nivel){
+        currentClass.setNivel(nivel);
+        if(nivel==2){
+            var fondo = Fondo.getFondo();
+            fondo.setImage(Imagenes.getInstancia().getFondo2());
+        }else if(nivel == 3){
+            var fondo = Fondo.getFondo();
+            fondo.setImage(Imagenes.getInstancia().getFondo4());
+
+        }else if(nivel == 4){
+            var fondo = Fondo.getFondo();
+            fondo.setImage(Imagenes.getInstancia().getFondo3());
+        }else if(nivel==5){
+            var fondo = Fondo.getFondo();
+            fondo.setImage(Imagenes.getInstancia().getFondo5());
+        }
     }
 
 }
