@@ -51,12 +51,16 @@ public class NaveEnemiga {
     }
 
     private void colision(){
+        if (!VentanaDeJuego.getJugador().getDisparo().isVisible()){
+            return;
+        }
         if (this.nave.getBoundsInParent().intersects(VentanaDeJuego.getJugador().getDisparo().getBoundsInParent())){
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
             this.vida -= 1;
             if (this.vida <= 0){
                 System.out.println("Lista en la posicion actual: "+this.posicionLis+" dato "+currentClass.getLista().obtenerDato(this.posicionLis));
-                currentClass.getLista().borrarPosicion(this.posicionLis);
+                //currentClass.getLista().borrarPosicion(this.posicionLis);
+                currentClass.getLista().borrarDato(this);
                 System.out.println("Tamano = "+currentClass.getLista().tamanoLista());
                 if(currentClass.getLista().tamanoLista()>0){
                     currentClass.reordenar();

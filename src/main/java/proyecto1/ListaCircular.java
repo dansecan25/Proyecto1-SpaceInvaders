@@ -200,6 +200,23 @@ public class ListaCircular<T> implements Serializable {
         }
     }
 
+    public int obtenerPosicion (T elemento){
+        if (primero == null) {
+            return -1;
+        } else {
+            int indice = 0;
+            Nodo<T> actual = primero;
+            do { // se ejecuta al menos una vez
+                if (actual.dato.equals(elemento)){
+                    return  indice;
+                }
+                indice++;
+                actual = actual.sig;
+            } while (actual != primero);
+            return -1;
+        }
+    }
+
     /**
      * Borrar posicion.
      *
@@ -230,6 +247,13 @@ public class ListaCircular<T> implements Serializable {
         }
     }
 
+    public void borrarDato(T dato) {
+        int posicion = obtenerPosicion(dato);
+        if (posicion >= 0){
+            borrarPosicion(posicion);
+        }
+    }
+
     /**
      * Reemplazar dato.
      *
@@ -251,18 +275,21 @@ public class ListaCircular<T> implements Serializable {
             actual = actual.sig;
         } while (actual != primero);
     }
-//    public static void main(String[] args) {
+//   public static void main(String[] args) {
 //        // pruebas
-//        ListaCircular lista = new ListaCircular();
+//        ListaCircular <String> lista = new ListaCircular();
 //        System.out.println("tam lista: " + lista.tamanoLista() );
 //        lista.agregarPrimero("1");
 //        System.out.println("tam lista: " + lista.tamanoLista() );
 //        lista.imprimirLista();
 //        lista.agregarUltimo("2");
 //        lista.imprimirLista();
-//        lista.agregarPrimero("3");
+//        lista.agregarPrimero("23");
 //        lista.imprimirLista();
 //        lista.agregarUltimo("4");
+//        lista.obtenerPosicion("4");
+//        System.out.println(lista.obtenerPosicion("4"));
+//       System.out.println(lista.obtenerPosicion("o"));
 //        lista.imprimirLista();
 //        lista.borrarPosicion(2); // borrar el 2
 //        lista.imprimirLista();
@@ -274,8 +301,9 @@ public class ListaCircular<T> implements Serializable {
 //        lista.imprimirLista();
 //        lista.borrarUltimo();
 //        lista.imprimirLista();
-    //}
-
+//
+//    }
+//
 
 }
 

@@ -28,11 +28,11 @@ public class ClaseE {
         currentClass.setClass("E", lista);
         lista.agregarPrimero(new NaveEnemiga(x-120, y, juego,0));
         lista.agregarPrimero(new NaveEnemiga(x-60, y, juego, 1));
-        lista.agregarPrimero(new NaveEnemiga(x, y, juego,2));
+        NaveEnemiga boss = new NaveEnemiga(x, y, juego,2);
+        boss.toBoss();
+        lista.agregarPrimero(boss);
         lista.agregarPrimero(new NaveEnemiga(x+60, y, juego,3));
         lista.agregarPrimero(new NaveEnemiga(x+120, y, juego,4));
-        //NaveEnemiga naveBoss = lista.obtenerDato(2);
-        //naveBoss.toBoss();
 
     }
 //    public static void cambiarJefe(){
