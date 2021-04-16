@@ -36,7 +36,7 @@ public class HileraD {
         lista.bubbleSort();
         for (int i = 0; i < lista.tamanoLista();i++){
             if (lista.obtenerDato(i) != currentClass.getListaCirular().obtenerDato(i)){
-                x = currentClass.getListaCirular().obtenerNave(i).getImagenNave().getX();
+                x = currentClass.getListaCircularNaves().obtenerDato(i).getImagenNave().getX();
                 lista.obtenerDato(i).setPosicionLista(i);
                 lista.obtenerDato(i).getImagenNave().setX(x);
             }

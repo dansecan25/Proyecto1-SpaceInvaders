@@ -69,7 +69,7 @@ public class currentClass {
         }
 
     }
-    public static ListaCircular<NaveEnemiga> getElista(){
+    public static ListaCircular<NaveEnemiga> getListaCircularNaves(){
         ListaCircular<NaveEnemiga> lista = listCirculo;
         return lista;
     }
