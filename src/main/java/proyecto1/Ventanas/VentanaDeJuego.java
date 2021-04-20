@@ -27,10 +27,10 @@ import java.io.FileNotFoundException;
  * The type Ventana de juego.
  */
 public class VentanaDeJuego {
-    private static boolean estado = true;
-    public static int pts = 0;
-    private static Text valor;
-    private static Text CLASE;
+    private boolean estado = true;
+    public int pts = 0;
+    private Text valor;
+    private Text CLASE;
 
     /**
      * Iniciar ventana de juego.
@@ -39,8 +39,8 @@ public class VentanaDeJuego {
      * @throws FileNotFoundException the file not found exception
      */
     
-    private static NaveUsuario jugador;
-    public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
+    private NaveUsuario jugador;
+    public void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         Group ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
         Stage GameStage = new Stage();
@@ -91,7 +91,7 @@ public class VentanaDeJuego {
      *
      * @param ventanaDeJuego the ventana de juego
      */
-    public static void crearClases(Group ventanaDeJuego){
+    public void crearClases(Group ventanaDeJuego){
         //Hilo para generar las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
@@ -177,22 +177,22 @@ public class VentanaDeJuego {
         });
         new Thread(clasesAleatorias).start();
     }
-    public static NaveUsuario getJugador(){
+    public  NaveUsuario getJugador(){
         return jugador;
     }
-    private static void setJugador(NaveUsuario naveJugador){
+    private void setJugador(NaveUsuario naveJugador){
         jugador = naveJugador;
     }
-    public static void updatePuntos(int suma){
+    public  void updatePuntos(int suma){
         pts = pts+suma;
         var puntaje = Integer.toString(pts);
         valor.setText(puntaje);
     }
-    public static void setCLASE(){
+    public void setCLASE(){
         String classs = currentClass.getClase();
         CLASE.setText(classs);
     }
-    public static void cambiarNivel(int nivel){
+    public void cambiarNivel(int nivel){
         currentClass.setNivel(nivel);
         if(nivel==2){
             var fondo = Fondo.getFondo();

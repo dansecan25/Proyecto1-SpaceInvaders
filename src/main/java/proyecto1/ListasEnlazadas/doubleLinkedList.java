@@ -1,54 +1,14 @@
 package proyecto1.ListasEnlazadas;
 
-class NodoDLL<T>{
-
-    //Atributos clase nodo
-    private T valor;
-    NodoDLL<T> siguiente;
-    NodoDLL<T> anterior;
-    int posicion;
-
-    //Constructor nodo DLL
-    public NodoDLL(){
-        this.valor=null;
-        this.siguiente=null;
-        this.anterior=null;
-        this.posicion=0;
-    }
-    //Getter del atributo valor
-    public T getDato(){
-        return valor;
-    }
-    //Setter del atributo valor
-    public void setDato(T valor){
-        this.valor=valor;
-    }
-    //Getter del atributo siguiente
-    public NodoDLL<T> getSiguiente(){
-        return siguiente;
-    }
-    //Setter del atributo siguiente
-    public void setSiguiente(NodoDLL<T> nodoDLL){
-        this.siguiente=siguiente;
-    }
-    //Getter de la posicón del nodo.
-    public int getPosicion(){
-        return posicion;
-    }
-    //Setter posicion del nodo.
-    public void setPosicion(int posicion){
-        this.posicion=posicion;
-    }
-}
+import java.io.Serializable;
 
 //Declaracion lista doble
-public class doubleLinkedList<T> {
+public class doubleLinkedList<T> implements Serializable,Lista<T>{
 
     //Atributos de la clase doubleLinkedList
-    private NodoDLL<T> primero;
-    private NodoDLL<T> ultimo;
+    private Nodo<T> primero;
+    private Nodo<T> ultimo;
     private int largo;
-
     //Constructor lista doble
     public doubleLinkedList(){
 
@@ -63,12 +23,12 @@ public class doubleLinkedList<T> {
     }
 
     //Agregar un nodo a la cabeza
-    public void addPrimero(T dato) {
+    public void agregarPrimero(T dato) {
         if (this.primero == null) {
-            this.primero = new NodoDLL<T>();
+            this.primero = new Nodo<>();
             this.ultimo = this.primero;
         } else {
-            NodoDLL<T> actual = new NodoDLL<T>();
+            Nodo<T> actual = new Nodo<>();
             actual.siguiente = this.primero;
             this.primero.anterior = actual;
             this.primero = actual;
@@ -78,18 +38,18 @@ public class doubleLinkedList<T> {
 
 
     //Agregar un nodo a la cola
-    public void addUltimo(T dato) {
+    public void agregarUltimo(T dato) {
         if (this.primero == null) {
-            this.primero = new NodoDLL<T>();
+            this.primero = new Nodo<>();
             this.ultimo = this.primero;
         } else {
-            NodoDLL<T> actual = this.primero;
+            Nodo<T> actual = this.primero;
             while (actual.siguiente != null) {
                 actual = actual.siguiente;
             }
-            NodoDLL<T> temporal = this.ultimo;
-            NodoDLL<T> anterior = temporal;
-            temporal.siguiente = new NodoDLL<T>();
+            Nodo<T> temporal = this.ultimo;
+            Nodo<T> anterior = temporal;
+            temporal.siguiente = new Nodo<>();
             temporal = temporal.siguiente;
             temporal.anterior = anterior;
             this.ultimo = temporal;
@@ -102,7 +62,7 @@ public class doubleLinkedList<T> {
         if (this.primero == null) {
             return;
         } else {
-            NodoDLL<T> temporal = this.primero;
+            Nodo<T> temporal = this.primero;
             this.primero = temporal.siguiente;
             this.primero.anterior = null;
             temporal.siguiente = null;
@@ -115,7 +75,7 @@ public class doubleLinkedList<T> {
         if (this.primero == null) {
             return;
         } else {
-            NodoDLL<T> temporal = this.ultimo;
+            Nodo<T> temporal = this.ultimo;
             this.primero = temporal.anterior;
             this.ultimo.siguiente = null;
             temporal.siguiente = null;
@@ -123,21 +83,26 @@ public class doubleLinkedList<T> {
         largo--;
     }
 
+    @Override
+    public T obtenerDato(int posicion) {
+        return null;
+    }
+
     //Borrar dato en indice específico
     public void borrarDato(T t) {
         if (this.primero == null) {
             return;
         }
-        NodoDLL<T> nodo = this.primero;
+        Nodo<T> nodo = this.primero;
         if (nodo.getDato() == t) {
             this.primero = this.primero.siguiente;
         } else {
             boolean estaContenido = false;
-            NodoDLL<T> temporal = this.primero;
+            Nodo<T> temporal = this.primero;
             while (temporal.siguiente != null) {
                 if (temporal.siguiente.getDato() == t) {
                     estaContenido = true;
-                    NodoDLL<T> ante = temporal.siguiente.siguiente;
+                    Nodo<T> ante = temporal.siguiente.siguiente;
                     temporal.siguiente = temporal.siguiente.siguiente;
                     ante.anterior = ante.anterior.anterior;
                     break;
@@ -156,7 +121,7 @@ public class doubleLinkedList<T> {
                 e.printStackTrace();
             }
         }
-        NodoDLL<T> actual= primero;
+        Nodo<T> actual= primero;
         while (actual!=primero){
             if(actual.getPosicion()==index){
                 return actual.getDato();

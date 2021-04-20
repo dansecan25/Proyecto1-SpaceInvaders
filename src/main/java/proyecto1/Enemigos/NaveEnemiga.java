@@ -17,7 +17,7 @@ import java.util.Random;
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
-    private int posicionLis;
+    private int posicionLista;
     private final Group ventana;
     private final Timeline comprobacion;
     /**
@@ -41,7 +41,7 @@ public class NaveEnemiga {
         nave.setY(y);
         nave.setId("ufos");
         juego.getChildren().add(nave);
-        posicionLis=pos;
+        posicionLista=pos;
         vida = 1;
         Animacion.iniciarAnimacion(this.nave);
         comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
@@ -49,8 +49,8 @@ public class NaveEnemiga {
         ventana = juego;
 
     }
-    public void setPosicionLis(int posicion){
-        this.posicionLis = posicion;
+    public void setPosicionLista(int posicion){
+        this.posicionLista = posicion;
     }
 
     public void toBossE() {
@@ -95,8 +95,6 @@ public class NaveEnemiga {
             VentanaDeJuego.getJugador().setEstadoDisparo(true);
             vida -= 1;
             if (vida <= 0){
-
-                //currentClass.getLista().borrarPosicion(this.posicionLis);
                 currentClass.getLista().borrarDato(this);
                 if(currentClass.getLista().tamanoLista()>0){
                     currentClass.reordenar();
