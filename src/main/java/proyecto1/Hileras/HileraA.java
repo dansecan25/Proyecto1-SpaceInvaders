@@ -5,16 +5,15 @@ import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
-import java.io.FileNotFoundException;
 
 
 
 public class HileraA {
-    private ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
-    public HileraA(Group juego) throws FileNotFoundException{
+    private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
+    public HileraA(Group juego){
         Lista<NaveEnemiga> listaA= listFactory.crearLista("Simple");
 
-        currentClass.setClass("A", null, listaA , null);
+        currentClass.setClass("A", listaA);
         listaA.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaA.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaA.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
@@ -23,7 +22,7 @@ public class HileraA {
         double posBoss= Math.random()*4;
         int posJefe= (int) posBoss;
 
-        NaveEnemiga naveJefe= listaA.g(posJefe);
+        NaveEnemiga naveJefe= listaA.obtenerDato(posJefe);
         naveJefe.toBossA();
 
     }

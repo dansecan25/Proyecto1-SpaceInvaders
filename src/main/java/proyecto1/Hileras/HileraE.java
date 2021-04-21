@@ -1,6 +1,7 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
+import proyecto1.ListasEnlazadas.Lista;
 import proyecto1.ListasEnlazadas.ListaCircular;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Animaciones.currentClass;
@@ -28,7 +29,7 @@ public class HileraE {
     public HileraE(Group juego, int x, int y) throws FileNotFoundException {
         this.x = x;
         this.y = y;
-        currentClass.setClass("E", lista, null, null);
+        currentClass.setClass("E", lista);
         lista.agregarPrimero(new NaveEnemiga(x-120, y, juego,0));
         lista.agregarPrimero(new NaveEnemiga(x-60, y, juego, 1));
         NaveEnemiga boss = new NaveEnemiga(x, y, juego,2);
@@ -44,7 +45,7 @@ public class HileraE {
      *
      * @return lista
      */
-    public ListaCircular getLista() {
+    public Lista<NaveEnemiga> getLista() {
         return lista;
     }
 

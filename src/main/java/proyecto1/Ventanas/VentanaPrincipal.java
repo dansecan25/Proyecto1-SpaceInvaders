@@ -24,7 +24,7 @@ public class VentanaPrincipal {
      * @param Lobby the lobby
      * @throws FileNotFoundException the file not found exception
      */
-    public void ventana(Stage Lobby) throws FileNotFoundException, URISyntaxException {
+    public static void ventana(Stage Lobby) throws FileNotFoundException, URISyntaxException {
         ReproductorMusica reproductorMusica = new ReproductorMusica();
         reproductorMusica.reproducir();
         Lobby.setTitle( "Space Invaders" );

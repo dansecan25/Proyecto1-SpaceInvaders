@@ -1,16 +1,16 @@
 package proyecto1.Animaciones;
 
-import javafx.scene.image.ImageView;
 import javafx.concurrent.Task;
-import proyecto1.Hileras.HileraE;
-import proyecto1.ListasEnlazadas.ListaCircular;
+import javafx.scene.image.ImageView;
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Hileras.HileraE;
+import proyecto1.ListasEnlazadas.Lista;
 
 /**
  * The type Animacion clase e.
  */
 public class AnimacionClaseE {
-    private HileraE hileraE;
+    private final HileraE hileraE;
     private Task<Void> animacion;
     private double anguloActual = 0;
     private boolean pararAnimacion = false;
@@ -31,7 +31,7 @@ public class AnimacionClaseE {
      * @param theta the theta
      */
     public void rotar(double theta){
-        ListaCircular lista = hileraE.getLista();
+        Lista<NaveEnemiga> lista = hileraE.getLista();
         int tamlista = lista.tamanoLista();
         int x = hileraE.getX();
         int y = hileraE.getY();
@@ -43,7 +43,7 @@ public class AnimacionClaseE {
             int distanciaAlCentro = 80*(centro - indice);
             double rotacionX = distanciaAlCentro * Math.cos(theta);
             double rotacionY = distanciaAlCentro * Math.sin(theta);
-            NaveEnemiga nave = (NaveEnemiga) lista.obtenerDato(indice); // type casting
+            NaveEnemiga nave = lista.obtenerDato(indice); // type casting
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
@@ -51,14 +51,6 @@ public class AnimacionClaseE {
             if (indice == centro) {
                 nave.toBossE();
             }
-            //TranslateTransition girar = new TranslateTransition();
-            //girar.setToX((x + rotacionX));
-            //girar.setToY((y + rotacionY));
-            //girar.setNode(imagenNave);
-            //girar.setDuration(Duration.millis(50));
-            //girar.play();
-            //nave.getImagenNave().setX(x + rotacionX);
-            //nave.getImagenNave().setY(y + rotacionY);
         }
     }
 
@@ -67,7 +59,7 @@ public class AnimacionClaseE {
      */
 
     public void iniciarAnimacion(){
-        animacion = new Task<Void>() {
+        animacion = new Task<>() {
             @Override
             public Void call(){
                 while (!pararAnimacion) {
