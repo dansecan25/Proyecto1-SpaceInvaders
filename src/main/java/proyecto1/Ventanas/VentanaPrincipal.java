@@ -19,6 +19,7 @@ import proyecto1.Musica.ReproductorMusica;
  * The type Ventana principal.
  */
 public class VentanaPrincipal {
+    public static Stage Lobby;
     /**
      * Ventana.
      *
@@ -56,6 +57,7 @@ public class VentanaPrincipal {
         fade.play();
         root.getChildren().add(rectanguloCreditos);
 
+
         Task<Void> ventanaPrincipal = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
@@ -74,4 +76,10 @@ public class VentanaPrincipal {
         new Thread(ventanaPrincipal).start();
         Lobby.show();
     }
+    //getStage GameOver
+
+    public static Stage getStage(){
+        return Lobby;
+    }
+
 }
