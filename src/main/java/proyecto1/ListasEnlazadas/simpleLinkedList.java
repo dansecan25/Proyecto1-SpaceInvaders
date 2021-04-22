@@ -23,7 +23,6 @@ public class simpleLinkedList<T> implements Lista<T>{
 
     //Obtener el largo de la lista
     public int tamanoLista(){
-
         return largo;
     }
 

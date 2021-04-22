@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Hileras.HileraB;
@@ -29,8 +30,9 @@ import java.io.FileNotFoundException;
 public class VentanaDeJuego {
     private static boolean estado = true;
     public static int pts = 0;
-    private static Text valor;
-    private static Text CLASE;
+    public static String clase = "Basic";
+    private static final Text puntos = new Text();
+    private static final Text cla = new Text();
     private static NaveUsuario jugador;
     /**
      * Iniciar ventana de juego.
@@ -43,9 +45,11 @@ public class VentanaDeJuego {
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
         Stage GameStage = new Stage();
         GameStage.setScene(gameScene);
+
         // Boton para destruir ventana secundaria
         Fondo.IniciarFondo(ventanaDeJuego);
         ImageView EXIT = new ImageView(Imagenes.getInstancia().getBotonExit());
+
         Button botonExit = new Button();
         botonExit.setOnAction(event -> {
             GameStage.close();
@@ -53,26 +57,30 @@ public class VentanaDeJuego {
         });
         botonExit.setLayoutX(765); //define la posicion en x del boton
         botonExit.setLayoutY(8); //posicion y
-
         botonExit.setGraphic(EXIT);
         botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
+
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
+
+        //new HileraBasic(ventanaDeJuego);
+        HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300);
+        AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
+        animacionClaseE.iniciarAnimacion();
+        setCLASE();
+
         crearClases(ventanaDeJuego);
-        Text puntos = new Text();
         String puntaje = Integer.toString(pts);
         puntos.setText(puntaje);
         puntos.setX(105);
         puntos.setY(50);
         puntos.setFill(Color.valueOf("#55d147"));
-        valor = puntos;
         double fontSize = 40;
         FontWeight fontWeight = FontWeight.BOLD;
         Font font1 = Font.font("Arial", fontWeight,fontSize);
         puntos.setFont(font1);
-        Text cla = new Text();
-        cla.setText("");
+        cla.setText(clase);
         cla.setY(185);
         cla.setX(750);
         cla.setFill(Color.valueOf("#55d147"));
@@ -80,7 +88,6 @@ public class VentanaDeJuego {
         FontWeight fontWeight1 = FontWeight.BOLD;
         Font font2 = Font.font("Arial", fontWeight1,fontSize2);
         cla.setFont(font2);
-        CLASE = cla;
         ventanaDeJuego.getChildren().add(cla);
         ventanaDeJuego.getChildren().add(puntos);
     }
@@ -90,10 +97,13 @@ public class VentanaDeJuego {
      * @param ventanaDeJuego the ventana de juego
      */
     public static void crearClases(Group ventanaDeJuego){
+        System.out.println("Inicio metodo");
         //Hilo para generar las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
+                System.out.println("Inicia el hilo");
+                System.out.println("Lista: "+currentClass.getLista());
                 if (pts>250){
                     cambiarNivel(2);
                 }
@@ -106,6 +116,7 @@ public class VentanaDeJuego {
                 if (pts>=2750){
                     cambiarNivel(5);
                 }
+                System.out.println("Lista*: " + currentClass.getLista());
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     Thread.sleep(1000);
@@ -116,13 +127,15 @@ public class VentanaDeJuego {
             }
         };
         clasesAleatorias.setOnSucceeded(event -> {
-            //lo que dijo arriba
+            System.out.println("Estado: "+estado);
             if (!estado) {
                 double hill = Math.random()*6;
                 int hilera = (int) hill;
+                System.out.println("Hilera: "+hilera);
                 if (hilera == 0){ //clase basic
                     try {
-                        new HileraBasic(ventanaDeJuego); //inicia la clase Basic
+                        HileraBasic naves = new HileraBasic(ventanaDeJuego); //inicia la clase Basic
+                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -131,6 +144,7 @@ public class VentanaDeJuego {
                 if(hilera == 1){ //clase A
                     try {
                         new HileraC(ventanaDeJuego); //inicia la clase C
+                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -139,6 +153,7 @@ public class VentanaDeJuego {
                 if(hilera == 2){ //clase B
                     try {
                         HileraB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
+                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -147,6 +162,7 @@ public class VentanaDeJuego {
                 if(hilera == 3){ //clase C
                     try {
                         new HileraC(ventanaDeJuego); //inicia la clase C
+                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -155,6 +171,7 @@ public class VentanaDeJuego {
                 if (hilera == 4){ //Clase D
                     try {
                         new HileraC(ventanaDeJuego); //inicia la clase C
+                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -171,6 +188,7 @@ public class VentanaDeJuego {
                     }
                 }
             }
+            System.out.println("Finalizado");
             crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
         });
         new Thread(clasesAleatorias).start();
@@ -184,11 +202,10 @@ public class VentanaDeJuego {
     public static void updatePuntos(int suma){
         pts = pts+suma;
         var puntaje = Integer.toString(pts);
-        valor.setText(puntaje);
+        puntos.setText(puntaje);
     }
     public static void setCLASE(){
-        String classs = currentClass.getClase();
-        CLASE.setText(classs);
+        cla.setText(currentClass.getClase());
     }
     public static void cambiarNivel(int nivel){
         currentClass.setNivel(nivel);

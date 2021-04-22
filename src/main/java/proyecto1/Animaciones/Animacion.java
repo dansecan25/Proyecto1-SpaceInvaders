@@ -1,30 +1,27 @@
 package proyecto1.Animaciones;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.concurrent.Task;
-import javafx.scene.image.ImageView;
-import javafx.util.Duration;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.InvalidDirectionException;
+import proyecto1.ListasEnlazadas.Lista;
 
 public class Animacion {
     private static Task<Void> animacion;
-    public static void iniciarAnimacion(ImageView nodo){
+    public static void iniciarAnimacion(Lista<NaveEnemiga> naves){
         animacion = new Task<>() {
             @Override
             public Void call() {
-                if (nodo.getY() < 710) {
+                if (naves.obtenerDato(0).getImagenNave().getY() < 710) {
                     try {
-                        moveRight(nodo);
+                        moverNaves('D',naves);
                         Thread.sleep(2000);
-                        moveDown(nodo);
-                        System.out.println(nodo.getY());
+                        moverNaves('A',naves);
                         Thread.sleep(2000);
-                        moveLeft(nodo);
+                        moverNaves('I',naves);
                         Thread.sleep(2000);
-                        moveDown(nodo);
-                        System.out.println(nodo.getY());
+                        moverNaves('A',naves);
                         Thread.sleep(2000);
-                    } catch (InterruptedException e) {
+                    } catch (InvalidDirectionException | InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -33,24 +30,20 @@ public class Animacion {
         };
         animacion.setOnSucceeded(event -> {
             if (animacion.isDone()){
-                iniciarAnimacion(nodo);
+                iniciarAnimacion(naves);
             }
         });
         new Thread(animacion).start();
     }
-    private static void moveRight(ImageView nodo){
-        Timeline movimientoDerecha = new Timeline(new KeyFrame(Duration.millis(25),mover -> nodo.setX(nodo.getX()+1)));
-        movimientoDerecha.setCycleCount(80);
-        movimientoDerecha.play();
-    }
-    private static void moveLeft(ImageView nodo){
-        Timeline movimientoIzquierda = new Timeline(new KeyFrame(Duration.millis(25),mover -> nodo.setX(nodo.getX()-1)));
-        movimientoIzquierda.setCycleCount(80);
-        movimientoIzquierda.play();
-    }
-    private static void moveDown(ImageView nodo){
-        Timeline movimientoAbajo = new Timeline(new KeyFrame(Duration.millis(25),mover -> nodo.setY(nodo.getY()+1)));
-        movimientoAbajo.setCycleCount(80);
-        movimientoAbajo.play();
+    private static void moverNaves(char Dir,Lista<NaveEnemiga> listaNaves) throws InvalidDirectionException {
+        for (int i = listaNaves.tamanoLista()-1; i >= 0; i--){
+            NaveEnemiga nave = listaNaves.obtenerDato(i);
+            switch (Dir){
+                case 'D' -> nave.moveRight();
+                case 'I' -> nave.moveLeft();
+                case 'A' -> nave.moveDown();
+                default -> throw new InvalidDirectionException("La dirección " + String.valueOf(Dir) + " no es válida para realizar un movimiento.");
+            };
+        }
     }
 }

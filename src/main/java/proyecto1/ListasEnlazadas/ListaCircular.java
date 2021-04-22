@@ -25,12 +25,12 @@ public class ListaCircular<T> implements Serializable,Lista<T> {
 //E: cualquier tipo de dato
     public void agregarPrimero(T dato){
         if (primero == null){
-            primero = new Nodo<T>(dato);
+            primero = new Nodo<>(dato);
             primero.siguiente = primero;
             primero.anterior = primero;
         } else {
             Nodo<T> ultimo = primero.anterior;
-            Nodo<T> nuevo= new Nodo<T>(dato);
+            Nodo<T> nuevo= new Nodo<>(dato);
             nuevo.siguiente = primero;
             nuevo.anterior = ultimo;
             primero.anterior = nuevo;
@@ -49,7 +49,7 @@ public class ListaCircular<T> implements Serializable,Lista<T> {
         if (primero == null) {
             agregarPrimero(dato);
         }else{
-            Nodo<T> nuevo = new Nodo<T>(dato);
+            Nodo<T> nuevo = new Nodo<>(dato);
             Nodo<T> ultimo = primero.anterior;
             nuevo.siguiente = primero;
             nuevo.anterior = ultimo;

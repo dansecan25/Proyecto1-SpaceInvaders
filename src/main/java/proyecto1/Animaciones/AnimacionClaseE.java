@@ -1,7 +1,10 @@
 package proyecto1.Animaciones;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.scene.image.ImageView;
+import javafx.util.Duration;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Hileras.HileraE;
 import proyecto1.ListasEnlazadas.Lista;
@@ -21,7 +24,6 @@ public class AnimacionClaseE {
      * @param hileraE the clase e
      */
     public AnimacionClaseE(HileraE hileraE) {
-
         this.hileraE = hileraE;
     }
 
@@ -40,6 +42,7 @@ public class AnimacionClaseE {
         double raiz2 = Math.sqrt(2);
 
         for (int indice = 0; indice < tamlista; indice++){
+            comprobarAltura();
             int distanciaAlCentro = 80*(centro - indice);
             double rotacionX = distanciaAlCentro * Math.cos(theta);
             double rotacionY = distanciaAlCentro * Math.sin(theta);
@@ -47,13 +50,24 @@ public class AnimacionClaseE {
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
+            imagenNave.setY(y + 10);
             nave.toNave();
             if (indice == centro) {
-                nave.toBossE();
+                nave.toBoss();
             }
         }
     }
-
+    private void comprobarAltura(){
+        Lista<NaveEnemiga> lista = hileraE.getLista();
+        NaveEnemiga ultimo = lista.obtenerDato(lista.tamanoLista()-1);
+        Timeline comprobar = new Timeline(new KeyFrame(Duration.millis(100),terminar ->{
+            if (ultimo.getImagenNave().getY() > 710){
+                pararAnimacion = true;
+            }
+        }));
+        comprobar.setCycleCount(Timeline.INDEFINITE);
+        comprobar.play();
+    }
     /**
      * Iniciar animacion.
      */
@@ -62,7 +76,7 @@ public class AnimacionClaseE {
         animacion = new Task<>() {
             @Override
             public Void call(){
-                while (!pararAnimacion) {
+                if (!pararAnimacion) {
                     try {
                         Thread.sleep(250);
                         anguloActual = anguloActual + Math.PI / 12;
@@ -70,7 +84,7 @@ public class AnimacionClaseE {
                             anguloActual = anguloActual - Math.PI * 2;
                         }
                         rotar(anguloActual);
-                    } catch (Exception e) {
+                    } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
                 }
@@ -79,11 +93,10 @@ public class AnimacionClaseE {
         };
         animacion.setOnSucceeded(event -> {
             if (animacion.isDone()){
-                new Thread(animacion).start();
+                iniciarAnimacion();
             }
         });
         new Thread(animacion).start();
     }
-
 }
 

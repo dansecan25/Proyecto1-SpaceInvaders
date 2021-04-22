@@ -5,7 +5,6 @@ import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Hileras.HileraC;
 import proyecto1.Imagenes.Imagenes;
@@ -17,6 +16,7 @@ import java.util.Random;
  * The type Nave enemiga.
  */
 public class NaveEnemiga {
+    Random random = new Random();
     private int posicionLista;
     private final Group ventana;
     private final Timeline comprobacion;
@@ -43,7 +43,7 @@ public class NaveEnemiga {
         juego.getChildren().add(nave);
         posicionLista=pos;
         vida = 1;
-        Animacion.iniciarAnimacion(this.nave);
+        //Animacion.iniciarAnimacion(this.nave);
         comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobarColision();
         ventana = juego;
@@ -53,18 +53,6 @@ public class NaveEnemiga {
         this.posicionLista = posicion;
     }
 
-    public void toBossE() {
-        nave.setImage(Imagenes.getInstancia().getUfoBoss1());
-        vida = 2;
-        puntosMorir = 10;
-    }
-    //Jefe Clase A (3)
-    public void toBossA(){
-        nave.setImage(Imagenes.getInstancia().getUfoBoss3());
-        vida += 2;
-        puntosMorir+=10;
-    }
-
     public void toNave(){
         nave.setImage(Imagenes.getInstancia().getUfo2());
         vida = 0;
@@ -72,13 +60,20 @@ public class NaveEnemiga {
     }
 
     public void toBoss(){
-        nave.setImage(Imagenes.getInstancia().getUfoBoss1());
-        vida += 2;
-        puntosMorir+=10;
+        int randomBossSprite = random.nextInt(4);
+        switch (randomBossSprite){
+            case 1 -> nave.setImage(Imagenes.getInstancia().getUfoBoss2());
+            case 2 -> nave.setImage(Imagenes.getInstancia().getUfoBoss3());
+            case 3 -> nave.setImage(Imagenes.getInstancia().getUfoBoss4());
+            default -> nave.setImage(Imagenes.getInstancia().getUfoBoss1());
+        }
+
+        int randomBonusHP = random.nextInt(4);
+        vida += randomBonusHP;
+        puntosMorir += 5 * randomBonusHP;
     }
     private ImageView spriteAleatorio(){
         ImageView sprite;
-        Random random = new Random();
         int spriteID = random.nextInt(3);
         switch (spriteID) {
             case 1 -> sprite = new ImageView(Imagenes.getInstancia().getUfo2());
@@ -97,7 +92,7 @@ public class NaveEnemiga {
             if (vida <= 0){
                 currentClass.getLista().borrarDato(this);
                 if(currentClass.getLista().tamanoLista()>0){
-                    currentClass.reordenar();
+                    currentClass.reordenar(posicionLista);
                 }
                 ventana.getChildren().remove(nave);
                 comprobacion.stop();
@@ -115,5 +110,21 @@ public class NaveEnemiga {
     }
     public ImageView getImagenNave(){
         return nave;
+    }
+
+    public void moveRight(){
+        Timeline movimientoDerecha = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()+1)));
+        movimientoDerecha.setCycleCount(80);
+        movimientoDerecha.play();
+    }
+    public void moveLeft(){
+        Timeline movimientoIzquierda = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()-1)));
+        movimientoIzquierda.setCycleCount(80);
+        movimientoIzquierda.play();
+    }
+    public void moveDown(){
+        Timeline movimientoAbajo = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setY(nave.getY()+1)));
+        movimientoAbajo.setCycleCount(80);
+        movimientoAbajo.play();
     }
 }
