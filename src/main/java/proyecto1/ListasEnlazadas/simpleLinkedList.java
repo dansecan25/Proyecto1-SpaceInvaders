@@ -1,59 +1,10 @@
 package proyecto1.ListasEnlazadas;
 
-class NodoLL<T> {
-
-    //Atributos clase Nodo
-
-    private T valor;
-    private NodoLL<T> siguiente;
-    private int posicion;
-
-    //Constructor clase NodoLL
-    public NodoLL(){
-
-        this.valor= null;
-        this.siguiente= null;
-        this.posicion= 0;
-
-    }
-    //Getter del atributo valor
-    public T getDato(){
-        return valor;
-    }
-
-    //Setter del atributo valor
-    public void setDato(T valor){
-        this.valor= valor;
-    }
-
-    //Getter del atributo siguiente.
-    public NodoLL<T> getSiguiente(){
-        return siguiente;
-    }
-
-    //Setter del atributo siguiente
-    public void setSiguiente(NodoLL<T> nodo){
-        this.siguiente= siguiente;
-    }
-
-    //Getter de la posición del nodo.
-    public int getPosicion(){
-
-        return posicion;
-    }
-
-    //Setter de la posición del nodo
-    public void setPosicion(int position){
-
-        this.posicion=position;
-    }
-
-}
 //Declaración de la lista simple
-public class simpleLinkedList<T>{
+public class simpleLinkedList<T> implements Lista<T>{
 
     //Atributos de la clase simpleLinkedList
-    private NodoLL<T> primero;
+    private Nodo<T> primero;
     private int largo;
 
     //Declaratoria del constructor de simpleLinkedList
@@ -71,15 +22,14 @@ public class simpleLinkedList<T>{
     }
 
     //Obtener el largo de la lista
-    public int getLargo(){
-
+    public int tamanoLista(){
         return largo;
     }
 
     //Insertar nuevo dato al frente de la lista
-    public void addFrente(T dato){
+    public void agregarPrimero(T dato){
 
-        NodoLL<T> nuevoNodo= new NodoLL<>();
+        Nodo<T> nuevoNodo= new Nodo<>();
         nuevoNodo.setDato(dato);
 
         if (estaVacia()){
@@ -95,7 +45,7 @@ public class simpleLinkedList<T>{
             primero = nuevoNodo;
 
         }
-        NodoLL<T> aux= primero.getSiguiente();
+        Nodo<T> aux= primero.getSiguiente();
         while (aux!=null) {
 
             aux.setPosicion(aux.getPosicion());
@@ -116,7 +66,7 @@ public class simpleLinkedList<T>{
         else {
 
             primero= primero.getSiguiente();
-            NodoLL<T> aux= primero;
+            Nodo<T> aux= primero;
 
             while(aux!= null){
 
@@ -129,9 +79,9 @@ public class simpleLinkedList<T>{
     }
 
     //Insertar dato al final de la lista
-    public void addUltimo(T dato){
+    public void agregarUltimo(T dato){
 
-        NodoLL<T> newNodo = new NodoLL<>();
+        Nodo<T> newNodo = new Nodo<>();
         newNodo.setDato(dato);
 
         if(estaVacia()){
@@ -141,7 +91,7 @@ public class simpleLinkedList<T>{
 
         }
         else {
-            NodoLL<T> aux = new NodoLL<>();
+            Nodo<T> aux = new Nodo<>();
             aux = primero;
             while (aux.getSiguiente() != null) {
                 aux = aux.getSiguiente();
@@ -153,7 +103,7 @@ public class simpleLinkedList<T>{
     }
     //Borrar dato al final de la lista
     public void deleteUltimo(){
-        NodoLL<T> aux= new NodoLL<>();
+        Nodo<T> aux= new Nodo<>();
         aux= primero;
         if(estaVacia() || largo ==1){
             primero=null;
@@ -167,7 +117,7 @@ public class simpleLinkedList<T>{
         largo--;
     }
     //Obtener valor especifico del índice
-    public T get(int i){
+    public T obtenerDato(int i){
         if (i >= largo){
             try {
                 throw new Exception();
@@ -175,7 +125,7 @@ public class simpleLinkedList<T>{
                 e.printStackTrace();
             }
         }
-        NodoLL<T> aux= primero;
+        Nodo<T> aux= primero;
         while (aux != primero ){
             if(aux.getPosicion() == i){
                 return aux.getDato();
@@ -185,8 +135,8 @@ public class simpleLinkedList<T>{
         return null;
     }
     //Borrar elemento específico contenido en el indice
-    public void deleteElemento(T t){
-        NodoLL<T> aux= new NodoLL<>();
+    public void borrarDato(T t){
+        Nodo<T> aux= new Nodo<>();
         aux= primero;
         if (estaVacia()){
             primero=null;
@@ -197,7 +147,7 @@ public class simpleLinkedList<T>{
         else{
             while (aux.getSiguiente()!=null){
                 if(aux.getSiguiente().getDato()==t){
-                    NodoLL<T> auxSegundo= new NodoLL<T>();
+                    Nodo<T> auxSegundo= new Nodo<>();
                     aux.setSiguiente(aux.getSiguiente().getSiguiente());
                     auxSegundo= aux.getSiguiente();
                     while (auxSegundo!=null){
@@ -213,7 +163,7 @@ public class simpleLinkedList<T>{
     //Retornar lista
     public void getLista(){
 
-        NodoLL<T> aux= primero;
+        Nodo<T> aux= primero;
 
         while(aux!=null){
             System.out.println(aux.getDato().toString());
@@ -223,14 +173,14 @@ public class simpleLinkedList<T>{
     }
 
     //Retornar el primero elemento de la lista
-    public NodoLL<T> getPrimero(){
+    public Nodo<T> getPrimero(){
         return primero;
     }
 
     //Retornar último elemento de la lista
-    public NodoLL<T> getUltimo(){
+    public Nodo<T> getUltimo(){
 
-        NodoLL<T> aux= primero;
+        Nodo<T> aux= primero;
 
         while(aux.getSiguiente()!=null){
 
@@ -243,16 +193,14 @@ public class simpleLinkedList<T>{
     //Saber si cierto elemento está contenido en la lista
     public boolean contains(T t){
 
-        NodoLL<T> aux = primero;
+        Nodo<T> aux = primero;
         boolean estaContenido= false;
 
         while (aux!= null){
-
             if(aux.getDato().equals(t)){
-
                 estaContenido= true;
-
-            }aux= aux.getSiguiente();
+            }
+            aux= aux.getSiguiente();
         }
         return estaContenido;
 

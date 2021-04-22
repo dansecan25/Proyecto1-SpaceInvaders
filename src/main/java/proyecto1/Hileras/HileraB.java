@@ -2,19 +2,21 @@ package proyecto1.Hileras;
 
 import javafx.concurrent.Task;
 import javafx.scene.Group;
-import proyecto1.Enemigos.NaveEnemiga;
-import proyecto1.ListasEnlazadas.ListaCircular;
 import proyecto1.Animaciones.currentClass;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.ListasEnlazadas.ListFactory;
+import proyecto1.ListasEnlazadas.Lista;
 
 import java.io.FileNotFoundException;
 
 public class HileraB {
+    private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private static Task<Void> navesAleatorio;
-    private static ListaCircular<NaveEnemiga> listaB = new ListaCircular<>();
+    private static Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
     private static NaveEnemiga naveAnt = null;
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
 
-        currentClass.setClass("B", listaB, null);
+        currentClass.setClass("B", listaB);
         listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
         listaB.agregarUltimo(new NaveEnemiga(220, 100, juego,1));
         listaB.agregarUltimo(new NaveEnemiga(330, 100, juego,2));
@@ -31,11 +33,11 @@ public class HileraB {
             }
         };
         navesAleatorio.setOnSucceeded(event->{
-            if(currentClass.getListaCirular().tamanoLista()>0){
+            if(currentClass.getLista().tamanoLista()>0){
                 if(naveAnt != null){
                     naveAnt.toNave();
                 }
-                double getRandom = Math.random()*(currentClass.getListaCirular().tamanoLista()-1);
+                double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
                 NaveEnemiga nave = listaB.obtenerDato(naveRandom);
                 nave.toBoss();
