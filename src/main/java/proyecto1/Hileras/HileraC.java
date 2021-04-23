@@ -1,7 +1,6 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.ListasEnlazadas.ListFactory;
@@ -31,7 +30,7 @@ public class HileraC {
         NaveEnemiga naveBoss = listaNaves.obtenerDato(2);
         naveBoss.toBoss();
 
-        Animacion.iniciarAnimacion(listaNaves);
+        //Animacion.iniciarAnimacion(listaNaves);
     }
     public static void cambiarJefe(){
         Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");

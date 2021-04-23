@@ -64,7 +64,7 @@ public class VentanaDeJuego {
 
         //HileraBasic primeraHilera = new HileraBasic(ventanaDeJuego);
         new HileraC(ventanaDeJuego);
-        //Animacion.iniciarAnimacion(currentClass.getLista());
+        Animacion.iniciarAnimacion(currentClass.getLista());
         setCLASE();
 
         crearClases(ventanaDeJuego);
@@ -124,8 +124,8 @@ public class VentanaDeJuego {
         };
         clasesAleatorias.setOnSucceeded(event -> {
             if (!estado) {
-                double hill = Math.random()*6;
-                int hilera = (int) hill;
+                double hill = Math.random()*5;
+                int hilera = (int) hill+1;
                 System.out.println("Hilera: "+hilera);
                 if (hilera == 0){ //hilera basic
                     try {

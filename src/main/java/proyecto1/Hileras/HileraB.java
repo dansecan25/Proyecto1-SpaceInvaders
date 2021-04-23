@@ -50,7 +50,7 @@ public class HileraB {
         new Thread(navesAleatorio).start();
     }*/
     public static void cambioaBoss(){
-        Timeline navesAleatorio = new Timeline(new KeyFrame(Duration.seconds(2),aleatorio ->{
+        Timeline navesAleatorio = new Timeline(new KeyFrame(Duration.seconds(3),aleatorio ->{
             if(currentClass.getLista().tamanoLista()>0){
                 if(naveAnt != null){
                     naveAnt.toNave();
@@ -58,8 +58,8 @@ public class HileraB {
                 double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
                 NaveEnemiga nave = listaB.obtenerDato(naveRandom);
-                nave.toBoss();
                 naveAnt = nave;
+                nave.toBoss();
                 cambioaBoss();
             }
         }));
