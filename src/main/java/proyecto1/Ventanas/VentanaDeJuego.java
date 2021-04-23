@@ -13,10 +13,7 @@ import javafx.stage.Stage;
 import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
-import proyecto1.Hileras.HileraB;
-import proyecto1.Hileras.HileraBasic;
-import proyecto1.Hileras.HileraC;
-import proyecto1.Hileras.HileraE;
+import proyecto1.Hileras.*;
 import proyecto1.Imagenes.Fondo;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Usuario.NaveUsuario;
@@ -69,7 +66,6 @@ public class VentanaDeJuego {
         AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
         animacionClaseE.iniciarAnimacion();
         setCLASE();
-
         crearClases(ventanaDeJuego);
         String puntaje = Integer.toString(pts);
         puntos.setText(puntaje);
@@ -97,7 +93,6 @@ public class VentanaDeJuego {
      * @param ventanaDeJuego the ventana de juego
      */
     public static void crearClases(Group ventanaDeJuego){
-        System.out.println("Inicio metodo");
         //Hilo para generar las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
@@ -142,17 +137,13 @@ public class VentanaDeJuego {
                     }
                 }
                 if(hilera == 1){ //clase A
-                    try {
-                        new HileraC(ventanaDeJuego); //inicia la clase C
-                        Animacion.iniciarAnimacion(currentClass.getLista());
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
+                    new HileraA(ventanaDeJuego); //inicia la clase C
+                    Animacion.iniciarAnimacion(currentClass.getLista());
+                    setCLASE();
                 }
                 if(hilera == 2){ //clase B
                     try {
-                        HileraB.IniciarClaseB(ventanaDeJuego); //inicia la clase B
+                        new HileraB(ventanaDeJuego); //inicia la clase B
                         Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
@@ -188,7 +179,6 @@ public class VentanaDeJuego {
                     }
                 }
             }
-            System.out.println("Finalizado");
             crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
         });
         new Thread(clasesAleatorias).start();

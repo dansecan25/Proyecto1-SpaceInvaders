@@ -14,7 +14,7 @@ public class HileraB {
     private static Task<Void> navesAleatorio;
     private static Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
     private static NaveEnemiga naveAnt = null;
-    public static void IniciarClaseB(Group juego) throws FileNotFoundException {
+    public HileraB(Group juego) throws FileNotFoundException {
 
         currentClass.setClass("B", listaB);
         listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
