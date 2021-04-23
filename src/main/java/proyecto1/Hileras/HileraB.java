@@ -1,30 +1,33 @@
 package proyecto1.Hileras;
 
-import javafx.concurrent.Task;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
-import proyecto1.Enemigos.NaveEnemiga;
-import proyecto1.ListasEnlazadas.ListaCircular;
+import javafx.util.Duration;
 import proyecto1.Animaciones.currentClass;
-import proyecto1.ListasEnlazadas.doubleLinkedList;
+import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.ListasEnlazadas.ListFactory;
+import proyecto1.ListasEnlazadas.Lista;
 
 import java.io.FileNotFoundException;
 
 public class HileraB {
-    private static Task<Void> navesAleatorio;
-    private static doubleLinkedList<NaveEnemiga> listaB = new doubleLinkedList<>();
+    private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
+    private static final Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
     private static NaveEnemiga naveAnt = null;
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
 
-        currentClass.setClass("B", null, null, listaB);
-        listaB.addUltimo(new NaveEnemiga(110, 100, juego,0));
-        listaB.addUltimo(new NaveEnemiga(220, 100, juego,1));
-        listaB.addUltimo(new NaveEnemiga(330, 100, juego,2));
-        listaB.addUltimo(new NaveEnemiga(440, 100, juego,3));
-        listaB.addUltimo(new NaveEnemiga(550, 100, juego,4));
+        currentClass.setClass("B", listaB);
+        listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
+        listaB.agregarUltimo(new NaveEnemiga(220, 100, juego,1));
+        listaB.agregarUltimo(new NaveEnemiga(330, 100, juego,2));
+        listaB.agregarUltimo(new NaveEnemiga(440, 100, juego,3));
+        listaB.agregarUltimo(new NaveEnemiga(550, 100, juego,4));
         cambioaBoss();
     }
+    /*
     public static void cambioaBoss(){
-        navesAleatorio = new Task<Void>() {
+        Task<Void> navesAleatorio = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
                 Thread.sleep(2000);
@@ -32,19 +35,36 @@ public class HileraB {
             }
         };
         navesAleatorio.setOnSucceeded(event->{
-            if(currentClass.getListaCirular().tamanoLista()>0){
+            if(currentClass.getLista().tamanoLista()>0){
                 if(naveAnt != null){
                     naveAnt.toNave();
                 }
-                double getRandom = Math.random()*(currentClass.getListaCirular().tamanoLista()-1);
+                double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
-                NaveEnemiga nave = listaB.getElemento(naveRandom);
+                NaveEnemiga nave = listaB.obtenerDato(naveRandom);
                 nave.toBoss();
                 naveAnt = nave;
                 cambioaBoss();
             }
         });
         new Thread(navesAleatorio).start();
+    }*/
+    public static void cambioaBoss(){
+        Timeline navesAleatorio = new Timeline(new KeyFrame(Duration.seconds(2),aleatorio ->{
+            if(currentClass.getLista().tamanoLista()>0){
+                if(naveAnt != null){
+                    naveAnt.toNave();
+                }
+                double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
+                int naveRandom = (int) getRandom;
+                NaveEnemiga nave = listaB.obtenerDato(naveRandom);
+                nave.toBoss();
+                naveAnt = nave;
+                cambioaBoss();
+            }
+        }));
+        navesAleatorio.setCycleCount(Timeline.INDEFINITE);
+        navesAleatorio.play();
     }
 
 }

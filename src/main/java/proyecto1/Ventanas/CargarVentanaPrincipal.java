@@ -12,7 +12,6 @@ import proyecto1.Imagenes.Imagenes;
 import proyecto1.Musica.ReproductorMusica;
 
 import java.io.FileNotFoundException;
-import java.net.URISyntaxException;
 
 /**
  * The type Cargar ventana principal.
@@ -26,9 +25,7 @@ public class CargarVentanaPrincipal {
      * @param rectanguloCreditos the rectangulo creditos
      * @param Lobby              the lobby
      */
-    public CargarVentanaPrincipal(Group root, Rectangle rectanguloCreditos, Stage Lobby, ReproductorMusica reproductorMusica) throws URISyntaxException {
-        //ReproductorMusica reproductorMusica = new ReproductorMusica();
-        //reproductorMusica.reproducir();
+    public CargarVentanaPrincipal(Group root, Rectangle rectanguloCreditos, Stage Lobby, ReproductorMusica reproductorMusica) {
         root.getChildren().remove(rectanguloCreditos);
         //Se crea imagen Start
         ImageView img = new ImageView(Imagenes.getInstancia().getBotonStart());
@@ -89,11 +86,7 @@ public class CargarVentanaPrincipal {
     }
 
     public boolean cambiarEstadoMusica(){
-        if (!estadoMusica){
-            estadoMusica = true;
-        } else {
-            estadoMusica = false;
-        }
+        estadoMusica = !estadoMusica;
         return estadoMusica;
     }
 }

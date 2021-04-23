@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>proyecto1</OriginalElement>
+  <nodes>
+    <node x="472.0" y="1142.0">proyecto1.Fondo</node>
+    <node x="163.0" y="1266.0">proyecto1.ClaseBasic</node>
+    <node x="907.0" y="1142.0">proyecto1.HileraD</node>
+    <node x="278.0" y="783.0">proyecto1.VentanaDeJuego</node>
+    <node x="0.0" y="996.0">proyecto1.AnimacionClaseE</node>
+    <node x="356.0" y="1266.0">proyecto1.Controller</node>
+    <node x="600.0" y="0.0">proyecto1.ListaCircular</node>
+    <node x="231.0" y="996.0">proyecto1.ReproductorMusica</node>
+    <node x="0.0" y="783.0">proyecto1.NaveUsuario</node>
+    <node x="457.0" y="996.0">proyecto1.Main</node>
+    <node x="0.0" y="0.0">proyecto1.currentClass</node>
+    <node x="699.0" y="1142.0">proyecto1.VentanaPrincipal</node>
+    <node x="837.0" y="0.0">proyecto1.NaveEnemiga</node>
+    <node x="555.0" y="783.0">proyecto1.Animacion</node>
+    <node x="366.0" y="0.0">proyecto1.simpleLinkedList</node>
+    <node x="651.0" y="996.0">proyecto1.CargarVentanaPrincipal</node>
+    <node x="1043.0" y="783.0">proyecto1.NodoLL</node>
+    <node x="0.0" y="1266.0">proyecto1.Nodo</node>
+    <node x="62.0" y="218.0">proyecto1.Imagenes</node>
+    <node x="0.0" y="1142.0">proyecto1.animation</node>
+    <node x="831.0" y="783.0">proyecto1.ClaseE</node>
+    <node x="244.0" y="1142.0">proyecto1.ClaseB</node>
+    <node x="1098.0" y="1142.0">proyecto1.ClaseC</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="proyecto1.Imagenes" target="proyecto1.currentClass" relationship="GENERALIZATION">
+      <point x="0.0" y="-260.0" />
+      <point x="0.0" y="84.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.6996336996336996" showDependencies="false" x="622.0" y="672.5" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

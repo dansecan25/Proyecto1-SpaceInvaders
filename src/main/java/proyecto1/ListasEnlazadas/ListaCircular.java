@@ -1,52 +1,15 @@
 package proyecto1.ListasEnlazadas;
+
+import proyecto1.Enemigos.NaveEnemiga;
+
 import java.io.Serializable;
-
-/**
- * The type Nodo.
- *
- * @param <T> the type parameter
- */
-class Nodo<T> implements Serializable {
-    /**
-     * The Sig.
-     */
-    Nodo<T> sig;
-    /**
-     * The Prev.
-     */
-    Nodo<T> prev;
-    /**
-     * The Dato.
-     */
-    T dato;
-
-    /**
-     * Instantiates a new Nodo.
-     *
-     * @param dato the dato
-     */
-    public Nodo(T dato){
-        this.dato=dato;
-        this.sig =null;
-        this.prev=null;
-    }
-
-    /**
-     * Get value t.
-     *
-     * @return the t
-     */
-    public T getValue(){
-        return this.dato;
-    }
-}
 
 /**
  * The type Lista circular.
  *
  * @param <T> the type parameter
  */
-public class ListaCircular<T> implements Serializable {
+public class ListaCircular<T> implements Serializable,Lista<T> {
     private Nodo<T> primero;
 
     /**
@@ -56,6 +19,7 @@ public class ListaCircular<T> implements Serializable {
         primero = null;
     }
 
+
     /**
      * Agregar primero.
      *
@@ -64,16 +28,16 @@ public class ListaCircular<T> implements Serializable {
 //E: cualquier tipo de dato
     public void agregarPrimero(T dato){
         if (primero == null){
-            primero = new Nodo<T>(dato);
-            primero.sig = primero;
-            primero.prev = primero;
+            primero = new Nodo<>(dato);
+            primero.siguiente = primero;
+            primero.anterior = primero;
         } else {
-            Nodo<T> ultimo = primero.prev;
-            Nodo<T> nuevo= new Nodo<T>(dato);
-            nuevo.sig = primero;
-            nuevo.prev = ultimo;
-            primero.prev = nuevo;
-            ultimo.sig = nuevo;
+            Nodo<T> ultimo = primero.anterior;
+            Nodo<T> nuevo= new Nodo<>(dato);
+            nuevo.siguiente = primero;
+            nuevo.anterior = ultimo;
+            primero.anterior = nuevo;
+            ultimo.siguiente = nuevo;
             primero = nuevo;
         }
     }
@@ -88,12 +52,12 @@ public class ListaCircular<T> implements Serializable {
         if (primero == null) {
             agregarPrimero(dato);
         }else{
-            Nodo<T> nuevo = new Nodo<T>(dato);
-            Nodo<T> ultimo = primero.prev;
-            nuevo.sig = primero;
-            nuevo.prev = ultimo;
-            primero.prev = nuevo;
-            ultimo.sig = nuevo;
+            Nodo<T> nuevo = new Nodo<>(dato);
+            Nodo<T> ultimo = primero.anterior;
+            nuevo.siguiente = primero;
+            nuevo.anterior = ultimo;
+            primero.anterior = nuevo;
+            ultimo.siguiente = nuevo;
         }
     }
 
@@ -106,8 +70,8 @@ public class ListaCircular<T> implements Serializable {
         } else {
             Nodo<T> actual = primero;
             do { // se ejecuta al menos una vez
-                System.out.print(actual.getValue() + ", ");
-                actual = actual.sig;
+                System.out.print(actual.getDato() + ", ");
+                actual = actual.siguiente;
             } while (actual != primero);
             System.out.println();
         }
@@ -123,12 +87,12 @@ public class ListaCircular<T> implements Serializable {
             return 0;
         } else {
             Nodo<T> actual = primero;
-            Nodo<T> ultimo = primero.prev;
+            Nodo<T> ultimo = primero.anterior;
             int tamano = 0;
 
             do { // se ejecuta al menos una vez
                 tamano++;
-                actual = actual.sig;
+                actual = actual.siguiente;
             } while (actual != primero);
             return tamano;
         }
@@ -148,29 +112,28 @@ public class ListaCircular<T> implements Serializable {
         int indice = 0;
         do {
             if (indice == posicion) {
-                return actual.getValue();
+                return actual.getDato();
             }
             indice++;
-            actual = actual.sig;
+            actual = actual.siguiente;
         } while (actual != primero);
         return null; // la posicion sobrepasa el indice
     }
-
     /**
      * Borrar primero.
      */
     public void borrarPrimero() {
         if (primero != null) {
-            if (primero.sig == primero){
+            if (primero.siguiente == primero){
                 primero = null;
             } else {
                 Nodo<T> temp = primero;
-                Nodo<T> ultimo = temp.prev;
-                primero = temp.sig;
-                primero.prev = temp.prev;
-                ultimo.sig = primero;
-                temp.sig = null;
-                temp.prev = null;
+                Nodo<T> ultimo = temp.anterior;
+                primero = temp.siguiente;
+                primero.anterior = temp.anterior;
+                ultimo.siguiente = primero;
+                temp.siguiente = null;
+                temp.anterior = null;
             }
         }
     }
@@ -180,15 +143,15 @@ public class ListaCircular<T> implements Serializable {
      */
     public void borrarUltimo() {
         if (primero != null) {
-            if (primero.sig == primero){
+            if (primero.siguiente == primero){
                 primero = null;
             } else {
-                Nodo<T> temp = primero.prev;
-                Nodo<T> ultimo = temp.prev;
-                ultimo.sig = primero;
-                primero.prev = ultimo;
-                temp.prev = null;
-                temp.sig = null;
+                Nodo<T> temp = primero.anterior;
+                Nodo<T> ultimo = temp.anterior;
+                ultimo.siguiente = primero;
+                primero.anterior = ultimo;
+                temp.anterior = null;
+                temp.siguiente = null;
             }
         }
     }
@@ -200,14 +163,14 @@ public class ListaCircular<T> implements Serializable {
             int indice = 0;
             Nodo<T> actual = primero;
             do { // se ejecuta al menos una vez
-                if (actual.dato.equals(elemento)){
+                if ( (T) actual.getDato() == elemento){
                     return  indice;
                 }
                 indice++;
-                actual = actual.sig;
+                actual = actual.siguiente;
             } while (actual != primero);
-            return -1;
         }
+        return -1;
     }
 
     /**
@@ -225,16 +188,16 @@ public class ListaCircular<T> implements Serializable {
 
                 do {
                     if (indice == posicion) {
-                        Nodo<T> nodoPrev = actual.prev;
-                        Nodo<T> nodoSig = actual.sig;
-                        nodoPrev.sig = nodoSig;
-                        nodoSig.prev = nodoPrev;
-                        actual.prev = null;
-                        actual.sig = null;
+                        Nodo<T> nodoPrev = actual.anterior;
+                        Nodo<T> nodoSig = actual.siguiente;
+                        nodoPrev.siguiente = nodoSig;
+                        nodoSig.anterior = nodoPrev;
+                        actual.anterior = null;
+                        actual.siguiente = null;
                         break;
                     }
                     indice++;
-                    actual = actual.sig;
+                    actual = actual.siguiente;
                 } while (actual != primero);
             }
         }
@@ -261,12 +224,34 @@ public class ListaCircular<T> implements Serializable {
         int indice = 0;
         do {
             if (indice == posicion) {
-                actual.dato = nuevoDato;
+                actual.setDato(nuevoDato);
                 break;
             }
             indice++;
-            actual = actual.sig;
+            actual = actual.siguiente;
         } while (actual != primero);
+    }
+    public void bubbleSort(){
+        Nodo<NaveEnemiga> actual = (Nodo<NaveEnemiga>) primero;
+        Nodo<NaveEnemiga> index;
+        NaveEnemiga temp;
+
+        if (this.tamanoLista() == 0){
+            System.out.println("Lista Vacia");
+        }else{
+            do{
+                index = actual.siguiente;
+                while(index != primero){
+                    if (actual.valor.getVida() < index.valor.getVida()){
+                        temp = actual.valor;
+                        actual.valor = index.valor;
+                        index.valor = temp;
+                    }
+                    index = index.siguiente;
+                }
+                actual = actual.siguiente;
+            } while (actual != primero);
+        }
     }
 }
 
