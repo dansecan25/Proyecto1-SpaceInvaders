@@ -71,8 +71,8 @@ public class NaveEnemiga {
         }
         nave.setX(nave.getX() - 27);
 
-        int randomBonusHP = random.nextInt(4);
-        vida += randomBonusHP;
+        int randomBonusHP = random.nextInt(4) + 1;
+        vida = randomBonusHP;
         puntosMorir += 5 * randomBonusHP;
         isBoss = true;
     }
@@ -110,6 +110,9 @@ public class NaveEnemiga {
                 if(isBoss && (currentClass.getClase().equals("C") || currentClass.getClase().equals("E"))){
                     HileraC.cambiarJefe();
                     //ClaseE.cambiarJefe();
+                }
+                if(isBoss && (currentClass.getClase().equals("A"))){
+                    //
                 }
             }else if(currentClass.getClase().equals("D")){
                 HileraD.ordenarNaves();

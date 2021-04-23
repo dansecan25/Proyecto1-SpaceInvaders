@@ -26,8 +26,7 @@ public class HileraA {
         naveJefe.toBoss();
 
     }
+    public HileraA(){
 
-
-
-
+    }
 }
