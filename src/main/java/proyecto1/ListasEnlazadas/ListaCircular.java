@@ -1,5 +1,7 @@
 package proyecto1.ListasEnlazadas;
 
+import proyecto1.Enemigos.NaveEnemiga;
+
 import java.io.Serializable;
 
 /**
@@ -238,16 +240,16 @@ public class ListaCircular<T> implements Serializable,Lista<T> {
             System.out.println("Lista Vacia");
         }else{
             do{
-                index = actual.sig;
+                index = actual.siguiente;
                 while(index != primero){
-                    if (actual.dato.getVida() < index.dato.getVida()){
-                        temp = actual.dato;
-                        actual.dato = index.dato;
-                        index.dato = temp;
+                    if (actual.valor.getVida() < index.valor.getVida()){
+                        temp = actual.valor;
+                        actual.valor = index.valor;
+                        index.valor = temp;
                     }
-                    index = index.sig;
+                    index = index.siguiente;
                 }
-                actual = actual.sig;
+                actual = actual.siguiente;
             } while (actual != primero);
         }
     }

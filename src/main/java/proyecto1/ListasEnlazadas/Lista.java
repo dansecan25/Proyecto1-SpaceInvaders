@@ -6,4 +6,5 @@ public interface Lista<T> {
     int tamanoLista();
     void agregarPrimero(T dato);
     void agregarUltimo(T dato);
+    void bubbleSort();
 }

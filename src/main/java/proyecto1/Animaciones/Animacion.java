@@ -4,9 +4,18 @@ import javafx.concurrent.Task;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.InvalidDirectionException;
 import proyecto1.ListasEnlazadas.Lista;
+import proyecto1.Ventanas.VentanaDeJuego;
 
+/**
+ * Clase Animación para el movimiento de las hileras de naves enemigas.
+ */
 public class Animacion {
     private static Task<Void> animacion;
+
+    /**
+     * Inicia el hilo secundario que controla en el que se maneja el movimiento de las naves
+     * @param naves Lista que contiene las naves
+     */
     public static void iniciarAnimacion(Lista<NaveEnemiga> naves){
         animacion = new Task<>() {
             @Override
@@ -24,6 +33,8 @@ public class Animacion {
                     } catch (InvalidDirectionException | InterruptedException e) {
                         e.printStackTrace();
                     }
+                } else{
+                    VentanaDeJuego.terminarJuego('L');
                 }
                 return null;
             }
@@ -35,6 +46,13 @@ public class Animacion {
         });
         new Thread(animacion).start();
     }
+
+    /**
+     * Método para mover una hilera de naves al mismo tiempo
+     * @param Dir Dirección en la que se moverán las naves
+     * @param listaNaves Lista que contiene las naves enemigas
+     * @throws InvalidDirectionException Excepción que indica que la dirección ingresada es inválida
+     */
     private static void moverNaves(char Dir,Lista<NaveEnemiga> listaNaves) throws InvalidDirectionException {
         for (int i = listaNaves.tamanoLista()-1; i >= 0; i--){
             NaveEnemiga nave = listaNaves.obtenerDato(i);

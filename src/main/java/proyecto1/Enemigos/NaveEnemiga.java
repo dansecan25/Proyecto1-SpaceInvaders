@@ -3,7 +3,6 @@ package proyecto1.Enemigos;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import proyecto1.Animaciones.currentClass;
@@ -47,6 +46,9 @@ public class NaveEnemiga {
         ventana = juego;
 
     }
+    public int getVida(){
+        return vida;
+    }
     public void setPosicionLista(int posicion){
         this.posicionLista = posicion;
     }
@@ -67,11 +69,16 @@ public class NaveEnemiga {
             case 3 -> nave.setImage(Imagenes.getInstancia().getUfoBoss4());
             default -> nave.setImage(Imagenes.getInstancia().getUfoBoss1());
         }
+        nave.setX(nave.getX() - 27);
 
         int randomBonusHP = random.nextInt(4);
         vida += randomBonusHP;
         puntosMorir += 5 * randomBonusHP;
+        isBoss = true;
     }
+
+    public boolean esBoss(){ return isBoss;}
+
     private ImageView spriteNaveAleatorio(){
         ImageView sprite;
         int spriteID = random.nextInt(3);

@@ -3,15 +3,16 @@ package proyecto1.Hileras;
 import javafx.scene.Group;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
-import proyecto1.ListasEnlazadas.ListaCircular;
+import proyecto1.ListasEnlazadas.ListFactory;
+import proyecto1.ListasEnlazadas.Lista;
 
 import java.io.FileNotFoundException;
 
 public class HileraD {
-    private final ListaCircular<NaveEnemiga> listaNaves;
+    private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
+    private final Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Doble");
     public HileraD(Group juego) throws FileNotFoundException {
-        listaNaves = new ListaCircular<>();
-        currentClass.setClass("D", listaNaves, null);
+        currentClass.setClass("D", listaNaves);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaNaves.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaNaves.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
@@ -26,17 +27,17 @@ public class HileraD {
 
         listaNaves.bubbleSort();
     }
-    public ListaCircular<NaveEnemiga> getListaNaves(){
+    public Lista<NaveEnemiga> getListaNaves(){
         return listaNaves;
     }
     public static void ordenarNaves(){
         double x;
-        ListaCircular<NaveEnemiga> lista = currentClass.getListaCirular();
+        Lista<NaveEnemiga> lista = currentClass.getLista();
         assert lista != null;
         lista.bubbleSort();
         for (int i = 0; i < lista.tamanoLista();i++){
-            if (lista.obtenerDato(i) != currentClass.getListaCirular().obtenerDato(i)){
-                x = currentClass.getListaCircularNaves().obtenerDato(i).getImagenNave().getX();
+            if (lista.obtenerDato(i) != currentClass.getLista().obtenerDato(i)){
+                x = currentClass.getLista().obtenerDato(i).getImagenNave().getX();
                 lista.obtenerDato(i).setPosicionLista(i);
                 lista.obtenerDato(i).getImagenNave().setX(x);
             }

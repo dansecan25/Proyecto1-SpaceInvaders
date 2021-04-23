@@ -15,9 +15,9 @@ import java.io.FileNotFoundException;
 public class HileraE {
     private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private final Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
-    private int x;
-    private int y;
-    private int grados = 0;
+    private final int x;
+    private final int y;
+    private final int grados = 0;
 
     /**
      * Instancia nueva Clase e.

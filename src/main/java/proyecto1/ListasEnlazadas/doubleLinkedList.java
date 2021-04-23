@@ -1,5 +1,7 @@
 package proyecto1.ListasEnlazadas;
 
+import proyecto1.Enemigos.NaveEnemiga;
+
 import java.io.Serializable;
 
 //Declaracion lista doble
@@ -130,6 +132,29 @@ public class doubleLinkedList<T> implements Serializable,Lista<T>{
         }
         return null;
 
+    }
+
+    public void bubbleSort(){
+        Nodo<NaveEnemiga> actual = (Nodo<NaveEnemiga>) primero;
+        Nodo<NaveEnemiga> index;
+        NaveEnemiga temp;
+
+        if (this.tamanoLista() == 0){
+            System.out.println("Lista Vacia");
+        }else{
+            do{
+                index = actual.siguiente;
+                while(index != primero){
+                    if (actual.valor.getVida() < index.valor.getVida()){
+                        temp = actual.valor;
+                        actual.valor = index.valor;
+                        index.valor = temp;
+                    }
+                    index = index.siguiente;
+                }
+                actual = actual.siguiente;
+            } while (actual != primero);
+        }
     }
 }
 

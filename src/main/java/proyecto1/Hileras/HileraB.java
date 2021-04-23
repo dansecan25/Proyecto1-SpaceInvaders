@@ -1,7 +1,9 @@
 package proyecto1.Hileras;
 
-import javafx.concurrent.Task;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.scene.Group;
+import javafx.util.Duration;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.ListasEnlazadas.ListFactory;
@@ -11,8 +13,7 @@ import java.io.FileNotFoundException;
 
 public class HileraB {
     private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
-    private static Task<Void> navesAleatorio;
-    private static Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
+    private static final Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
     private static NaveEnemiga naveAnt = null;
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
 
@@ -24,8 +25,9 @@ public class HileraB {
         listaB.agregarUltimo(new NaveEnemiga(550, 100, juego,4));
         cambioaBoss();
     }
+    /*
     public static void cambioaBoss(){
-        navesAleatorio = new Task<Void>() {
+        Task<Void> navesAleatorio = new Task<Void>() {
             @Override
             protected Void call() throws Exception {
                 Thread.sleep(2000);
@@ -46,6 +48,23 @@ public class HileraB {
             }
         });
         new Thread(navesAleatorio).start();
+    }*/
+    public static void cambioaBoss(){
+        Timeline navesAleatorio = new Timeline(new KeyFrame(Duration.seconds(2),aleatorio ->{
+            if(currentClass.getLista().tamanoLista()>0){
+                if(naveAnt != null){
+                    naveAnt.toNave();
+                }
+                double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
+                int naveRandom = (int) getRandom;
+                NaveEnemiga nave = listaB.obtenerDato(naveRandom);
+                nave.toBoss();
+                naveAnt = nave;
+                cambioaBoss();
+            }
+        }));
+        navesAleatorio.setCycleCount(Timeline.INDEFINITE);
+        navesAleatorio.play();
     }
 
 }

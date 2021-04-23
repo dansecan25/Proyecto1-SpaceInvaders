@@ -10,7 +10,7 @@ import proyecto1.Hileras.HileraE;
 import proyecto1.ListasEnlazadas.Lista;
 
 /**
- * The type Animacion clase e.
+ * Animación especial para la hilera tipo E.
  */
 public class AnimacionClaseE {
     private final HileraE hileraE;
@@ -19,8 +19,7 @@ public class AnimacionClaseE {
     private boolean pararAnimacion = false;
 
     /**
-     * Instantiates a new Animacion clase e.
-     *
+     * Constructor para instancias de AnimacionClaseE.
      * @param hileraE the clase e
      */
     public AnimacionClaseE(HileraE hileraE) {
@@ -28,9 +27,8 @@ public class AnimacionClaseE {
     }
 
     /**
-     * Rotar.
-     *
-     * @param theta the theta
+     * Método para hacer rotar la hilera de naves.
+     * @param theta Angulo.
      */
     public void rotar(double theta){
         Lista<NaveEnemiga> lista = hileraE.getLista();
@@ -50,13 +48,17 @@ public class AnimacionClaseE {
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
-            imagenNave.setY(y + 10);
+            imagenNave.setY(imagenNave.getY()+10);
             nave.toNave();
-            if (indice == centro) {
+            if (indice == centro && !nave.esBoss()) {
                 nave.toBoss();
             }
         }
     }
+
+    /**
+     * Método que comprueba la altura de la hilera.
+     */
     private void comprobarAltura(){
         Lista<NaveEnemiga> lista = hileraE.getLista();
         NaveEnemiga ultimo = lista.obtenerDato(lista.tamanoLista()-1);
@@ -69,9 +71,8 @@ public class AnimacionClaseE {
         comprobar.play();
     }
     /**
-     * Iniciar animacion.
+     * Método para iniciar la animacion.
      */
-
     public void iniciarAnimacion(){
         animacion = new Task<>() {
             @Override
