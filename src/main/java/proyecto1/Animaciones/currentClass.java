@@ -5,7 +5,7 @@ import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
 
 /**
- * The type Current class.
+ * Clase currentClass.
  */
 public class currentClass {
     private static String claseActual = "";
@@ -13,8 +13,7 @@ public class currentClass {
     private static Lista<NaveEnemiga> listaActual;
     private static int nivel=1;
     /**
-     * Set class.
-     *
+     * Setter para indicar cual es la hilera actual.
      * @param claseActual the clase actual
      */
     public static void setClass(String claseActual,Lista<NaveEnemiga> lista) {
@@ -23,17 +22,26 @@ public class currentClass {
         listaActual = lista;
     }
     /**
-     * Get simpleLinkedList.
-     *
-     * @return the simpleLinkedList listabasic.
+     * Retorna la lista actual
+     * @return listaActual : Lista<NaveEnemiga>
      */
 
     public static Lista<NaveEnemiga> getLista(){
         return listaActual;
     }
+
+    /**
+     * Retorna el tipo de hilera actual
+     * @return claseActual : String
+     */
     public static String getClase(){
         return claseActual;
     }
+
+    /**
+     * Reordena la lista
+     * @param indice: int
+     */
     public static void reordenar(int indice){
             while(indice < listaActual.tamanoLista()-1){
                 NaveEnemiga data = listaActual.obtenerDato(indice + 1);
@@ -43,9 +51,19 @@ public class currentClass {
                 indice++;
             }
         }
+
+    /**
+     * Set de la variable que indica el nivel actual
+      * @param niv: int
+     */
     public static void setNivel(int niv){
         nivel = niv;
     }
+
+    /**
+     * Retorna el nivel actual
+     * @return nivel: int
+     */
     public int getNivel(){
         return nivel;
     }

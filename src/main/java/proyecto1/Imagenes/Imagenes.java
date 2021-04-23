@@ -1,7 +1,6 @@
 package proyecto1.Imagenes;
 
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 
 import java.io.InputStream;
 
@@ -85,6 +84,11 @@ public class Imagenes{
         naveAnimacion = cargarImagen("/Imagenes/navePantallaPrincipal.png");
     }
 
+    /**
+     * Carga imagenes
+     * @param nombreImagen:String
+     * @return resultado: Image
+     */
     private Image cargarImagen(String nombreImagen){
         Image resultado = null;
         try {
@@ -95,14 +99,6 @@ public class Imagenes{
         }
         return resultado;
     }
-
-//    public Image cambiarTamano(Image image) {
-//        ImageView imageView = new ImageView(image);
-//        imageView.setPreserveRatio(true);
-//        imageView.setFitWidth(image.getWidth()* parametroEncoger);
-//        imageView.setFitHeight(image.getHeight()* parametroEncoger);
-//        return imageView.snapshot(null, null);
-//    }
 
     /**
      * Obtener nave usuario.
@@ -275,6 +271,10 @@ public class Imagenes{
      */
     public Image getBotonExit() {return botonExit;}
 
+    /**
+     * Obtiene naveAnimacion
+     * @return naveAnimacion: Image
+     */
     public Image getNaveAnimacion(){return naveAnimacion;}
 }
 
