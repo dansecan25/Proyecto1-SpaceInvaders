@@ -1,7 +1,6 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -13,15 +12,18 @@ import java.io.FileNotFoundException;
 /**
  * The type Clase c.
  */
-public class HileraC {
+public class HileraC implements Hilera{
     private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
+    private final Lista<NaveEnemiga> listaNaves;
+    private int x;
+    private int y;
     /**
      * Iniciar clase c.
      *
      * @param juego the juego
      */
     public HileraC(Group juego) throws FileNotFoundException, IndiceInvalidoException {
-        Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Circular");
+        listaNaves = listFactory.crearLista("Circular");
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaNaves.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaNaves.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
@@ -32,7 +34,6 @@ public class HileraC {
         naveBoss.toBoss();
 
         currentClass.setClass("C", listaNaves);
-        Animacion.iniciarAnimacion(listaNaves);
     }
     public static void cambiarJefe() throws IndiceInvalidoException {
         Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
@@ -50,5 +51,23 @@ public class HileraC {
             naveBoss.setPosicionLista(posicion);
         }
     }
-
+    public Lista<NaveEnemiga> getLista(){
+        return listaNaves;
+    }
+    public int getX(){
+        return x;
+    }
+    public int getY(){
+        return y;
+    }
+    public void movimientoLateral(char Dir){
+        if (Dir == 'D'){
+            this.x += 1;
+        }else{
+            this.x -= 1;
+        }
+    }
+    public void bajarHilera(){
+        this.y += 1;
+    }
 }

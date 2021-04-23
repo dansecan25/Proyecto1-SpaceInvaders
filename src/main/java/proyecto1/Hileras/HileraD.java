@@ -28,7 +28,6 @@ public class HileraD {
             listaNaves.bubbleSort();
         }
         currentClass.setClass("D", listaNaves);
-        Animacion.iniciarAnimacion(listaNaves);
     }
     public Lista<NaveEnemiga> getListaNaves(){
         return listaNaves;

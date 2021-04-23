@@ -1,12 +1,12 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
+
 import java.io.FileNotFoundException;
 import java.util.Random;
 
@@ -35,7 +35,6 @@ public class HileraA {
             naveJefe.toBoss();
         }
         currentClass.setClass("A", listaA);
-        Animacion.iniciarAnimacion(listaA);
     }
 
 

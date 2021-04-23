@@ -1,5 +1,7 @@
 package proyecto1.ListasEnlazadas;
 
+import proyecto1.Excepciones.IndiceInvalidoException;
+
 import java.io.Serializable;
 
 //Declaracion lista doble
@@ -82,9 +84,8 @@ public class doubleLinkedList<T> implements Serializable,Lista<T>{
         largo--;
     }
 
-    @Override
-    public T obtenerDato(int posicion) {
-        return null;
+    public T obtenerDato(int posicion) throws IndiceInvalidoException {
+        throw new IndiceInvalidoException("holi");
     }
 
     //Borrar dato en indice específico

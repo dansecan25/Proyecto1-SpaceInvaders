@@ -4,7 +4,6 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.util.Duration;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -27,7 +26,6 @@ public class HileraB {
         cambioaBoss();
 
         currentClass.setClass("B", listaB);
-        Animacion.iniciarAnimacion(listaB);
     }
     /*
     public static void cambioaBoss(){

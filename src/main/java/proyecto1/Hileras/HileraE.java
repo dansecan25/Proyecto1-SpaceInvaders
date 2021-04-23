@@ -68,7 +68,7 @@ public class HileraE {
     }
 
     /**
-     * Baja la hilera verticalmente.
+     * Mueve la hilera verticalmente hacia abajo.
      */
     public void bajarHilera(){
         this.y += 1;

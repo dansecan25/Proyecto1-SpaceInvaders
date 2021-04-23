@@ -10,6 +10,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -65,7 +66,8 @@ public class VentanaDeJuego {
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
 
-        new HileraC(ventanaDeJuego);
+        HileraBasic primeraHilera = new HileraBasic(ventanaDeJuego,340,100);
+        new Animacion(primeraHilera).iniciarAnimacion();
         setCLASE();
 
         crearClases(ventanaDeJuego);
@@ -127,7 +129,7 @@ public class VentanaDeJuego {
                 System.out.println("Hilera: "+hilera);
                 if (hilera == 0){ //hilera basic
                     try {
-                        new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
+                        new HileraBasic(ventanaDeJuego,340,100); //inicia la hilera Basic
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();

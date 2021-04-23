@@ -1,5 +1,7 @@
 package proyecto1.ListasEnlazadas;
 
+import proyecto1.Excepciones.IndiceInvalidoException;
+
 //Declaración de la lista simple
 public class simpleLinkedList<T> implements Lista<T>{
 
@@ -117,7 +119,7 @@ public class simpleLinkedList<T> implements Lista<T>{
         largo--;
     }
     //Obtener valor especifico del índice
-    public T obtenerDato(int i){
+    public T obtenerDato(int i) throws IndiceInvalidoException{
         if (i >= largo){
             try {
                 throw new Exception();
@@ -126,13 +128,13 @@ public class simpleLinkedList<T> implements Lista<T>{
             }
         }
         Nodo<T> aux= primero;
-        while (aux != primero ){
+        while (aux != primero){
             if(aux.getPosicion() == i){
                 return aux.getDato();
             }
             aux= aux.getSiguiente();
         }
-        return null;
+        throw new IndiceInvalidoException("Posicion sobrepasa el indice");
     }
     //Borrar elemento específico contenido en el indice
     public void borrarDato(T t){
