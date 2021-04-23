@@ -1,6 +1,7 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
+import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -12,7 +13,6 @@ public class HileraD {
     private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private final Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Doble");
     public HileraD(Group juego) throws FileNotFoundException, IndiceInvalidoException {
-        currentClass.setClass("D", listaNaves);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaNaves.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaNaves.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
@@ -27,6 +27,8 @@ public class HileraD {
             listaNaves.obtenerDato(4).toBoss();
             listaNaves.bubbleSort();
         }
+        currentClass.setClass("D", listaNaves);
+        Animacion.iniciarAnimacion(listaNaves);
     }
     public Lista<NaveEnemiga> getListaNaves(){
         return listaNaves;

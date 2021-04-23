@@ -22,7 +22,6 @@ public class HileraC {
      */
     public HileraC(Group juego) throws FileNotFoundException, IndiceInvalidoException {
         Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Circular");
-        currentClass.setClass("C", listaNaves);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaNaves.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaNaves.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
@@ -32,6 +31,7 @@ public class HileraC {
         NaveEnemiga naveBoss = listaNaves.obtenerDato(2);
         naveBoss.toBoss();
 
+        currentClass.setClass("C", listaNaves);
         Animacion.iniciarAnimacion(listaNaves);
     }
     public static void cambiarJefe() throws IndiceInvalidoException {

@@ -8,6 +8,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Musica.ReproductorMusica;
 
@@ -57,7 +58,7 @@ public class CargarVentanaPrincipal {
             Lobby.hide(); //se esconde la ventana principal
             try {
                 VentanaDeJuego.iniciarVentanaDeJuego(Lobby); //se abre la ventana de juego
-            } catch (FileNotFoundException fileNotFoundException) {
+            } catch (FileNotFoundException | IndiceInvalidoException fileNotFoundException) {
                 fileNotFoundException.printStackTrace();
             }
         });

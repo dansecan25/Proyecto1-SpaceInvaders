@@ -4,6 +4,7 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.Group;
 import javafx.util.Duration;
+import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -18,13 +19,15 @@ public class HileraB {
     private static NaveEnemiga naveAnt = null;
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
 
-        currentClass.setClass("B", listaB);
         listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
         listaB.agregarUltimo(new NaveEnemiga(220, 100, juego,1));
         listaB.agregarUltimo(new NaveEnemiga(330, 100, juego,2));
         listaB.agregarUltimo(new NaveEnemiga(440, 100, juego,3));
         listaB.agregarUltimo(new NaveEnemiga(550, 100, juego,4));
         cambioaBoss();
+
+        currentClass.setClass("B", listaB);
+        Animacion.iniciarAnimacion(listaB);
     }
     /*
     public static void cambioaBoss(){

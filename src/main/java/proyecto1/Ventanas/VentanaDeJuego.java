@@ -10,7 +10,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Excepciones.IndiceInvalidoException;
@@ -18,6 +17,7 @@ import proyecto1.Hileras.*;
 import proyecto1.Imagenes.Fondo;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Usuario.NaveUsuario;
+
 import java.io.FileNotFoundException;
 
 /**
@@ -39,7 +39,7 @@ public class VentanaDeJuego {
      * @param mainStage the main stage
      * @throws FileNotFoundException the file not found exception
      */
-    public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
+    public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException, IndiceInvalidoException {
         stagePrincipal = mainStage;
         ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
@@ -65,8 +65,7 @@ public class VentanaDeJuego {
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
 
-        HileraE hileraE = new HileraE(ventanaDeJuego, 340, 200); //Inicia la hilera E
-        new AnimacionClaseE(hileraE).iniciarAnimacion();
+        new HileraC(ventanaDeJuego);
         setCLASE();
 
         crearClases(ventanaDeJuego);
@@ -129,7 +128,6 @@ public class VentanaDeJuego {
                 if (hilera == 0){ //hilera basic
                     try {
                         new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
-                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -138,7 +136,6 @@ public class VentanaDeJuego {
                 else if(hilera == 1){ //clase A
                     try{
                         new HileraA(ventanaDeJuego); //inicia la hilera A
-                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     }catch (FileNotFoundException | IndiceInvalidoException e){
                         e.printStackTrace();
@@ -147,7 +144,6 @@ public class VentanaDeJuego {
                 else if(hilera == 2){ //clase B
                     try {
                         HileraB.IniciarClaseB(ventanaDeJuego); //inicia la hilera B
-                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -156,7 +152,6 @@ public class VentanaDeJuego {
                 else if(hilera == 3){ //clase C
                     try {
                         new HileraC(ventanaDeJuego); //inicia la hilera C
-                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException | IndiceInvalidoException e) {
                         e.printStackTrace();
@@ -165,7 +160,6 @@ public class VentanaDeJuego {
                 else if (hilera == 4){ //Clase D
                     try {
                         new HileraD(ventanaDeJuego); //inicia la hilera D
-                        Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException | IndiceInvalidoException e) {
                         e.printStackTrace();

@@ -1,6 +1,7 @@
 package proyecto1.Hileras;
 
 import javafx.scene.Group;
+import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
 import proyecto1.ListasEnlazadas.ListFactory;
@@ -19,11 +20,14 @@ public class HileraBasic {
      */
     public HileraBasic(Group juego) throws FileNotFoundException{
         Lista<NaveEnemiga> listaBasic = listFactory.crearLista("Simple");
-        currentClass.setClass("BA", listaBasic);
+
         listaBasic.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
         listaBasic.agregarUltimo(new NaveEnemiga(220, 100, juego, 1));
         listaBasic.agregarUltimo(new NaveEnemiga(330, 100, juego, 2));
         listaBasic.agregarUltimo(new NaveEnemiga(440, 100, juego, 3));
         listaBasic.agregarUltimo(new NaveEnemiga(550, 100, juego, 4));
+
+        currentClass.setClass("BA", listaBasic);
+        Animacion.iniciarAnimacion(listaBasic);
     }
 }
