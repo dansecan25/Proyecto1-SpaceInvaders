@@ -34,6 +34,8 @@ public class VentanaDeJuego {
     private static NaveUsuario jugador;
     private static Stage GameStage;
     private static Stage stagePrincipal;
+    private static int nivel = 1;
+    private static Text nivelLabel = new Text();
     /**
      * Iniciar ventana de juego.
      *
@@ -70,7 +72,7 @@ public class VentanaDeJuego {
         Animacion.iniciarAnimacion(currentClass.getLista());
         setCLASE();
 
-        crearClases(ventanaDeJuego);
+        crearClases(ventanaDeJuego, nivelLabel);
         String puntaje = Integer.toString(pts);
         puntos.setText(puntaje);
         puntos.setX(105);
@@ -88,8 +90,19 @@ public class VentanaDeJuego {
         FontWeight fontWeight1 = FontWeight.BOLD;
         Font font2 = Font.font("Arial", fontWeight1,fontSize2);
         cla.setFont(font2);
+
+        String nivelString = Integer.toString(nivel);
+        nivelLabel.setText(nivelString);
+        nivelLabel.setX(400);
+        nivelLabel.setY(50);
+        nivelLabel.setFill(Color.valueOf("#55d147"));
+        nivelLabel.setFont(font1);
+
+
+
         ventanaDeJuego.getChildren().add(cla);
         ventanaDeJuego.getChildren().add(puntos);
+        ventanaDeJuego.getChildren().add(nivelLabel);
     }
     private static void generarHilera(Group ventanaDeJuego){
         if (!estado) {
@@ -155,25 +168,26 @@ public class VentanaDeJuego {
      *
      * @param ventanaDeJuego the ventana de juego
      */
-    public static void crearClases(Group ventanaDeJuego){
+    public static void crearClases(Group ventanaDeJuego, Text nivelLabel){
         //Hilo para generar las clases
         Timeline clasesAleatoriedad = new Timeline(new KeyFrame(Duration.seconds(1),a->{
                 if (pts>5){
-                    Fondo.setFondo(2);
-                    cambiarNivel(2);
+                    nivel = 2;
                 }
                 if (pts>=100){
-                    Fondo.setFondo(3);
-                    cambiarNivel(3);
+                    nivel = 3;
                 }
                 if (pts>=200){
-                    Fondo.setFondo(4);
-                    cambiarNivel(4);
+                    nivel = 4;
                 }
                 if (pts>=300){
-                    Fondo.setFondo(5);
-                    cambiarNivel(5);
+                    nivel = 5;
                 }
+            String nivelString = Integer.toString(nivel);
+            nivelLabel.setText(nivelString);
+            Fondo.setFondo(nivel);
+            cambiarNivel(nivel);
+
             if (currentClass.getLista().tamanoLista() > 0) {
                 estado = true; //hay enemigos en la ventana
             }else{
@@ -200,22 +214,6 @@ public class VentanaDeJuego {
     }
     public static void cambiarNivel(int nivel){
         currentClass.setNivel(nivel);
-        ImageView fondo = null;
-        if(nivel==2){
-            fondo = new ImageView(Imagenes.getInstancia().getFondo2());
-            //fondo.setImage(Imagenes.getInstancia().getFondo2());
-        }else if(nivel == 3){
-            fondo = Fondo.getFondo();
-            fondo.setImage(Imagenes.getInstancia().getFondo4());
-
-        }else if(nivel == 4){
-            //ImageView fondo = Fondo.getFondo();
-            //fondo.setImage(Imagenes.getInstancia().getFondo3());
-        }else if(nivel==5){
-            //ImageView fondo = Fondo.getFondo();
-            //fondo.setImage(Imagenes.getInstancia().getFondo5());
-        }
-        //Fondo.setFondo(fondo);
     }
     public static void terminarJuego(char condicion){
         //Llamar ventana game over
