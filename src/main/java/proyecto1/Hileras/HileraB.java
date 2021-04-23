@@ -16,7 +16,6 @@ public class HileraB {
     private static final Lista<NaveEnemiga> listaB = listFactory.crearLista("Doble");
     private static NaveEnemiga naveAnt = null;
     public static void IniciarClaseB(Group juego) throws FileNotFoundException {
-
         currentClass.setClass("B", listaB);
         listaB.agregarUltimo(new NaveEnemiga(110, 100, juego,0));
         listaB.agregarUltimo(new NaveEnemiga(220, 100, juego,1));
@@ -52,14 +51,20 @@ public class HileraB {
     public static void cambioaBoss(){
         Timeline navesAleatorio = new Timeline(new KeyFrame(Duration.seconds(3),aleatorio ->{
             if(currentClass.getLista().tamanoLista()>0){
-                if(naveAnt != null){
-                    naveAnt.toNave();
+                int i=0;
+                while(i!=currentClass.getLista().tamanoLista()-1){
+                    NaveEnemiga comprobar = listaB.obtenerDato(i);
+                    System.out.println("Nave a revisar: "+comprobar);
+                    if(comprobar.esBoss()){
+                        naveAnt = comprobar;
+                        break;
+                    }else i+=1;
                 }
                 double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
-                NaveEnemiga nave = listaB.obtenerDato(naveRandom);
-                naveAnt = nave;
-                nave.toBoss();
+                NaveEnemiga nuevoJefe = listaB.obtenerDato(naveRandom);
+                nuevoJefe.toBoss();
+                naveAnt.toNave();
                 cambioaBoss();
             }
         }));

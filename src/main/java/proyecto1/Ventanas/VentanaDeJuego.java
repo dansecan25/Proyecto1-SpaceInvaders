@@ -1,5 +1,7 @@
 package proyecto1.Ventanas;
 
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,6 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
@@ -88,6 +91,65 @@ public class VentanaDeJuego {
         ventanaDeJuego.getChildren().add(cla);
         ventanaDeJuego.getChildren().add(puntos);
     }
+    private static void generarHilera(Group ventanaDeJuego){
+        if (!estado) {
+//                double hill = Math.random()*5;
+//                int hilera = (int) hill+1;
+            int hilera = 2;
+            System.out.println("Hilera: "+hilera);
+            if (hilera == 0){ //hilera basic
+                try {
+                    HileraBasic naves = new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
+                    Animacion.iniciarAnimacion(currentClass.getLista());
+                    setCLASE();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(hilera == 1){ //clase A
+                new HileraA(ventanaDeJuego); //inicia la hilera A
+                Animacion.iniciarAnimacion(currentClass.getLista());
+                setCLASE();
+            }
+            else if(hilera == 2){ //clase B
+                try {
+                    HileraB.IniciarClaseB(ventanaDeJuego); //inicia la hilera B
+                    Animacion.iniciarAnimacion(currentClass.getLista());
+                    setCLASE();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if(hilera == 3){ //clase C
+                try {
+                    new HileraC(ventanaDeJuego); //inicia la hilera C
+                    Animacion.iniciarAnimacion(currentClass.getLista());
+                    setCLASE();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else if (hilera == 4){ //Clase D
+                try {
+                    new HileraD(ventanaDeJuego); //inicia la hilera D
+                    Animacion.iniciarAnimacion(currentClass.getLista());
+                    setCLASE();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+            else{
+                try {
+                    HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300); //Inicia la hilera E
+                    AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
+                    animacionClaseE.iniciarAnimacion();
+                    setCLASE();
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
     /**
      * Crear clases.
      *
@@ -95,12 +157,8 @@ public class VentanaDeJuego {
      */
     public static void crearClases(Group ventanaDeJuego){
         //Hilo para generar las clases
-        Task<Void> clasesAleatorias = new Task<>() {
-            @Override
-            protected Void call() throws Exception {
-                System.out.println("Inicia el hilo");
-                System.out.println("Lista: "+currentClass.getLista());
-                if (pts>250){
+        Timeline clasesAleatoriedad = new Timeline(new KeyFrame(Duration.seconds(1),a->{
+            if (pts>250){
                     cambiarNivel(2);
                 }
                 if (pts>=750){
@@ -112,76 +170,15 @@ public class VentanaDeJuego {
                 if (pts>=2750){
                     cambiarNivel(5);
                 }
-                System.out.println("Lista*: " + currentClass.getLista());
-                if (currentClass.getLista().tamanoLista() > 0) {
-                    estado = true; //hay enemigos en la ventana
-                    Thread.sleep(1000);
-                } else {
-                    estado = false; //no hay enemigos en la ventana
-                }
-                return null;
+            if (currentClass.getLista().tamanoLista() > 0) {
+                estado = true; //hay enemigos en la ventana
+            }else{
+                estado=false;
+                generarHilera(ventanaDeJuego);
             }
-        };
-        clasesAleatorias.setOnSucceeded(event -> {
-            if (!estado) {
-                double hill = Math.random()*5;
-                int hilera = (int) hill+1;
-                System.out.println("Hilera: "+hilera);
-                if (hilera == 0){ //hilera basic
-                    try {
-                        HileraBasic naves = new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
-                        Animacion.iniciarAnimacion(currentClass.getLista());
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if(hilera == 1){ //clase A
-                    new HileraA(ventanaDeJuego); //inicia la hilera A
-                    Animacion.iniciarAnimacion(currentClass.getLista());
-                    setCLASE();
-                }
-                else if(hilera == 2){ //clase B
-                    try {
-                        HileraB.IniciarClaseB(ventanaDeJuego); //inicia la hilera B
-                        Animacion.iniciarAnimacion(currentClass.getLista());
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if(hilera == 3){ //clase C
-                    try {
-                        new HileraC(ventanaDeJuego); //inicia la hilera C
-                        Animacion.iniciarAnimacion(currentClass.getLista());
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else if (hilera == 4){ //Clase D
-                    try {
-                        new HileraD(ventanaDeJuego); //inicia la hilera D
-                        Animacion.iniciarAnimacion(currentClass.getLista());
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-                else{
-                    try {
-                        HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300); //Inicia la hilera E
-                        AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
-                        animacionClaseE.iniciarAnimacion();
-                        setCLASE();
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-            crearClases(ventanaDeJuego); //vuelve a inciar el metodo que inicia el hilo
-        });
-        new Thread(clasesAleatorias).start();
+        }));
+        clasesAleatoriedad.setCycleCount(Timeline.INDEFINITE);
+        clasesAleatoriedad.play();
     }
     public static NaveUsuario getJugador(){
         return jugador;
