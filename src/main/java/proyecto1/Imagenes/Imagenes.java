@@ -1,6 +1,7 @@
 package proyecto1.Imagenes;
 
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 import java.io.InputStream;
 
@@ -223,7 +224,7 @@ public class Imagenes{
      * @return fondo 2
      */
     public Image getFondo2() {
-        return fondo1;
+        return fondo2;
     }
 
     /**
@@ -232,7 +233,7 @@ public class Imagenes{
      * @return fondo 3
      */
     public Image getFondo3() {
-        return fondo1;
+        return fondo3;
     }
 
     /**
@@ -241,7 +242,7 @@ public class Imagenes{
      * @return fondo 4
      */
     public Image getFondo4() {
-        return fondo1;
+        return fondo4;
     }
 
     /**
@@ -250,7 +251,7 @@ public class Imagenes{
      * @return fondo 5
      */
     public Image getFondo5() {
-        return fondo1;
+        return fondo5;
     }
 
     /**

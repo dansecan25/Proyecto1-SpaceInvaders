@@ -158,16 +158,20 @@ public class VentanaDeJuego {
     public static void crearClases(Group ventanaDeJuego){
         //Hilo para generar las clases
         Timeline clasesAleatoriedad = new Timeline(new KeyFrame(Duration.seconds(1),a->{
-            if (pts>250){
+                if (pts>5){
+                    Fondo.setFondo(2);
                     cambiarNivel(2);
                 }
-                if (pts>=750){
+                if (pts>=100){
+                    Fondo.setFondo(3);
                     cambiarNivel(3);
                 }
-                if (pts>=1500){
+                if (pts>=200){
+                    Fondo.setFondo(4);
                     cambiarNivel(4);
                 }
-                if (pts>=2750){
+                if (pts>=300){
+                    Fondo.setFondo(5);
                     cambiarNivel(5);
                 }
             if (currentClass.getLista().tamanoLista() > 0) {
@@ -196,20 +200,22 @@ public class VentanaDeJuego {
     }
     public static void cambiarNivel(int nivel){
         currentClass.setNivel(nivel);
+        ImageView fondo = null;
         if(nivel==2){
-            ImageView fondo = Fondo.getFondo();
-            fondo.setImage(Imagenes.getInstancia().getFondo2());
+            fondo = new ImageView(Imagenes.getInstancia().getFondo2());
+            //fondo.setImage(Imagenes.getInstancia().getFondo2());
         }else if(nivel == 3){
-            ImageView fondo = Fondo.getFondo();
+            fondo = Fondo.getFondo();
             fondo.setImage(Imagenes.getInstancia().getFondo4());
 
         }else if(nivel == 4){
-            ImageView fondo = Fondo.getFondo();
-            fondo.setImage(Imagenes.getInstancia().getFondo3());
+            //ImageView fondo = Fondo.getFondo();
+            //fondo.setImage(Imagenes.getInstancia().getFondo3());
         }else if(nivel==5){
-            ImageView fondo = Fondo.getFondo();
-            fondo.setImage(Imagenes.getInstancia().getFondo5());
+            //ImageView fondo = Fondo.getFondo();
+            //fondo.setImage(Imagenes.getInstancia().getFondo5());
         }
+        //Fondo.setFondo(fondo);
     }
     public static void terminarJuego(char condicion){
         //Llamar ventana game over
