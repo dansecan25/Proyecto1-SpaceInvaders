@@ -95,7 +95,7 @@ public class VentanaDeJuego {
         if (!estado) {
 //                double hill = Math.random()*5;
 //                int hilera = (int) hill+1;
-            int hilera = 2;
+            int hilera = 5;
             System.out.println("Hilera: "+hilera);
             if (hilera == 0){ //hilera basic
                 try {
