@@ -33,10 +33,12 @@ public class Imagenes{
     private Image fondo3 = null;
     private Image fondo4 = null;
     private Image fondo5 = null;
+    private Image GO= null;
     private Image laser = null;
     private Image explosion = null;
     private Image botonExit = null;
     private Image naveAnimacion=null;
+
     //private double parametroEncoger = 0.8;
 
 
@@ -78,6 +80,7 @@ public class Imagenes{
         fondo3 = cargarImagen("/Imagenes/fondo3.png");
         fondo4 = cargarImagen("/Imagenes/fondo4.png");
         fondo5 = cargarImagen("/Imagenes/fondo5.png");
+        GO= cargarImagen("/Imagenes/GO.png");
         laser = cargarImagen("/Imagenes/laser.png");
         explosion = cargarImagen("/Imagenes/explosion.png");
         botonExit = cargarImagen("/Imagenes/botonEXIT.png");
@@ -129,6 +132,15 @@ public class Imagenes{
     public Image getFondo() {
         return fondo;
     }
+
+
+    /**
+     * Obtener GameOver.
+     *
+     * @return GO
+     */
+    public Image getGO(){return GO;}
+
 
     /**
      * Obtener boton start.

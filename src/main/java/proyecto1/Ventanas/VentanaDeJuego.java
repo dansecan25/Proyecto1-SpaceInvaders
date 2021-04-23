@@ -55,6 +55,10 @@ public class VentanaDeJuego {
         });
         botonExit.setLayoutX(765); //define la posicion en x del boton
         botonExit.setLayoutY(8); //posicion y
+
+        //BORRAR
+        VentanaGameOver.VentanaGameOver(ventanaDeJuego);
+
         botonExit.setGraphic(EXIT);
         botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
@@ -87,6 +91,7 @@ public class VentanaDeJuego {
         cla.setFont(font2);
         ventanaDeJuego.getChildren().add(cla);
         ventanaDeJuego.getChildren().add(puntos);
+
     }
     /**
      * Crear clases.
