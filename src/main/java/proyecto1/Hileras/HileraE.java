@@ -16,7 +16,7 @@ public class HileraE {
     private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private final Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
     private final int x;
-    private final int y;
+    private int y;
     private final int grados = 0;
 
     /**
@@ -38,7 +38,6 @@ public class HileraE {
         lista.agregarPrimero(boss);
         lista.agregarPrimero(new NaveEnemiga(x+60, y, juego,3));
         lista.agregarPrimero(new NaveEnemiga(x+120, y, juego,4));
-
     }
 
     /**
@@ -66,5 +65,12 @@ public class HileraE {
      */
     public int getY(){
         return y;
+    }
+
+    /**
+     * Baja la hilera verticalmente.
+     */
+    public void bajarHilera(){
+        this.y += 1;
     }
 }

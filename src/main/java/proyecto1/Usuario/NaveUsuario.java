@@ -115,7 +115,7 @@ public class NaveUsuario {
         };
         animacionLaser.setOnSucceeded(event -> {
             if (animacionLaser.isDone()){
-                new Thread(animacionLaser).start();
+                animacionLaser();
             }
         });
         new Thread(animacionLaser).start();

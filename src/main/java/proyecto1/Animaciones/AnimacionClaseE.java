@@ -1,13 +1,14 @@
 package proyecto1.Animaciones;
 
-import javafx.animation.KeyFrame;
-import javafx.animation.Timeline;
 import javafx.concurrent.Task;
 import javafx.scene.image.ImageView;
-import javafx.util.Duration;
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.Hileras.HileraE;
 import proyecto1.ListasEnlazadas.Lista;
+import proyecto1.Ventanas.VentanaDeJuego;
+
+import java.io.FileNotFoundException;
 
 /**
  * Animación especial para la hilera tipo E.
@@ -30,26 +31,24 @@ public class AnimacionClaseE {
      * Método para hacer rotar la hilera de naves.
      * @param theta Angulo.
      */
-    public void rotar(double theta){
+    public void rotar(double theta) throws IndiceInvalidoException, FileNotFoundException {
         Lista<NaveEnemiga> lista = hileraE.getLista();
         int tamlista = lista.tamanoLista();
         int x = hileraE.getX();
         int y = hileraE.getY();
         int centro = tamlista/2;
-        System.out.println(centro);
+        System.out.println("Centro " + centro);
         double raiz2 = Math.sqrt(2);
 
         for (int indice = 0; indice < tamlista; indice++){
             comprobarAltura();
-            int distanciaAlCentro = 80*(centro - indice);
+            int distanciaAlCentro = 85*(centro - indice);
             double rotacionX = distanciaAlCentro * Math.cos(theta);
             double rotacionY = distanciaAlCentro * Math.sin(theta);
             NaveEnemiga nave = lista.obtenerDato(indice); // type casting
             ImageView imagenNave = nave.getImagenNave();
             imagenNave.setX(x + rotacionX);
             imagenNave.setY(y + rotacionY);
-            imagenNave.setY(imagenNave.getY()+10);
-            nave.toNave();
             if (indice == centro && !nave.esBoss()) {
                 nave.toBoss();
             }
@@ -57,35 +56,32 @@ public class AnimacionClaseE {
     }
 
     /**
-     * Método que comprueba la altura de la hilera.
+     * Método que comprueba la altura de la hilera
+     * @throws FileNotFoundException Archivo no encontrado
      */
-    private void comprobarAltura(){
-        Lista<NaveEnemiga> lista = hileraE.getLista();
-        NaveEnemiga ultimo = lista.obtenerDato(lista.tamanoLista()-1);
-        Timeline comprobar = new Timeline(new KeyFrame(Duration.millis(100),terminar ->{
-            if (ultimo.getImagenNave().getY() > 710){
-                pararAnimacion = true;
-            }
-        }));
-        comprobar.setCycleCount(Timeline.INDEFINITE);
-        comprobar.play();
+    private void comprobarAltura() throws FileNotFoundException {
+        if (hileraE.getY() > 710){
+            pararAnimacion = true;
+            VentanaDeJuego.terminarJuego('L');
+        }
     }
     /**
      * Método para iniciar la animacion.
      */
-    public void iniciarAnimacion(){
+    public void iniciarAnimacion() {
         animacion = new Task<>() {
             @Override
             public Void call(){
                 if (!pararAnimacion) {
                     try {
-                        Thread.sleep(250);
                         anguloActual = anguloActual + Math.PI / 12;
                         if (anguloActual > Math.PI * 2) {
                             anguloActual = anguloActual - Math.PI * 2;
                         }
                         rotar(anguloActual);
-                    } catch (InterruptedException e) {
+                        hileraE.bajarHilera();
+                        Thread.sleep(50);
+                    }catch (InterruptedException | IndiceInvalidoException | FileNotFoundException e) {
                         System.out.println(e.getMessage());
                     }
                 }

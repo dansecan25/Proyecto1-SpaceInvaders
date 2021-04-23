@@ -1,6 +1,7 @@
 package proyecto1.Animaciones;
 
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
 
@@ -34,7 +35,7 @@ public class currentClass {
     public static String getClase(){
         return claseActual;
     }
-    public static void reordenar(int indice){
+    public static void reordenar(int indice) throws IndiceInvalidoException {
             while(indice < listaActual.tamanoLista()-1){
                 NaveEnemiga data = listaActual.obtenerDato(indice + 1);
                 if (data != null){

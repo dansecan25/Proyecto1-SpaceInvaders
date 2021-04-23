@@ -2,9 +2,12 @@ package proyecto1.Animaciones;
 
 import javafx.concurrent.Task;
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.Excepciones.InvalidDirectionException;
 import proyecto1.ListasEnlazadas.Lista;
 import proyecto1.Ventanas.VentanaDeJuego;
+
+import java.io.FileNotFoundException;
 
 /**
  * Clase Animación para el movimiento de las hileras de naves enemigas.
@@ -19,7 +22,7 @@ public class Animacion {
     public static void iniciarAnimacion(Lista<NaveEnemiga> naves){
         animacion = new Task<>() {
             @Override
-            public Void call() {
+            public Void call() throws FileNotFoundException, IndiceInvalidoException {
                 if (naves.obtenerDato(0).getImagenNave().getY() < 710) {
                     try {
                         moverNaves('D',naves);
@@ -53,7 +56,7 @@ public class Animacion {
      * @param listaNaves Lista que contiene las naves enemigas
      * @throws InvalidDirectionException Excepción que indica que la dirección ingresada es inválida
      */
-    private static void moverNaves(char Dir,Lista<NaveEnemiga> listaNaves) throws InvalidDirectionException {
+    private static void moverNaves(char Dir,Lista<NaveEnemiga> listaNaves) throws InvalidDirectionException, IndiceInvalidoException {
         for (int i = listaNaves.tamanoLista()-1; i >= 0; i--){
             NaveEnemiga nave = listaNaves.obtenerDato(i);
             switch (Dir){

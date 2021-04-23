@@ -13,6 +13,7 @@ import javafx.stage.Stage;
 import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.AnimacionClaseE;
 import proyecto1.Animaciones.currentClass;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.Hileras.*;
 import proyecto1.Imagenes.Fondo;
 import proyecto1.Imagenes.Imagenes;
@@ -31,15 +32,16 @@ public class VentanaDeJuego {
     private static NaveUsuario jugador;
     private static Stage GameStage;
     private static Stage stagePrincipal;
+    private static Group ventanaDeJuego;
+
     /**
      * Iniciar ventana de juego.
-     *
      * @param mainStage the main stage
      * @throws FileNotFoundException the file not found exception
      */
     public static void iniciarVentanaDeJuego(Stage mainStage) throws FileNotFoundException {
         stagePrincipal = mainStage;
-        Group ventanaDeJuego= new Group();
+        ventanaDeJuego= new Group();
         Scene gameScene = new Scene(ventanaDeJuego, 850, 700, Color.valueOf("#262934"));
         GameStage = new Stage();
         GameStage.setScene(gameScene);
@@ -56,9 +58,6 @@ public class VentanaDeJuego {
         botonExit.setLayoutX(765); //define la posicion en x del boton
         botonExit.setLayoutY(8); //posicion y
 
-        //BORRAR
-        VentanaGameOver.VentanaGameOver(ventanaDeJuego);
-
         botonExit.setGraphic(EXIT);
         botonExit.setWrapText(true);
         ventanaDeJuego.getChildren().add(botonExit);
@@ -66,9 +65,8 @@ public class VentanaDeJuego {
         setJugador(new NaveUsuario(ventanaDeJuego));
         GameStage.show(); //requerido para mostrar el stage
 
-        //HileraBasic primeraHilera = new HileraBasic(ventanaDeJuego);
-        new HileraC(ventanaDeJuego);
-        //Animacion.iniciarAnimacion(currentClass.getLista());
+        HileraE hileraE = new HileraE(ventanaDeJuego, 340, 200); //Inicia la hilera E
+        new AnimacionClaseE(hileraE).iniciarAnimacion();
         setCLASE();
 
         crearClases(ventanaDeJuego);
@@ -94,17 +92,14 @@ public class VentanaDeJuego {
 
     }
     /**
-     * Crear clases.
-     *
-     * @param ventanaDeJuego the ventana de juego
+     * Crea hileras aleatorias.
+     * @param ventanaDeJuego Ventana del juego
      */
     public static void crearClases(Group ventanaDeJuego){
         //Hilo para generar las clases
         Task<Void> clasesAleatorias = new Task<>() {
             @Override
             protected Void call() throws Exception {
-                System.out.println("Inicia el hilo");
-                System.out.println("Lista: "+currentClass.getLista());
                 if (pts>250){
                     cambiarNivel(2);
                 }
@@ -117,7 +112,6 @@ public class VentanaDeJuego {
                 if (pts>=2750){
                     cambiarNivel(5);
                 }
-                System.out.println("Lista*: " + currentClass.getLista());
                 if (currentClass.getLista().tamanoLista() > 0) {
                     estado = true; //hay enemigos en la ventana
                     Thread.sleep(1000);
@@ -134,7 +128,7 @@ public class VentanaDeJuego {
                 System.out.println("Hilera: "+hilera);
                 if (hilera == 0){ //hilera basic
                     try {
-                        HileraBasic naves = new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
+                        new HileraBasic(ventanaDeJuego); //inicia la hilera Basic
                         Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
                     } catch (FileNotFoundException e) {
@@ -142,9 +136,13 @@ public class VentanaDeJuego {
                     }
                 }
                 else if(hilera == 1){ //clase A
-                    new HileraA(ventanaDeJuego); //inicia la hilera A
-                    Animacion.iniciarAnimacion(currentClass.getLista());
-                    setCLASE();
+                    try{
+                        new HileraA(ventanaDeJuego); //inicia la hilera A
+                        Animacion.iniciarAnimacion(currentClass.getLista());
+                        setCLASE();
+                    }catch (FileNotFoundException | IndiceInvalidoException e){
+                        e.printStackTrace();
+                    }
                 }
                 else if(hilera == 2){ //clase B
                     try {
@@ -160,7 +158,7 @@ public class VentanaDeJuego {
                         new HileraC(ventanaDeJuego); //inicia la hilera C
                         Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
-                    } catch (FileNotFoundException e) {
+                    } catch (FileNotFoundException | IndiceInvalidoException e) {
                         e.printStackTrace();
                     }
                 }
@@ -169,15 +167,14 @@ public class VentanaDeJuego {
                         new HileraD(ventanaDeJuego); //inicia la hilera D
                         Animacion.iniciarAnimacion(currentClass.getLista());
                         setCLASE();
-                    } catch (FileNotFoundException e) {
+                    } catch (FileNotFoundException | IndiceInvalidoException e) {
                         e.printStackTrace();
                     }
                 }
                 else{
                     try {
-                        HileraE hileraE = new HileraE(ventanaDeJuego, 330, 300); //Inicia la hilera E
-                        AnimacionClaseE animacionClaseE = new AnimacionClaseE(hileraE);
-                        animacionClaseE.iniciarAnimacion();
+                        HileraE hileraE = new HileraE(ventanaDeJuego, 340, 200); //Inicia la hilera E
+                        new AnimacionClaseE(hileraE).iniciarAnimacion();
                         setCLASE();
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
@@ -188,20 +185,44 @@ public class VentanaDeJuego {
         });
         new Thread(clasesAleatorias).start();
     }
+
+    /**
+     * Retorna la nave del jugador
+     * @return Nave del usuario
+     */
     public static NaveUsuario getJugador(){
         return jugador;
     }
+
+    /**
+     * Asigna la nave del usuario a la variable jugador.
+     * @param naveJugador Nave del usuario
+     */
     private static void setJugador(NaveUsuario naveJugador){
         jugador = naveJugador;
     }
+
+    /**
+     * Aumenta el punaje dependiendo de la cantidad de puntos que valga la nave eliminada
+     * @param suma Cantidad de puntos que suma la nave eliminada
+     */
     public static void updatePuntos(int suma){
         pts = pts+suma;
         String puntaje = Integer.toString(pts);
         puntos.setText(puntaje);
     }
+
+    /**
+     * Cambia el texto mostrado en pantalla para indicar qué tipo de hilera se está mostrando
+     */
     public static void setCLASE(){
         cla.setText(currentClass.getClase());
     }
+
+    /**
+     * Cambia el nivel
+     * @param nivel Nivel: int ([1,5])
+     */
     public static void cambiarNivel(int nivel){
         currentClass.setNivel(nivel);
         if(nivel==2){
@@ -219,10 +240,17 @@ public class VentanaDeJuego {
             fondo.setImage(Imagenes.getInstancia().getFondo5());
         }
     }
-    public static void terminarJuego(char condicion){
+
+    /**
+     * Termina el juego
+     * @param condicion Victoria o derrota: char (L/W)
+     * @throws FileNotFoundException Archivo no encontrado
+     */
+    public static void terminarJuego(char condicion) throws FileNotFoundException {
         //Llamar ventana game over
         GameStage.close();
         stagePrincipal.show();
+        VentanaGameOver.VentanaGameOver(ventanaDeJuego);
     }
 
 }

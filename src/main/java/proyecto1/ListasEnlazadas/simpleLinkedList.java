@@ -1,7 +1,5 @@
 package proyecto1.ListasEnlazadas;
 
-import proyecto1.Enemigos.NaveEnemiga;
-
 //Declaración de la lista simple
 public class simpleLinkedList<T> implements Lista<T>{
 
@@ -209,25 +207,6 @@ public class simpleLinkedList<T> implements Lista<T>{
     }
 
     public void bubbleSort(){
-        Nodo<NaveEnemiga> actual = (Nodo<NaveEnemiga>) primero;
-        Nodo<NaveEnemiga> index;
-        NaveEnemiga temp;
-
-        if (this.tamanoLista() == 0){
-            System.out.println("Lista Vacia");
-        }else{
-            do{
-                index = actual.siguiente;
-                while(index != primero){
-                    if (actual.valor.getVida() < index.valor.getVida()){
-                        temp = actual.valor;
-                        actual.valor = index.valor;
-                        index.valor = temp;
-                    }
-                    index = index.siguiente;
-                }
-                actual = actual.siguiente;
-            } while (actual != primero);
-        }
+        System.out.println("Bubble sort simple linked list");;
     }
 }

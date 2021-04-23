@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.util.Duration;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
 
@@ -57,8 +58,15 @@ public class HileraB {
                 }
                 double getRandom = Math.random()*(currentClass.getLista().tamanoLista()-1);
                 int naveRandom = (int) getRandom;
-                NaveEnemiga nave = listaB.obtenerDato(naveRandom);
-                nave.toBoss();
+                NaveEnemiga nave = null;
+                try {
+                    nave = listaB.obtenerDato(naveRandom);
+                } catch (IndiceInvalidoException e) {
+                    e.printStackTrace();
+                }
+                if (nave != null){
+                    nave.toBoss();
+                }
                 naveAnt = nave;
                 cambioaBoss();
             }

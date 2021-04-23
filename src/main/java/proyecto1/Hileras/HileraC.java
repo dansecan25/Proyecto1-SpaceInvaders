@@ -4,6 +4,7 @@ import javafx.scene.Group;
 import proyecto1.Animaciones.Animacion;
 import proyecto1.Animaciones.currentClass;
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
 
@@ -19,7 +20,7 @@ public class HileraC {
      *
      * @param juego the juego
      */
-    public HileraC(Group juego) throws FileNotFoundException {
+    public HileraC(Group juego) throws FileNotFoundException, IndiceInvalidoException {
         Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Circular");
         currentClass.setClass("C", listaNaves);
         listaNaves.agregarUltimo(new NaveEnemiga(110, 100, juego, 0));
@@ -33,7 +34,7 @@ public class HileraC {
 
         Animacion.iniciarAnimacion(listaNaves);
     }
-    public static void cambiarJefe(){
+    public static void cambiarJefe() throws IndiceInvalidoException {
         Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
         lista = currentClass.getLista();
 

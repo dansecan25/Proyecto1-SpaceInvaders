@@ -6,53 +6,71 @@ import javafx.scene.Group;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import proyecto1.Animaciones.currentClass;
+import proyecto1.Excepciones.IndiceInvalidoException;
 import proyecto1.Hileras.HileraC;
 import proyecto1.Hileras.HileraD;
 import proyecto1.Imagenes.Imagenes;
 import proyecto1.Ventanas.VentanaDeJuego;
-
 import java.util.Random;
 
 /**
- * The type Nave enemiga.
+ * Clase NaveEnemiga.
  */
 public class NaveEnemiga {
-    Random random = new Random();
-    private int posicionLista;
+    private final Random random = new Random();
     private final Group ventana;
     private final Timeline comprobacion;
     private final ImageView nave;
-    private boolean isBoss = false;
+    private int posicionLista;
+    private boolean isBoss;
     private int puntosMorir = 5;
     private int vida;
 
     /**
-     * Instantiates a new Nave enemiga.
-     *
-     * @param x     the x
-     * @param y     the y
-     * @param juego the juego
+     * Constructor para crear instancias de  NaveEnemiga.
+     * @param x     Posicion X: int
+     * @param y     Posicion Y: int
+     * @param juego JavaFX Group
      */
     public NaveEnemiga(int x, int y, Group juego,int pos) {
         nave = spriteNaveAleatorio();
         nave.setX(x);
         nave.setY(y);
-        nave.setId("ufos");
         juego.getChildren().add(nave);
         posicionLista=pos;
+        isBoss = false;
         vida = 1;
-        comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
+        comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> {
+            try {
+                colision();
+            } catch (IndiceInvalidoException e) {
+                e.printStackTrace();
+            }
+        }));
         comprobarColision();
         ventana = juego;
 
     }
+
+    /**
+     * Retorna la vida actual de la nave
+     * @return vida: int
+     */
     public int getVida(){
         return vida;
     }
+
+    /**
+     * Actualiza el valor de posicion en la lista
+     * @param posicion posicion en la lista: int
+     */
     public void setPosicionLista(int posicion){
         this.posicionLista = posicion;
     }
 
+    /**
+     * Transforma un boss en una nave normal
+     */
     public void toNave(){
         isBoss = false;
         nave.setImage(Imagenes.getInstancia().getUfo2());
@@ -61,6 +79,9 @@ public class NaveEnemiga {
         puntosMorir = 5;
     }
 
+    /**
+     * Método para transformar la nave en un Boss
+     */
     public void toBoss(){
         int randomBossSprite = random.nextInt(4);
         switch (randomBossSprite){
@@ -70,15 +91,24 @@ public class NaveEnemiga {
             default -> nave.setImage(Imagenes.getInstancia().getUfoBoss1());
         }
         nave.setX(nave.getX() - 27);
+        nave.setY(nave.getY() - 29);
 
-        int randomBonusHP = random.nextInt(4);
+        int randomBonusHP = random.nextInt(5);
         vida += randomBonusHP;
         puntosMorir += 5 * randomBonusHP;
         isBoss = true;
     }
 
+    /**
+     * Método para verificar si una nave es Boss
+     * @return isBoss: boolean
+     */
     public boolean esBoss(){ return isBoss;}
 
+    /**
+     * Selecciona un sprite aleatorio para la nave.
+     * @return sprite: ImageView
+     */
     private ImageView spriteNaveAleatorio(){
         ImageView sprite;
         int spriteID = random.nextInt(3);
@@ -89,7 +119,12 @@ public class NaveEnemiga {
         }
         return sprite;
     }
-    private void colision(){
+
+    /**
+     * Comprueba si la nave ha colisionado con un objeto
+     * @throws IndiceInvalidoException Excepcion lanzada en caso de errores al recorrer la lista
+     */
+    private void colision() throws IndiceInvalidoException {
         if (!VentanaDeJuego.getJugador().getDisparo().isVisible()){
             return;
         }
@@ -105,17 +140,19 @@ public class NaveEnemiga {
                     currentClass.reordenar(posicionLista);
                 }
                 ventana.getChildren().remove(nave);
-                comprobacion.stop();
                 VentanaDeJuego.updatePuntos(puntosMorir);
-                if(isBoss && (currentClass.getClase().equals("C") || currentClass.getClase().equals("E"))){
+                if(isBoss && currentClass.getClase().equals("C")){
                     HileraC.cambiarJefe();
-                    //ClaseE.cambiarJefe();
+                }else if (currentClass.getClase().equals("D")){
+                    HileraD.ordenarNaves();
                 }
-            }else if(currentClass.getClase().equals("D")){
-                HileraD.ordenarNaves();
             }
         }
     }
+
+    /**
+     * Inicia el timeline para comprobar colisiones
+     */
     private void comprobarColision(){
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
@@ -124,16 +161,27 @@ public class NaveEnemiga {
         return nave;
     }
 
+    /**
+     * Mueve la nave hacia la derecha
+     */
     public void moveRight(){
         Timeline movimientoDerecha = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()+1)));
         movimientoDerecha.setCycleCount(80);
         movimientoDerecha.play();
     }
+
+    /**
+     * Mueve la nave hacia la izquierda
+     */
     public void moveLeft(){
         Timeline movimientoIzquierda = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()-1)));
         movimientoIzquierda.setCycleCount(80);
         movimientoIzquierda.play();
     }
+
+    /**
+     * Mueve la nave hacia abajo
+     */
     public void moveDown(){
         Timeline movimientoAbajo = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setY(nave.getY()+1)));
         movimientoAbajo.setCycleCount(80);

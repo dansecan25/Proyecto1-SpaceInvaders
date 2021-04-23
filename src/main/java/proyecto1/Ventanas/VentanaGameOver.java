@@ -44,6 +44,8 @@ public class VentanaGameOver {
             overStage.close();
             VentanaPrincipal.getStage().show();
         });
+
+        //Posicionamiento de los botones
         botonReset.setLayoutX(500);
         botonReset.setLayoutY(25);
         botonReset.setGraphic(startOver);

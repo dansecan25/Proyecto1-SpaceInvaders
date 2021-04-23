@@ -1,7 +1,5 @@
 package proyecto1.ListasEnlazadas;
 
-import proyecto1.Enemigos.NaveEnemiga;
-
 import java.io.Serializable;
 
 //Declaracion lista doble
@@ -80,7 +78,6 @@ public class doubleLinkedList<T> implements Serializable,Lista<T>{
             Nodo<T> temporal = this.ultimo;
             this.primero = temporal.anterior;
             this.ultimo.siguiente = null;
-            temporal.siguiente = null;
         }
         largo--;
     }
@@ -114,67 +111,8 @@ public class doubleLinkedList<T> implements Serializable,Lista<T>{
             }
         }largo--;
     }
-    public T getElemento(int index){
-        if (index >= largo){
-            try {
-                throw new Exception();
-
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        Nodo<T> actual= primero;
-        while (actual!=primero){
-            if(actual.getPosicion()==index){
-                return actual.getDato();
-            }
-            actual=actual.getSiguiente();
-        }
-        return null;
-
-    }
 
     public void bubbleSort(){
-        Nodo<NaveEnemiga> actual = (Nodo<NaveEnemiga>) primero;
-        Nodo<NaveEnemiga> index;
-        NaveEnemiga temp;
-
-        if (this.tamanoLista() == 0){
-            System.out.println("Lista Vacia");
-        }else{
-            do{
-                index = actual.siguiente;
-                while(index != primero){
-                    if (actual.valor.getVida() < index.valor.getVida()){
-                        temp = actual.valor;
-                        actual.valor = index.valor;
-                        index.valor = temp;
-                    }
-                    index = index.siguiente;
-                }
-                actual = actual.siguiente;
-            } while (actual != primero);
-        }
+        System.out.println("Bubble sort innecesario");
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

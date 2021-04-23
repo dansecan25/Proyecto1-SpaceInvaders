@@ -1,6 +1,7 @@
 package proyecto1.ListasEnlazadas;
 
 import proyecto1.Enemigos.NaveEnemiga;
+import proyecto1.Excepciones.IndiceInvalidoException;
 
 import java.io.Serializable;
 
@@ -104,9 +105,9 @@ public class ListaCircular<T> implements Serializable,Lista<T> {
      * @param posicion the posicion
      * @return the t
      */
-    public T obtenerDato(int posicion) {
+    public T obtenerDato(int posicion) throws IndiceInvalidoException {
         if (posicion < 0 || primero == null) {
-            return null;
+            throw new IndiceInvalidoException("La lista no contiene elementos");
         }
         Nodo<T> actual = primero;
         int indice = 0;
@@ -117,7 +118,7 @@ public class ListaCircular<T> implements Serializable,Lista<T> {
             indice++;
             actual = actual.siguiente;
         } while (actual != primero);
-        return null; // la posicion sobrepasa el indice
+        throw new IndiceInvalidoException("La posicion indicada sobrepasa el indice");
     }
     /**
      * Borrar primero.
