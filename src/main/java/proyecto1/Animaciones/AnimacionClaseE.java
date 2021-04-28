@@ -17,7 +17,6 @@ public class AnimacionClaseE {
     private Task<Void> animacion;
     private double anguloActual = 0;
     private boolean pararAnimacion = false;
-    private int y;
 
     /**
      * Constructor para instancias de AnimacionClaseE.
@@ -35,7 +34,7 @@ public class AnimacionClaseE {
         Lista<NaveEnemiga> lista = hileraE.getLista();
         int tamlista = lista.tamanoLista();
         int x = hileraE.getX();
-        y = hileraE.getY();
+        int y = hileraE.getY();
         int centro = tamlista/2;
         System.out.println(centro);
         double raiz2 = Math.sqrt(2);
@@ -86,7 +85,6 @@ public class AnimacionClaseE {
                             anguloActual = anguloActual - Math.PI * 2;
                         }
                         rotar(anguloActual);
-                        hileraE.bajarHilera();
                     } catch (InterruptedException e) {
                         System.out.println(e.getMessage());
                     }
@@ -101,5 +99,5 @@ public class AnimacionClaseE {
         });
         new Thread(animacion).start();
     }
-
 }
+

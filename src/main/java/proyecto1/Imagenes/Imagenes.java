@@ -87,11 +87,6 @@ public class Imagenes{
         naveAnimacion = cargarImagen("/Imagenes/navePantallaPrincipal.png");
     }
 
-    /**
-     * Carga imagenes
-     * @param nombreImagen:String
-     * @return resultado: Image
-     */
     private Image cargarImagen(String nombreImagen){
         Image resultado = null;
         try {
@@ -102,6 +97,14 @@ public class Imagenes{
         }
         return resultado;
     }
+
+//    public Image cambiarTamano(Image image) {
+//        ImageView imageView = new ImageView(image);
+//        imageView.setPreserveRatio(true);
+//        imageView.setFitWidth(image.getWidth()* parametroEncoger);
+//        imageView.setFitHeight(image.getHeight()* parametroEncoger);
+//        return imageView.snapshot(null, null);
+//    }
 
     /**
      * Obtener nave usuario.
@@ -232,7 +235,7 @@ public class Imagenes{
      * @return fondo 2
      */
     public Image getFondo2() {
-        return fondo2;
+        return fondo1;
     }
 
     /**
@@ -241,7 +244,7 @@ public class Imagenes{
      * @return fondo 3
      */
     public Image getFondo3() {
-        return fondo3;
+        return fondo1;
     }
 
     /**
@@ -250,7 +253,7 @@ public class Imagenes{
      * @return fondo 4
      */
     public Image getFondo4() {
-        return fondo4;
+        return fondo1;
     }
 
     /**
@@ -259,7 +262,7 @@ public class Imagenes{
      * @return fondo 5
      */
     public Image getFondo5() {
-        return fondo5;
+        return fondo1;
     }
 
     /**
@@ -283,10 +286,6 @@ public class Imagenes{
      */
     public Image getBotonExit() {return botonExit;}
 
-    /**
-     * Obtiene naveAnimacion
-     * @return naveAnimacion: Image
-     */
     public Image getNaveAnimacion(){return naveAnimacion;}
 }
 

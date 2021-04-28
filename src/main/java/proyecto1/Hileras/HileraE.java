@@ -16,7 +16,7 @@ public class HileraE {
     private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private final Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
     private final int x;
-    private int y;
+    private final int y;
     private final int grados = 0;
 
     /**
@@ -66,12 +66,5 @@ public class HileraE {
      */
     public int getY(){
         return y;
-    }
-
-    /**
-     * Mueve la hilera hacia abajo
-     */
-    public void bajarHilera(){
-        y = y + 5;
     }
 }
