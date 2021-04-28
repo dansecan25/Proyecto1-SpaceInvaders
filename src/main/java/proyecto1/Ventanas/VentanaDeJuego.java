@@ -111,8 +111,7 @@ public class VentanaDeJuego {
         if (!estado) {
 //                double hill = Math.random()*5;
 //                int hilera = (int) hill+1;
-            double hill = Math.random()*2 + 2;
-            int hilera = (int) hill + 2;
+            int hilera = 5;
             System.out.println("Hilera: "+hilera);
             if (hilera == 0){ //hilera basic
                 try {
@@ -137,7 +136,7 @@ public class VentanaDeJuego {
                     e.printStackTrace();
                 }
             }
-            else if(hilera == 4){ //clase C
+            else if(hilera == 3){ //clase C
                 try {
                     new HileraC(ventanaDeJuego); //inicia la hilera C
                     Animacion.iniciarAnimacion(currentClass.getLista());
@@ -146,7 +145,7 @@ public class VentanaDeJuego {
                     e.printStackTrace();
                 }
             }
-            else if (hilera == 3){ //Clase D
+            else if (hilera == 4){ //Clase D
                 try {
                     new HileraC(ventanaDeJuego); //inicia la hilera D
                     Animacion.iniciarAnimacion(currentClass.getLista());
