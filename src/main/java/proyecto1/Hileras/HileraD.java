@@ -8,9 +8,6 @@ import proyecto1.ListasEnlazadas.Lista;
 
 import java.io.FileNotFoundException;
 
-/**
- * Hilera de naves tipo C
- */
 public class HileraD {
     private final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     private final Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Doble");
@@ -30,18 +27,9 @@ public class HileraD {
 
         listaNaves.bubbleSort();
     }
-
-    /**
-     * Retorna la lista de naves
-     * @return listaNaves: Lista<NaveEnemiga>
-     */
     public Lista<NaveEnemiga> getListaNaves(){
         return listaNaves;
     }
-
-    /**
-     * Ordenar naves
-     */
     public static void ordenarNaves(){
         double x;
         Lista<NaveEnemiga> lista = currentClass.getLista();

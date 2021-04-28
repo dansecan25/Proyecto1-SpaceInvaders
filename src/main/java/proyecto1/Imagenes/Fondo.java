@@ -35,19 +35,10 @@ public class Fondo {
     public static void IniciarFondo(Group ventanaDeJuego) {
         new Fondo(ventanaDeJuego);
     }
-
-    /**
-     * Retorna el fondo
-     * @return fondo: ImageView
-     */
     public static ImageView getFondo(){
         return fondo;
     }
 
-    /**
-     * Cambia el fondo dependiendo del nivel
-     * @param nivel: int
-     */
     public static void setFondo(int nivel){
         if (nivel ==2){
             fondo.setImage(Imagenes.getInstancia().getFondo2());

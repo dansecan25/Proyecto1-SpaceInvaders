@@ -68,10 +68,9 @@ public class HileraE {
         return y;
     }
 
-    /**
-     * Mueve la hilera hacia abajo
-     */
     public void bajarHilera(){
         y = y + 5;
     }
+
+
 }

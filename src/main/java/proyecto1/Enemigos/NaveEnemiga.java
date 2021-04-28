@@ -44,27 +44,15 @@ public class NaveEnemiga {
         comprobacion = new Timeline(new KeyFrame(Duration.millis(100), event -> colision()));
         comprobarColision();
         ventana = juego;
-    }
 
-    /**
-     * Retorna la vida
-     * @return vida: int
-     */
+    }
     public int getVida(){
         return vida;
     }
-
-    /**
-     * Cambia la variable que indica la posicion de la nave en la lista
-     * @param posicion: int
-     */
     public void setPosicionLista(int posicion){
         this.posicionLista = posicion;
     }
 
-    /**
-     * Convierte un boss en una nave normal
-     */
     public void toNave(){
         isBoss = false;
         nave.setImage(Imagenes.getInstancia().getUfo2());
@@ -73,9 +61,6 @@ public class NaveEnemiga {
         puntosMorir = 5;
     }
 
-    /**
-     * Convierte una nave en un boss
-     */
     public void toBoss(){
         int randomBossSprite = random.nextInt(4);
         switch (randomBossSprite){
@@ -92,16 +77,8 @@ public class NaveEnemiga {
         isBoss = true;
     }
 
-    /**
-     * Comprueba si la nave es un boss
-     * @return isBoss: boolean
-     */
     public boolean esBoss(){ return isBoss;}
 
-    /**
-     * Asigna un sprite (imagen) aleatorio a la nave
-     * @return sprite: ImageView
-     */
     private ImageView spriteNaveAleatorio(){
         ImageView sprite;
         int spriteID = random.nextInt(3);
@@ -112,10 +89,6 @@ public class NaveEnemiga {
         }
         return sprite;
     }
-
-    /**
-     * Detecta colisiones
-     */
     private void colision(){
         if (!VentanaDeJuego.getJugador().getDisparo().isVisible()){
             return;
@@ -146,44 +119,24 @@ public class NaveEnemiga {
             }
         }
     }
-
-    /**
-     * Inicia el timeline que comprueba colisiones
-     */
     private void comprobarColision(){
         comprobacion.setCycleCount(Timeline.INDEFINITE);
         comprobacion.play();
     }
-
-    /**
-     * Retorna la imagen de la nave
-     * @return nave: ImageView
-     */
     public ImageView getImagenNave(){
         return nave;
     }
 
-    /**
-     * Mueve la nave hacia la derecha
-     */
     public void moveRight(){
         Timeline movimientoDerecha = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()+1)));
         movimientoDerecha.setCycleCount(80);
         movimientoDerecha.play();
     }
-
-    /**
-     * Mueve la nave hacia la izquierda
-     */
     public void moveLeft(){
         Timeline movimientoIzquierda = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setX(nave.getX()-1)));
         movimientoIzquierda.setCycleCount(80);
         movimientoIzquierda.play();
     }
-
-    /**
-     * Mueve la nave hacia abajo
-     */
     public void moveDown(){
         Timeline movimientoAbajo = new Timeline(new KeyFrame(Duration.millis(25),mover -> nave.setY(nave.getY()+1)));
         movimientoAbajo.setCycleCount(80);

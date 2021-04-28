@@ -9,14 +9,14 @@ import proyecto1.ListasEnlazadas.Lista;
 import java.io.FileNotFoundException;
 
 /**
- * Hilera tipo C.
+ * The type Clase c.
  */
 public class HileraC {
     private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
     /**
      * Iniciar clase c.
+     *
      * @param juego the juego
-     * @throws FileNotFoundException File not found
      */
     public HileraC(Group juego) throws FileNotFoundException {
         Lista<NaveEnemiga> listaNaves = listFactory.crearLista("Circular");
@@ -32,10 +32,6 @@ public class HileraC {
 
         //Animacion.iniciarAnimacion(listaNaves);
     }
-
-    /**
-     * Cambia el jefe en la hilera
-     */
     public static void cambiarJefe(){
         Lista<NaveEnemiga> lista = listFactory.crearLista("Circular");
         lista = currentClass.getLista();

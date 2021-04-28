@@ -2,6 +2,7 @@ package proyecto1.Ventanas;
 
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.concurrent.Task;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -147,7 +148,7 @@ public class VentanaDeJuego {
             }
             else if (hilera == 4){ //Clase D
                 try {
-                    new HileraC(ventanaDeJuego); //inicia la hilera D
+                    new HileraD(ventanaDeJuego); //inicia la hilera D
                     Animacion.iniciarAnimacion(currentClass.getLista());
                     setCLASE();
                 } catch (FileNotFoundException e) {
