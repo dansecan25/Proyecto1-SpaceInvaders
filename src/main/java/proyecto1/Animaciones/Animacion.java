@@ -22,20 +22,21 @@ public class Animacion {
             public Void call() {
                 if (naves.obtenerDato(0).getImagenNave().getY() < 710) {
                     try {
-                        moverNaves('D',naves);
+                        moverNaves('D', naves);
                         Thread.sleep(2000);
-                        moverNaves('A',naves);
+                        moverNaves('A', naves);
                         Thread.sleep(2000);
-                        moverNaves('I',naves);
+                        moverNaves('I', naves);
                         Thread.sleep(2000);
-                        moverNaves('A',naves);
+                        moverNaves('A', naves);
                         Thread.sleep(2000);
                     } catch (InvalidDirectionException | InterruptedException e) {
                         e.printStackTrace();
                     }
-                } else{
-                    VentanaDeJuego.terminarJuego('L');
                 }
+//                } else{
+//                    VentanaDeJuego.terminarJuego('L');
+//                }
                 return null;
             }
         };
