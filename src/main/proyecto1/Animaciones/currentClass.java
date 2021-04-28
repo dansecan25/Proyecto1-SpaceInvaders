@@ -43,18 +43,18 @@ public class currentClass {
      * @param indice: int
      */
     public static void reordenar(int indice){
-            while(indice < listaActual.tamanoLista()-1){
-                NaveEnemiga data = listaActual.obtenerDato(indice + 1);
-                if (data != null){
+        while(indice < listaActual.tamanoLista()-1){
+            NaveEnemiga data = listaActual.obtenerDato(indice + 1);
+            if (data != null){
                 data.setPosicionLista(indice);
-                }
-                indice++;
             }
+            indice++;
         }
+    }
 
     /**
      * Set de la variable que indica el nivel actual
-      * @param niv: int
+     * @param niv: int
      */
     public static void setNivel(int niv){
         nivel = niv;

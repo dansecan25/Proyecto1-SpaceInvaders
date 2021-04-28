@@ -69,7 +69,7 @@ public class VentanaPrincipal {
                 System.out.println(e.getMessage());
             }
 
-            });
+        });
         new Thread(ventanaPrincipal).start();
         Lobby.show();
     }
