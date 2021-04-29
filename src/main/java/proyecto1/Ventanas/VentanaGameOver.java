@@ -15,10 +15,10 @@ import proyecto1.Imagenes.Imagenes;
 import java.io.FileNotFoundException;
 
 public class VentanaGameOver {
-/**
- * Ventana GameOver
- * @throws  java.io.FileNotFoundException
- */
+    /**
+     * Ventana GameOver
+     * @throws  java.io.FileNotFoundException
+     */
 
     public static void VentanaGameOver(Group GameOver) throws FileNotFoundException {
         Group overGroup = new Group();

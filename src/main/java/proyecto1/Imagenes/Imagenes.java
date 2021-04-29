@@ -90,8 +90,8 @@ public class Imagenes{
     private Image cargarImagen(String nombreImagen){
         Image resultado = null;
         try {
-             InputStream inputStream = this.getClass().getResourceAsStream(nombreImagen);
-             resultado = new Image(inputStream);
+            InputStream inputStream = this.getClass().getResourceAsStream(nombreImagen);
+            resultado = new Image(inputStream);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -281,11 +281,10 @@ public class Imagenes{
 
 
     /** Obtiene explosion.
-            *
-            * @return explosion
+     *
+     * @return explosion
      */
     public Image getBotonExit() {return botonExit;}
 
     public Image getNaveAnimacion(){return naveAnimacion;}
 }
-

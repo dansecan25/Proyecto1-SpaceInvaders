@@ -7,9 +7,16 @@ import proyecto1.ListasEnlazadas.ListFactory;
 import proyecto1.ListasEnlazadas.Lista;
 
 
-
+/**
+ * Hilera de naves tipo A
+ */
 public class HileraA {
     private static final ListFactory<NaveEnemiga> listFactory = new ListFactory<>();
+
+    /**
+     * Constructor de la hilera
+     * @param juego: JavaFX Group
+     */
     public HileraA(Group juego){
         Lista<NaveEnemiga> listaA= listFactory.crearLista("Simple");
 
@@ -26,8 +33,7 @@ public class HileraA {
         naveJefe.toBoss();
 
     }
+    public HileraA(){
 
-
-
-
+    }
 }

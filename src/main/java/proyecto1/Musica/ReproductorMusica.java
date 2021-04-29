@@ -29,7 +29,7 @@ public class ReproductorMusica {
                 mediaPlayer.seek(Duration.ZERO);
             }
         });
-        mediaPlayer.setVolume(0.04);
+        mediaPlayer.setVolume(0.06);
         mediaPlayer.setAutoPlay(true);
     }
 

@@ -58,16 +58,16 @@ public class NaveUsuario {
     }
 
     public ImageView getDisparo(){
-            return laser;
-        }
-        
+        return laser;
+    }
+
     /**
      * Disparar laser, permite que el usuario dispare el laser con el
      * clic del mouse.
      *
      * @param juego la ventana de juego
      */
-    
+
     public void dispararLaser(Group juego) {
         juego.setOnMouseClicked(new EventHandler<>() {
             @Override
