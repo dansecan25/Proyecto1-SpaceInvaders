@@ -33,12 +33,10 @@ public class Imagenes{
     private Image fondo3 = null;
     private Image fondo4 = null;
     private Image fondo5 = null;
-    private Image GO= null;
     private Image laser = null;
     private Image explosion = null;
     private Image botonExit = null;
     private Image naveAnimacion=null;
-
     //private double parametroEncoger = 0.8;
 
 
@@ -80,31 +78,27 @@ public class Imagenes{
         fondo3 = cargarImagen("/Imagenes/fondo3.png");
         fondo4 = cargarImagen("/Imagenes/fondo4.png");
         fondo5 = cargarImagen("/Imagenes/fondo5.png");
-        GO= cargarImagen("/Imagenes/GO.png");
         laser = cargarImagen("/Imagenes/laser.png");
         explosion = cargarImagen("/Imagenes/explosion.png");
         botonExit = cargarImagen("/Imagenes/botonEXIT.png");
         naveAnimacion = cargarImagen("/Imagenes/navePantallaPrincipal.png");
     }
 
+    /**
+     * Carga imagenes
+     * @param nombreImagen:String
+     * @return resultado: Image
+     */
     private Image cargarImagen(String nombreImagen){
         Image resultado = null;
         try {
-            InputStream inputStream = this.getClass().getResourceAsStream(nombreImagen);
-            resultado = new Image(inputStream);
+             InputStream inputStream = this.getClass().getResourceAsStream(nombreImagen);
+             resultado = new Image(inputStream);
         } catch (Exception e) {
             e.printStackTrace();
         }
         return resultado;
     }
-
-//    public Image cambiarTamano(Image image) {
-//        ImageView imageView = new ImageView(image);
-//        imageView.setPreserveRatio(true);
-//        imageView.setFitWidth(image.getWidth()* parametroEncoger);
-//        imageView.setFitHeight(image.getHeight()* parametroEncoger);
-//        return imageView.snapshot(null, null);
-//    }
 
     /**
      * Obtener nave usuario.
@@ -132,15 +126,6 @@ public class Imagenes{
     public Image getFondo() {
         return fondo;
     }
-
-
-    /**
-     * Obtener GameOver.
-     *
-     * @return GO
-     */
-    public Image getGO(){return GO;}
-
 
     /**
      * Obtener boton start.
@@ -235,7 +220,7 @@ public class Imagenes{
      * @return fondo 2
      */
     public Image getFondo2() {
-        return fondo1;
+        return fondo2;
     }
 
     /**
@@ -244,7 +229,7 @@ public class Imagenes{
      * @return fondo 3
      */
     public Image getFondo3() {
-        return fondo1;
+        return fondo3;
     }
 
     /**
@@ -253,7 +238,7 @@ public class Imagenes{
      * @return fondo 4
      */
     public Image getFondo4() {
-        return fondo1;
+        return fondo4;
     }
 
     /**
@@ -262,7 +247,7 @@ public class Imagenes{
      * @return fondo 5
      */
     public Image getFondo5() {
-        return fondo1;
+        return fondo5;
     }
 
     /**
@@ -281,10 +266,15 @@ public class Imagenes{
 
 
     /** Obtiene explosion.
-     *
-     * @return explosion
+            *
+            * @return explosion
      */
     public Image getBotonExit() {return botonExit;}
 
+    /**
+     * Obtiene naveAnimacion
+     * @return naveAnimacion: Image
+     */
     public Image getNaveAnimacion(){return naveAnimacion;}
 }
+
